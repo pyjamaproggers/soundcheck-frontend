@@ -34,7 +34,7 @@ function Header() {
                         window.location.pathname = ''
                     }} />
             </Navbar.Brand>
-            <Navbar.Content hideIn="sm" variant="underline-rounded" >
+            <Navbar.Content hideIn="sm" variant="highlight" >
                 {items.map((item, index) => (
                     <Navbar.Link key={index} isActive={item.href === active.substring(0, item.href.length + 1)} href={item.href}>
                         {item.name}

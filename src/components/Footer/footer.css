@@ -33,3 +33,14 @@
 .t-icon:hover{
     cursor: pointer;
 }
+
+.yt-icon{
+    padding: 0px 2px 0px 2px;
+    margin: 0px 8px;
+    border-radius: 05px;
+    background-color: #c4302b;
+    color: white;
+}
+.yt-icon:hover{
+    cursor: pointer;
+}

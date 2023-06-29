@@ -86,6 +86,7 @@ export default function Footer() {
                     alignItems: 'center'
                 }}>
                 <FaFacebookF onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="fb-icon" size={'24px'} />
+                <FaYoutube onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="yt-icon" size={'24px'} />
                 <FaInstagram onClick={() => { window.location = "https://www.instagram.com/fanup_inc/?hl=en" }} className="ig-icon" size={'24px'} />
                 <FaTwitter onClick={() => { window.location = "https://twitter.com/fanup_inc?s=20" }} className="t-icon" size={'24px'} />
             </Row>
