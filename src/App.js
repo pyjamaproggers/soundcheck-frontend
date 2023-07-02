@@ -7,6 +7,7 @@ import Login from './pages/LoginPage/loginPage';
 import { Route, Routes } from 'react-router-dom';
 import { createTheme, NextUIProvider } from "@nextui-org/react"
 import Post from './pages/Post/post';
+import WritePost from './pages/Post/writePost';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/login' element={<Login />} />
                     <Route exact path='/post' element={<Post />} />
+                    <Route exact path='/writepost' element={<WritePost />} />
                 </Routes>
                 <Footer />
             </NextUIProvider>
