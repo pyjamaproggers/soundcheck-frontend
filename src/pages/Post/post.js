@@ -9,7 +9,7 @@ export default function Post() {
       css={{
         height: "200vh",
         width: "100vw",
-        marginTop:"1vh"
+        marginTop:"5vh"
       }}
     >
       <Grid.Container
@@ -25,14 +25,14 @@ export default function Post() {
         }}
       >
         {/* Title */}
-        <Text color="#44041A" h1>
+        <Text color="#44041A" h1 css={{ marginBottom: "2vh" }}>
           BREAKING: J TRIX & SUBSPACE LINK UP WITH INDIAN RAP PIONEER IKKA ON
           NEW SINGLE 'GUNDAGARDI', PAY HOMAGE TO SIDHU MOOSE WALA
         </Text>
         {/* Cover Image */}
         <Image src={TempLogo} css={{marginBottom:"10vh"}} />
         {/* Content */}
-        <Text>
+        <Text css={{ marginBottom: "3vh", fontSize: "1.2rem" }}>
           Within a day of announcing his sophomore EP “Middle Class Boys”,
           Kolkata, West Bengals hard-hitting emcee J Trix has released the lead
           single from the project. Titled “Gundagardi”, the ruthless rap record
@@ -58,7 +58,7 @@ export default function Post() {
           width: "25vw",
         }}
       >
-        <Text h2>More by SoundCheck</Text>
+        <Text h2 color="white">More by SoundCheck</Text>
       </Grid.Container>
     </Grid.Container>
   );
