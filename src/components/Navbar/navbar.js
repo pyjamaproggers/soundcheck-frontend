@@ -1,7 +1,7 @@
 import React from "react";
 import './navbar.css'
 import { Navbar, Link, Image, Button, Text, } from "@nextui-org/react";
-import {FaYoutube,FaFacebookF,FaInstagram,FaTwitter,} from 'react-icons/fa';
+import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, } from 'react-icons/fa';
 import Logo from '../../assets/TempLogo.jpeg'
 
 function Header() {
@@ -9,12 +9,14 @@ function Header() {
     const items = [
         { name: 'Home', href: '/' },
         { name: 'Articles', href: '/blogspage' },
+        { name: 'Playlists', href: '/playlists' },
         { name: 'Contact Us', href: '/contactus' },
     ]
 
     const collapsedItems = [
         { name: 'Home', href: '/' },
         { name: 'Articles', href: '/blogspage' },
+        { name: 'Playlists', href: '/playlists' },
         { name: 'Contact Us', href: '/contactus' },
         { name: 'Login', href: '/login' },
     ]
@@ -28,7 +30,10 @@ function Header() {
                 <Image css={{
                     width: '40px',
                     height: '40px',
-                    borderRadius: '5px'
+                    borderRadius: '5px',
+                    '&:hover': {
+                        cursor: 'pointer'
+                    }
                 }} src={Logo}
                     onClick={() => {
                         window.location.pathname = ''
@@ -52,7 +57,10 @@ function Header() {
                 {/* <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
             <FaInstagram className="instagram-logo" size={'25px'} />
           </Link> */}
-                <Button auto flat color="error">
+                <Button auto flat color="error"
+                    onPress={() => {
+                        window.location.pathname = '/login'
+                    }}>
                     <Text css={{
                         fontWeight: 600,
                     }}>
@@ -60,10 +68,9 @@ function Header() {
                     </Text>
                 </Button>
             </Navbar.Content>
-            <Navbar.Content showIn={'sm'} css={{w: '30px',}}>
-
+            
+            <Navbar.Content showIn={'sm'} css={{ w: '30px', }}>
             </Navbar.Content>
-
 
             <Navbar.Collapse showIn={"sm"}>
                 {collapsedItems.map((item, index) => (
