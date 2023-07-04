@@ -172,6 +172,7 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
 
@@ -192,6 +193,7 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
                             <Image css={{
@@ -209,6 +211,25 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
+                            height: 'max-content',
+                            margin: '0px 12px'
+                        }} className="container">
+                            <Image css={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '10px'
+                            }}
+                                objectFit="contain"
+                                src={AB172}
+                                className="image" />
+                            <Text className="overlay">
+                                Dummer Article Title
+                            </Text>
+                        </Grid>
+
+                        <Grid css={{
+                            width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
                             <Image css={{
@@ -243,23 +264,7 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
-                            margin: '0px 12px'
-                        }} className="container">
-                            <Image css={{
-                                width: '100%',
-                                height: '100%',
-                                borderRadius: '10px'
-                            }}
-                                objectFit="contain"
-                                src={AB172}
-                                className="image" />
-                            <Text className="overlay">
-                                Dummer Article Title
-                            </Text>
-                        </Grid>
-
-                        <Grid css={{
-                            width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
                             <Image css={{
@@ -277,6 +282,7 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
                             <Image css={{
@@ -294,6 +300,7 @@ export default function HomeScreen() {
 
                         <Grid css={{
                             width: '20vw',
+                            height: 'max-content',
                             margin: '0px 12px'
                         }} className="container">
                             <Image css={{
@@ -578,7 +585,7 @@ export default function HomeScreen() {
                         fontWeight: '$medium',
                         color: '$gray600'
                     }}>
-                        To get email updates from SoundCheck™ India
+                        To get email updates from SoundCheck™ India.
                     </Text>
                     <div className="subscribe-desktop">
                         <Row css={{
