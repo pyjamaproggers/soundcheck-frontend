@@ -2,7 +2,6 @@ import { Grid, Text, Col, Input, Button } from "@nextui-org/react";
 import React, { useState } from "react";
 import WritePost from "./Post/writePost"
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 

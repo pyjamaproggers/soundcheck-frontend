@@ -56,12 +56,18 @@ function Header() {
                 }} src={Logo} />
             </Navbar.Content>
             <Navbar.Content hideIn={'sm'}>
-                <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
+                <Navbar.Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
                     <FaFacebookF className="fb-icon" size={'20px'} />
+                </Navbar.Link>
+                <Navbar.Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
                     <FaInstagram className="ig-icon" size={'20px'} />
+                </Navbar.Link>
+                <Navbar.Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
                     <FaYoutube className="yt-icon" size={'20px'} />
+                </Navbar.Link>
+                <Navbar.Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
                     <FaTwitter className="t-icon" size={'20px'} />
-                </Link>
+                </Navbar.Link>
                 <Button auto flat color="error"
                     onPress={() => {
                         window.location.pathname = '/login'
