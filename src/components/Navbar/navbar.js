@@ -39,6 +39,8 @@ function Header() {
                         window.location.pathname = ''
                     }} />
             </Navbar.Brand>
+            <Navbar.Content hideIn={'sm'} css={{ w: '30px', }}>
+            </Navbar.Content>
             <Navbar.Content hideIn="sm" variant="highlight" >
                 {items.map((item, index) => (
                     <Navbar.Link key={index} isActive={item.href === active.substring(0, item.href.length + 1)} href={item.href}>
@@ -54,9 +56,12 @@ function Header() {
                 }} src={Logo} />
             </Navbar.Content>
             <Navbar.Content hideIn={'sm'}>
-                {/* <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
-            <FaInstagram className="instagram-logo" size={'25px'} />
-          </Link> */}
+                <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
+                    <FaFacebookF className="fb-icon" size={'20px'} />
+                    <FaInstagram className="ig-icon" size={'20px'} />
+                    <FaYoutube className="yt-icon" size={'20px'} />
+                    <FaTwitter className="t-icon" size={'20px'} />
+                </Link>
                 <Button auto flat color="error"
                     onPress={() => {
                         window.location.pathname = '/login'
@@ -68,7 +73,7 @@ function Header() {
                     </Text>
                 </Button>
             </Navbar.Content>
-            
+
             <Navbar.Content showIn={'sm'} css={{ w: '30px', }}>
             </Navbar.Content>
 

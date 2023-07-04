@@ -99,7 +99,7 @@ export default function Footer() {
                         textAlign: 'center',
                         padding: '10px 0px',
                         borderStyle: 'solid',
-                        borderColor: '$gray700',
+                        borderColor: '#300313',
                         borderWidth: '1px 0px 0px 0px',
                         '@xsMax': {
                             fontSize: '$xs'
