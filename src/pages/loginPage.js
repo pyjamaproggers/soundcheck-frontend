@@ -1,7 +1,11 @@
 import { Grid, Text, Col, Input, Button } from "@nextui-org/react";
 import React, { useState } from "react";
-import WritePost from "../Post/writePost";
+import WritePost from "./Post/writePost"
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
 
 export default function LoginPage() {
     const [usernameStatus, setUsernameStatus] = useState('')
@@ -9,8 +13,11 @@ export default function LoginPage() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
+    const [inputs, setInputs] = useState({});
 
     const navigate = useNavigate()
+
+    const { login } = useContext(AuthContext);
 
     const Database = [
         {
@@ -19,31 +26,49 @@ export default function LoginPage() {
         },
     ]
 
-    const checkCredentials = () => {
-        if(username.length!=0 && password.length!=0){
-            Database.map((user)=>{
-                if(username==user.username){
-                    if(password==user.password){
-                        navigate('/writepost',{state:{loggedIn: true}})
-                    }
-                    else{
-                        setLoggedIn(false)
-                        setPasswordStatus('error')
-                    }
-                }
-                else{
-                    setLoggedIn(false)
-                    setUsernameStatus('error')
-                }
-            })
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setInputs((previous) => ({ ...previous, [name]: value }));
+      };
+      
+
+      const handleSubmit = async (e) => {
+        
+        try {
+          await login(inputs);
+          setLoggedIn(true); // Update loggedIn state
+          navigate("/writepost", {state:{loggedIn: true}});
+        } catch (err) {
+          //   setError(err.response.data);
         }
-        if(username.length==0){
-            setUsernameStatus('error')
-        }
-        if(password.length==0){
-            setPasswordStatus('error')
-        }
-    }
+      };
+      
+
+    // const checkCredentials = () => {
+    //     if(username.length!=0 && password.length!=0){
+    //         Database.map((user)=>{
+    //             if(username==user.username){
+    //                 if(password==user.password){
+    //                     navigate('/writepost',{state:{loggedIn: true}})
+    //                 }
+    //                 else{
+    //                     setLoggedIn(false)
+    //                     setPasswordStatus('error')
+    //                 }
+    //             }
+    //             else{
+    //                 setLoggedIn(false)
+    //                 setUsernameStatus('error')
+    //             }
+    //         })
+    //     }
+    //     if(username.length==0){
+    //         setUsernameStatus('error')
+    //     }
+    //     if(password.length==0){
+    //         setPasswordStatus('error')
+    //     }
+    // }
     return (
         <>
             <Grid.Container
@@ -74,13 +99,15 @@ export default function LoginPage() {
                             }}>
                             <span style={{color: '#b81850', fontWeight: '600'}}>SoundCheck</span>™ Login
                         </Text>
-                        <Input status={usernameStatus} label="Username" placeholder="dhananjaydhogra123" css={{ width: '100%', p: '4px 0px' }}
+                        <Input status={usernameStatus} label="Username" placeholder="dhananjaydhogra123" css={{ width: '100%', p: '4px 0px' }} name="username"
                         onChange={(e)=>{
                             setUsername(e.target.value)
+                            handleChange(e)
                         }}/>
-                        <Input.Password status={passwordStatus} label="Password" placeholder="" css={{ width: '100%', p: '4px 0px' }} 
+                        <Input.Password status={passwordStatus} label="Password" placeholder="" css={{ width: '100%', p: '4px 0px' }}  name="password"
                         onChange={(e)=>{
                             setPassword(e.target.value)
+                            handleChange(e)
                         }}/>
                         <Grid
                             css={{
@@ -91,9 +118,7 @@ export default function LoginPage() {
                                 backgroundColor: '#300313',
                                 mt: '8px'
                             }}
-                            onPress={()=>{
-                                checkCredentials()
-                            }}>
+                            onPress={handleSubmit}>
                                 <Text css={{
                                     fontWeight: 600,
                                 }}>

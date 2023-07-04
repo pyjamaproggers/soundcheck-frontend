@@ -3,7 +3,7 @@ import './App.css';
 import Home from './pages/HomePage/homePage'
 import Navbar from './components/Navbar/navbar';
 import Footer from './components/Footer/footer';
-import Login from './pages/LoginPage/loginPage';
+import Login from './pages/loginPage';
 import { Route, Routes } from 'react-router-dom';
 import { createTheme, NextUIProvider } from "@nextui-org/react"
 import Post from './pages/Post/post';
