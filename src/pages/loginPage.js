@@ -18,30 +18,24 @@ export default function LoginPage() {
 
     const { login } = useContext(AuthContext);
 
-    const Database = [
-        {
-            username: 'dj123',
-            password: 'dj123'
-        },
-    ]
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputs((previous) => ({ ...previous, [name]: value }));
-      };
-      
+    };
 
-      const handleSubmit = async (e) => {
-        
+
+    const handleSubmit = async (e) => {
+
         try {
-          await login(inputs);
-          setLoggedIn(true); // Update loggedIn state
-          navigate("/writepost", {state:{loggedIn: true}});
+            const res = await login(inputs);
+            console.log(res)
+            setLoggedIn(true); // Update loggedIn state
+            navigate("/writepost", { state: { loggedIn: true } });
         } catch (err) {
-          //   setError(err.response.data);
+            //   setError(err.response.data);
         }
-      };
-      
+    };
+
 
     // const checkCredentials = () => {
     //     if(username.length!=0 && password.length!=0){
@@ -96,18 +90,18 @@ export default function LoginPage() {
                                 fontWeight: '$medium',
                                 padding: '6px'
                             }}>
-                            <span style={{color: '#b81850', fontWeight: '600'}}>SoundCheck</span>™ Login
+                            <span style={{ color: '#b81850', fontWeight: '600' }}>SoundCheck</span>™ Login
                         </Text>
                         <Input status={usernameStatus} label="Username" placeholder="dhananjaydhogra123" css={{ width: '100%', p: '4px 0px' }} name="username"
-                        onChange={(e)=>{
-                            setUsername(e.target.value)
-                            handleChange(e)
-                        }}/>
-                        <Input.Password status={passwordStatus} label="Password" placeholder="" css={{ width: '100%', p: '4px 0px' }}  name="password"
-                        onChange={(e)=>{
-                            setPassword(e.target.value)
-                            handleChange(e)
-                        }}/>
+                            onChange={(e) => {
+                                setUsername(e.target.value)
+                                handleChange(e)
+                            }} />
+                        <Input.Password status={passwordStatus} label="Password" placeholder="" css={{ width: '100%', p: '4px 0px' }} name="password"
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                                handleChange(e)
+                            }} />
                         <Grid
                             css={{
                                 display: 'flex',
@@ -117,7 +111,7 @@ export default function LoginPage() {
                                 backgroundColor: '#300313',
                                 mt: '8px'
                             }}
-                            onPress={handleSubmit}>
+                                onPress={handleSubmit}>
                                 <Text css={{
                                     fontWeight: 600,
                                 }}>
@@ -128,10 +122,10 @@ export default function LoginPage() {
                     </Col>
                 </Grid>
             </Grid.Container>
-            {loggedIn && 
+            {loggedIn &&
                 <Link to={{
                     pathname: '/writepost',
-                    state: {loggedIn}
+                    state: { loggedIn }
                 }}></Link>
             }
         </>
