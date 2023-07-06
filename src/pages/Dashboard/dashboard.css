@@ -1,0 +1,54 @@
+@media screen and (min-width: 1288px) {
+    .published-sector{
+        width: 60vw;
+    }
+    .draft-sector{
+        width: 40vw
+    }
+    .draft-card {
+        width: 450px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 1288px) and (min-width: 650px) {
+    .published-sector{
+        width: 50vw
+    }
+    .draft-sector{
+        width: 50vw
+    }
+    
+}
+@media screen and (max-width: 1288px) and (min-width: 960px) {
+    .draft-card {
+        width: 370px;
+        height: 300px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .published-sector{
+        width: 100vw
+    }
+    .draft-sector{
+        width: 100vw
+    }
+}
+@media screen and (max-width: 650px) {
+    .draft-card {
+        width: 275px;
+        height: 175px;
+    }
+}
+
+.published-sector{
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    border-color: #2B2F31;
+}
+
+.draft-sector{
+    border-style: solid;
+    border-width: 0px 0px 0px 1px;
+    border-color: #2B2F31;
+}

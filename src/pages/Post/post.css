@@ -6,13 +6,13 @@
     white-space: pre-wrap; /* let the text wrap preserving spaces */
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 650px) {
     .desktop {
         display: none;
     }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 650px) {
     .mobile {
         display: none;
     }
