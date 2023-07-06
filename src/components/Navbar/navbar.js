@@ -8,7 +8,7 @@ function Header() {
 
     const items = [
         { name: 'Home', href: '/' },
-        { name: 'Articles', href: '/blogspage' },
+        { name: 'News', href: '/news' },
         { name: 'Playlists', href: '/playlists' },
     ]
 
@@ -29,7 +29,7 @@ function Header() {
                 height: '66px',
                 margin: '0px 24px',
                 borderStyle: 'solid',
-                borderWidth: '4px 0px 0px 0px',
+                borderWidth: ' 6px 0px 0px 0px',
                 borderColor: '#44041A',
             }}>
                 <Text css={{

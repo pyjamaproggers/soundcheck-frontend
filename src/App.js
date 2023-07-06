@@ -9,10 +9,11 @@ import { createTheme, NextUIProvider } from "@nextui-org/react"
 import Post from './pages/Post/post';
 import WritePost from './pages/Post/writePost';
 import Dashboard from './pages/Dashboard/dashboard';
+import Playlists from './pages/Playlists/playlists';
+import News from './pages/News/news';
 
 function App() {
 
-    const randomInt = Math.floor((Math.random() * 100) + 1);
     const theme = createTheme({
         type: 'dark',
         theme: {
@@ -34,6 +35,8 @@ function App() {
                     <Route exact path='/post' element={<Post />} />
                     <Route exact path='/writepost' element={<WritePost />} />
                     <Route exact path='/dashboard' element={<Dashboard />} />
+                    <Route exact path='/playlists' element={<Playlists />} />
+                    <Route exact path='/news' element={<News />} />
                 </Routes>
                 <Footer />
             </NextUIProvider>
