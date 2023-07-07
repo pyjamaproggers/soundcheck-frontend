@@ -1,0 +1,31 @@
+.home{
+    background: linear-gradient(#200000,#000000);
+}
+
+@media screen and (max-width: 650px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .mobile {
+        display: none;
+    }
+}
+
+.multiline-ellipsis-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; /* start showing ellipsis when 3rd line is reached */
+    white-space: pre-wrap; /* let the text wrap preserving spaces */
+}
+
+.multiline-ellipsis-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+    white-space: pre-wrap; /* let the text wrap preserving spaces */
+}

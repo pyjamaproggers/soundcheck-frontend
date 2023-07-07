@@ -1,7 +1,7 @@
 import React from "react";
 import './navbar.css'
-import { Navbar, Link, Image, Button, Text, Grid, } from "@nextui-org/react";
-import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, } from 'react-icons/fa';
+import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
+import { FaYoutube, FaInstagram, FaTwitter, FaDiscord} from 'react-icons/fa';
 import Logo from '../../assets/TempLogo.jpeg'
 
 function Header() {
@@ -29,7 +29,7 @@ function Header() {
                 height: '66px',
                 margin: '0px 24px',
                 borderStyle: 'solid',
-                borderWidth: ' 6px 0px 0px 0px',
+                borderWidth: '4px 0px 0px 0px',
                 borderColor: '#44041A',
             }}>
                 <Text css={{
@@ -82,7 +82,7 @@ function Header() {
                 </Navbar.Content>
                 <Navbar.Content hideIn={'xs'}>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaFacebookF className="fb-icon" size={'20px'} />
+                        <FaDiscord className="d-icon" size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
                         <FaInstagram className="ig-icon" size={'20px'} />

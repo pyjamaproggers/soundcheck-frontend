@@ -62,16 +62,16 @@ export default function Footer() {
                             css={{
                                 padding: '12px'
                             }}>
-                            <Link className="footnavbar-item" href="/blogspage" >
-                                Articles
+                            <Link className="footnavbar-item" href="/news" >
+                                News
                             </Link>
                         </Grid>
                         <Grid
                             css={{
                                 padding: '12px'
                             }}>
-                            <Link className="footnavbar-item" href="/contactus" >
-                                Contact Us
+                            <Link className="footnavbar-item" href="/playlists" >
+                                Playlists
                             </Link>
                         </Grid>
                     </Grid.Container>

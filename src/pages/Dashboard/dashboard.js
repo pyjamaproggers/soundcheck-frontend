@@ -1,12 +1,21 @@
-import { Col, Grid, Text, Card, Row, Button, Input, Container } from "@nextui-org/react";
-import React, { useState } from "react";
+import { Col, Grid, Text, Card, Row, Button, Input, Container, Loading, Image } from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
 import Divine from '../../assets/Divine.jpeg'
 import '../Post/post.css'
 import AB171 from '../../assets/AB171.jpeg'
+import AB172 from '../../assets/AB172.jpeg'
+import Temp8 from '../../assets/Temp8.png'
+import Temp9 from '../../assets/Temp9.png'
+import Temp10 from '../../assets/Temp10.png'
+import Temp11 from '../../assets/Temp11.png'
+import Temp6 from '../../assets/Temp6.png'
 import './dashboard.css';
 import SpotifyPlayer from "react-spotify-player"
+import SpotifyIcon from '../../assets/spotify.png'
+import AppleMusicIcon from '../../assets/applemusic.png'
 
 export default function Dashboard() {
+    const [fetching, setFetching] = useState(true)
     const [newSpotifyLink, setNewSpotifyLink] = useState('')
     const [spotifyButton, setSpotifyButton] = useState(true)
     const [showSpotifyInput, setShowSpotifyInput] = useState(false)
@@ -15,24 +24,122 @@ export default function Dashboard() {
     const [appleMusicButton, setAppleMusicButton] = useState(true)
     const [showAppleMusicInput, setShowAppleMusicInput] = useState(false)
 
-    const userSPPlaylistsLinks = [
-        'https://open.spotify.com/playlist/2BSzF6sRfEKksO30Iv1Hoq?si=c93a139bcbea46f7',
-        'https://open.spotify.com/playlist/37i9dQZF1DX2RahGIyQXcJ?si=48ad789c15384dee',
-        'https://open.spotify.com/playlist/37i9dQZF1DX1ct2TQrAvRf?si=2d1551b1e08148a1',
-        'https://open.spotify.com/playlist/43FJRpUKaBOSWJsbZzOiNo?si=d0b0449b2c814392',
+    const [publishedPosts, setPublishedPosts] = useState()
+    const [draftPosts, setDraftPosts] = useState()
+
+    const [spotifyLinks, setSpotifyLinks] = useState()
+    const [appleMusicLinks, setAppleMusicLinks] = useState()
+
+    const playlists = [
+        {
+            platform: 'Spotify',
+            link: 'https://open.spotify.com/playlist/2BSzF6sRfEKksO30Iv1Hoq?si=c93a139bcbea46f7',
+        },
+        {
+            platform: 'Spotify',
+            link: 'https://open.spotify.com/playlist/37i9dQZF1DX2RahGIyQXcJ?si=48ad789c15384dee',
+        },
+        {
+            platform: 'Spotify',
+            link: 'https://open.spotify.com/playlist/37i9dQZF1DX1ct2TQrAvRf?si=2d1551b1e08148a1',
+        },
+        {
+            platform: 'Spotify',
+            link: 'https://open.spotify.com/playlist/43FJRpUKaBOSWJsbZzOiNo?si=d0b0449b2c814392',
+        },
+        {
+            platform: 'AppleMusic',
+            link: 'https://embed.music.apple.com/in/playlist/2010s-indian-hip-hop-essentials/pl.99742817f93b402395e63e963fb33cd2',
+        },
+        {
+            platform: 'AppleMusic',
+            link: 'https://embed.music.apple.com/in/playlist/top-25-mumbai/pl.db537759ae3341eaa600bc5482209f7c',
+        },
+
     ]
-    // pull all spotify links from the database and segregate the ones uploaded by the current logged in user into a state varible array
+    // pull all playlists links from the database and segregate the ones uploaded by the current logged in user into a state varible array
     // so that it likes like the array above
+
+    const posts = [
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 1',
+            desc: '',
+            image: Divine,
+            isdraft: 'n',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 2',
+            desc: '',
+            image: AB171,
+            isdraft: 'n',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 3',
+            desc: '',
+            image: AB172,
+            isdraft: 'n',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 4',
+            desc: '',
+            image: Temp8,
+            isdraft: 'y',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 5',
+            desc: '',
+            image: Temp9,
+            isdraft: 'y',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 6',
+            desc: '',
+            image: Temp10,
+            isdraft: 'n',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 7',
+            desc: '',
+            image: Temp11,
+            isdraft: 'y',
+            date: '',
+        },
+        {
+            id: '',
+            username: 'aryan',
+            title: 'Post 8',
+            desc: '',
+            image: Temp6,
+            isdraft: 'n',
+            date: '',
+        },
+    ]
 
     const size = {
         width: '100%',
         height: 80,
     };
 
-    const size2 = {
-        width: '100%',
-        height: 400,
-    };
 
     const handleSpotifyChange = (event) => {
         setNewSpotifyLink(event.target.value)
@@ -45,7 +152,7 @@ export default function Dashboard() {
     }
 
     const handleAppleMusicChange = (event) => {
-        setNewAppleMusicLink(event.target.value.slice(0,8)+'embed.'+event.target.value.slice(8))
+        setNewAppleMusicLink(event.target.value.slice(0, 8) + 'embed.' + event.target.value.slice(8))
         if (event.target.value != 0) {
             setAppleMusicButton(false)
         }
@@ -53,6 +160,51 @@ export default function Dashboard() {
             setAppleMusicButton(true)
         }
     }
+
+    const SegregatePosts = () => {
+        var published = []
+        var drafts = []
+        var i
+        for (i = 0; i < posts.length; i++) {
+            if (posts[i].isdraft == 'n') {
+                published.push(posts[i])
+            }
+            else {
+                drafts.push(posts[i])
+            }
+        }
+        setPublishedPosts(published)
+        setDraftPosts(drafts)
+    }
+
+    const SegregatePlaylists = () => {
+        var spotify = []
+        var applemusic = []
+        var i
+        for (i = 0; i < playlists.length; i++) {
+            if (playlists[i].platform == 'Spotify') {
+                spotify.push(playlists[i])
+            }
+            else {
+                applemusic.push(playlists[i])
+            }
+        }
+        setSpotifyLinks(spotify)
+        setAppleMusicLinks(applemusic)
+    }
+
+    useEffect(() => {
+        //fetch all posts on load
+        setFetching(true)
+        //segregate posts into drafts and non-drafts
+        window.setTimeout(() => {
+            SegregatePosts()
+            SegregatePlaylists()
+            setFetching(false)
+        }, 2000) //i've put this in a timeout because in a useffect the code was being executed before the spotify scripts were being loaded 
+        // into the html headers, i dont think we'll have to put this into timeout because you'll be pulling the data from mongodb which is 
+        //bound to take longer than spotify headers loading
+    }, [])
 
     return (
         <>
@@ -86,8 +238,27 @@ export default function Dashboard() {
                             fontSize: '$lg',
                         }
                     }}>
-                        Here you can edit your published posts or continue your saved drafts.
+                        Here you can create a new post, edit your already published posts or continue your saved drafts.
                     </Text>
+                    <Button flat auto color='error'
+                        css={{
+                            m: '12px 0px 0px 0px',
+                            color: "white",
+                            bg: "#300313",
+                            zIndex: 1
+                        }}
+                        onPress={() => {
+                            //navigate to write post component for user to create a new post
+                        }}>
+                        <Text
+                            css={{ color: "inherit" }}
+                            size={12}
+                            weight="bold"
+                            transform="uppercase"
+                        >
+                            Creat new post
+                        </Text>
+                    </Button>
                 </Col>
 
                 <div className="published-sector" >
@@ -114,327 +285,97 @@ export default function Dashboard() {
                             <Grid.Container css={{
                                 jc: 'center'
                             }}>
+                                {fetching &&
+                                    <Loading css={{ padding: '16px 0px' }} color={'white'} size="lg" />
+                                }
 
                                 {/* map over the posts and for every post display the grid below like i've shown for reference */}
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card css={{
-                                        '@smMin': {
-                                            w: "370px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }} isPressable
-                                        onPress={() => {
-                                            // navigate to the post live (published) page
-                                        }}>
-                                        {/* if post is published then keep card pressable^ and take it to the post link on click */}
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={AB171}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
+
+                                {publishedPosts && !fetching &&
+                                    <>
+                                        {publishedPosts.map((post, index) => (
+                                            <Grid css={{
+                                                margin: '24px 16px',
+                                            }} key={index}>
+                                                <Card css={{
                                                     '@smMin': {
-                                                        w: "275px",
+                                                        w: "350px",
+                                                        h: "300px"
                                                     },
                                                     '@smMax': {
-                                                        w: "100px",
+                                                        w: "250px",
+                                                        h: "175px"
                                                     },
-                                                }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end">
-                                                        <Button flat auto color="primary"
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
+                                                }} isPressable
+                                                    onPress={() => {
+                                                        // navigate to the post live (published) page
+                                                    }}>
+                                                    <Card.Body css={{ p: 0 }}>
+                                                        <Card.Image
+                                                            src={post.image}
+                                                            width="100%"
+                                                            height="100%"
+                                                            objectFit="cover"
+                                                            alt="Card example background"
+                                                        />
+                                                    </Card.Body>
+                                                    <Card.Footer
+                                                        isBlurred
+                                                        css={{
+                                                            position: "absolute",
+                                                            bgBlur: "#00000077",
+                                                            bottom: 0,
+                                                            zIndex: 1,
+                                                        }}
+                                                    >
+                                                        <Row css={{
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Col css={{
+                                                                '@smMin': {
+                                                                    w: "275px",
+                                                                },
+                                                                '@smMax': {
+                                                                    w: "100px",
+                                                                },
                                                             }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
+                                                                <Text color="#fff" css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold',
+                                                                    whiteSpace: 'nowrap',
+                                                                    overflow: 'hidden',
+                                                                    textOverflow: 'ellipsis',
 
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card css={{
-                                        '@smMin': {
-                                            w: "370px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }} isPressable
-                                        onPress={() => {
-                                            // navigate to the post live (published) page
-                                        }}>
-                                        {/* if post is published then keep card pressable^ and take it to the post link on click */}
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={Divine}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
-                                                    '@smMin': {
-                                                        w: "275px",
-                                                    },
-                                                    '@smMax': {
-                                                        w: "100px",
-                                                    },
-                                                }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end">
-                                                        <Button flat auto color="primary"
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
-
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card css={{
-                                        '@smMin': {
-                                            w: "370px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }} isPressable
-                                        onPress={() => {
-                                            // navigate to the post live (published) page
-                                        }}>
-                                        {/* if post is published then keep card pressable^ and take it to the post link on click */}
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={Divine}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
-                                                    '@smMin': {
-                                                        w: "275px",
-                                                    },
-                                                    '@smMax': {
-                                                        w: "100px",
-                                                    },
-                                                }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end">
-                                                        <Button flat auto color="primary"
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
-
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card css={{
-                                        '@smMin': {
-                                            w: "370px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }} isPressable
-                                        onPress={() => {
-                                            // navigate to the post live (published) page
-                                        }}>
-                                        {/* if post is published then keep card pressable^ and take it to the post link on click */}
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={AB171}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
-                                                    '@smMin': {
-                                                        w: "275px",
-                                                    },
-                                                    '@smMax': {
-                                                        w: "100px",
-                                                    },
-                                                }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end">
-                                                        <Button flat auto color="primary"
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
+                                                                }} className="multiline-ellipses">
+                                                                    {post.title}
+                                                                </Text>
+                                                            </Col>
+                                                            <Col>
+                                                                <Row justify="flex-end">
+                                                                    <Button flat auto color="primary"
+                                                                        onPress={() => {
+                                                                            // navigate to the write post component but with this post's details
+                                                                            // so that the text editor already has this post's title, desc, 
+                                                                            // image etc filled in for the user to edit
+                                                                        }}>
+                                                                        <Text
+                                                                            css={{ color: "inherit" }}
+                                                                            size={12}
+                                                                            weight="bold"
+                                                                            transform="uppercase"
+                                                                        >
+                                                                            Edit
+                                                                        </Text>
+                                                                    </Button>
+                                                                </Row>
+                                                            </Col>
+                                                        </Row>
+                                                    </Card.Footer>
+                                                </Card>
+                                            </Grid>
+                                        ))}
+                                    </>
+                                }
 
                             </Grid.Container>
                         </Col>
@@ -465,203 +406,113 @@ export default function Dashboard() {
                             <Grid.Container css={{
                                 jc: 'center'
                             }}>
+                                {fetching &&
+                                    <Loading css={{ padding: '16px 0px' }} color={'white'} size="lg" />
+                                }
 
                                 {/* map over the posts and for every post display the grid below like i've shown for reference */}
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card className="draft-card" css={{
-                                        '@smMin': {
-                                            w: "450px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }}>
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={AB171}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
+                                {draftPosts && !fetching &&
+                                    <>
+                                        {draftPosts.map((post, index) => (
+                                            <Grid css={{
+                                                margin: '24px 8px',
+                                            }}>
+                                                <Card className="draft-card" css={{
                                                     '@smMin': {
-                                                        w: "170px",
+                                                        w: "450px",
+                                                        h: "300px"
                                                     },
                                                     '@smMax': {
-                                                        w: "50px",
+                                                        w: "250px",
+                                                        h: "175px"
                                                     },
                                                 }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
+                                                    <Card.Body css={{ p: 0 }}>
+                                                        <Card.Image
+                                                            src={post.image}
+                                                            width="100%"
+                                                            height="100%"
+                                                            objectFit="cover"
+                                                            alt="Card example background"
+                                                        />
+                                                    </Card.Body>
+                                                    <Card.Footer
+                                                        isBlurred
+                                                        css={{
+                                                            position: "absolute",
+                                                            bgBlur: "#00000077",
+                                                            bottom: 0,
+                                                            zIndex: 1,
+                                                        }}
+                                                    >
+                                                        <Row css={{ alignItems: 'center' }}>
+                                                            <Col css={{
+                                                                '@smMin': {
+                                                                    w: "170px",
+                                                                },
+                                                                '@smMax': {
+                                                                    w: "50px",
+                                                                },
+                                                            }}>
+                                                                <Text color="#fff" css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold',
+                                                                    whiteSpace: 'nowrap',
+                                                                    overflow: 'hidden',
+                                                                    textOverflow: 'ellipsis',
 
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end" >
-                                                        <Button flat auto color="primary"
-                                                            css={{
-                                                                mr: '6px'
-                                                            }}
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                        <Button flat auto
-                                                            css={{
-                                                                ml: '6px'
-                                                            }}
-                                                            // css={{ color: "#94f9f0", bg: "#94f9f026" }}
-                                                            color='secondary'
-                                                            onPress={() => {
-                                                                // publish the post which would basically mean updating the post's,
-                                                                // data structure item "isdraft" to "n" from "y"
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Publish
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
-
-                                <Grid css={{
-                                    margin: '24px 8px',
-                                }}>
-                                    <Card className="draft-card" css={{
-                                        '@smMin': {
-                                            w: "450px",
-                                            h: "300px"
-                                        },
-                                        '@smMax': {
-                                            w: "250px",
-                                            h: "175px"
-                                        },
-                                    }}>
-                                        <Card.Body css={{ p: 0 }}>
-                                            <Card.Image
-                                                src={Divine}
-                                                width="100%"
-                                                height="100%"
-                                                objectFit="cover"
-                                                alt="Card example background"
-                                            />
-                                        </Card.Body>
-                                        <Card.Footer
-                                            isBlurred
-                                            css={{
-                                                position: "absolute",
-                                                bgBlur: "#00000066",
-                                                borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                                                bottom: 0,
-                                                zIndex: 1,
-                                            }}
-                                        >
-                                            <Row>
-                                                <Col css={{
-                                                    '@smMin': {
-                                                        w: "170px",
-                                                    },
-                                                    '@smMax': {
-                                                        w: "50px",
-                                                    },
-                                                }}>
-                                                    <Text color="#fff" css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold',
-                                                        whiteSpace: 'nowrap',
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-
-                                                    }} className="multiline-ellipses">
-                                                        post.title post.title post.title post.title post.title post.title
-                                                    </Text>
-                                                </Col>
-                                                <Col>
-                                                    <Row justify="flex-end">
-                                                        <Button flat auto color="primary"
-                                                            css={{
-                                                                mr: '6px'
-                                                            }}
-                                                            onPress={() => {
-                                                                // navigate to the write post component but with this post's details
-                                                                // so that the text editor already has this post's title, desc, 
-                                                                // image etc filled in for the user to edit
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Edit
-                                                            </Text>
-                                                        </Button>
-                                                        <Button flat auto
-                                                            css={{
-                                                                ml: '6px'
-                                                            }}
-                                                            // css={{ color: "#94f9f0", bg: "#94f9f026" }}
-                                                            color='secondary'
-                                                            onPress={() => {
-                                                                // publish the post which would basically mean updating the post's,
-                                                                // data structure item "isdraft" to "n" from "y"
-                                                            }}>
-                                                            <Text
-                                                                css={{ color: "inherit" }}
-                                                                size={12}
-                                                                weight="bold"
-                                                                transform="uppercase"
-                                                            >
-                                                                Publish
-                                                            </Text>
-                                                        </Button>
-                                                    </Row>
-                                                </Col>
-                                            </Row>
-                                        </Card.Footer>
-                                    </Card>
-                                </Grid>
+                                                                }} className="multiline-ellipses">
+                                                                    {post.title}
+                                                                </Text>
+                                                            </Col>
+                                                            <Col>
+                                                                <Row justify="flex-end" >
+                                                                    <Button flat auto color="primary"
+                                                                        css={{
+                                                                            mr: '6px'
+                                                                        }}
+                                                                        onPress={() => {
+                                                                            // navigate to the write post component but with this post's details
+                                                                            // so that the text editor already has this post's title, desc, 
+                                                                            // image etc filled in for the user to edit
+                                                                        }}>
+                                                                        <Text
+                                                                            css={{ color: "inherit" }}
+                                                                            size={12}
+                                                                            weight="bold"
+                                                                            transform="uppercase"
+                                                                        >
+                                                                            Edit
+                                                                        </Text>
+                                                                    </Button>
+                                                                    <Button flat auto
+                                                                        css={{
+                                                                            ml: '6px'
+                                                                        }}
+                                                                        // css={{ color: "#94f9f0", bg: "#94f9f026" }}
+                                                                        color='secondary'
+                                                                        onPress={() => {
+                                                                            // publish the post which would basically mean updating the post's,
+                                                                            // data structure item "isdraft" to "n" from "y"
+                                                                        }}>
+                                                                        <Text
+                                                                            css={{ color: "inherit" }}
+                                                                            size={12}
+                                                                            weight="bold"
+                                                                            transform="uppercase"
+                                                                        >
+                                                                            Publish
+                                                                        </Text>
+                                                                    </Button>
+                                                                </Row>
+                                                            </Col>
+                                                        </Row>
+                                                    </Card.Footer>
+                                                </Card>
+                                            </Grid>
+                                        ))}
+                                    </>
+                                }
 
                             </Grid.Container>
                         </Col>
@@ -691,214 +542,283 @@ export default function Dashboard() {
                                 padding: '12px 0px',
                                 color: '#94f9f0'
                             }}>
-                                Spotify Playlists
+                                Music Playlists
                             </Text>
 
                             <Grid.Container css={{
                                 jc: 'center'
                             }}>
-                                {userSPPlaylistsLinks.map((playlist, index) => (
-                                    <Grid css={{
-                                        m: '24px',
+                                {fetching &&
+                                    <Loading css={{ padding: '16px 0px' }} color={'white'} size="lg" />
+                                }
+
+                                {spotifyLinks && !fetching &&
+                                    <>
+                                        {spotifyLinks.map((playlist, index) => (
+                                            <Grid css={{
+                                                m: '24px',
+                                                '@xsMax': {
+                                                    width: 275
+                                                },
+                                                '@xsMin': {
+                                                    width: 450
+                                                }
+                                            }} key={index}>
+
+                                                <Col>
+                                                    <SpotifyPlayer
+                                                        uri={playlist.link}
+                                                        size={size}
+                                                        view="list"
+                                                        theme="black"
+                                                    />
+                                                    <Button flat auto color="error"
+                                                        css={{
+                                                            m: '12px',
+                                                            zIndex: 1
+                                                        }}
+                                                        onPress={() => {
+                                                            // delete this spotify link from the spotify table (collection)
+                                                        }}>
+                                                        <Text
+                                                            css={{ color: "inherit" }}
+                                                            size={12}
+                                                            weight="bold"
+                                                            transform="uppercase"
+                                                        >
+                                                            Delete
+                                                        </Text>
+                                                    </Button>
+                                                </Col>
+                                            </Grid>
+                                        ))}
+                                    </>
+                                }
+                                {appleMusicLinks && !fetching &&
+                                    <>
+                                        {appleMusicLinks.map((playlist, index) => (
+                                            <Grid css={{
+                                                m: '24px',
+                                                '@xsMax': {
+                                                    width: 275
+                                                },
+                                                '@xsMin': {
+                                                    width: 450
+                                                }
+                                            }} key={index}>
+
+                                                <Col>
+                                                    <iframe
+                                                        allow="autoplay *; encrypted-media *;"
+                                                        frameborder="0"
+                                                        height="160"
+                                                        style={{ width: '100%', overflow: 'hidden', background: 'transparent' }}
+                                                        src={playlist.link}></iframe>
+                                                    <Button flat auto color="error"
+                                                        css={{
+                                                            m: '12px',
+                                                            zIndex: 1
+                                                        }}
+                                                        onPress={() => {
+                                                            // delete this spotify link from the spotify table (collection)
+                                                        }}>
+                                                        <Text
+                                                            css={{ color: "inherit" }}
+                                                            size={12}
+                                                            weight="bold"
+                                                            transform="uppercase"
+                                                        >
+                                                            Delete
+                                                        </Text>
+                                                    </Button>
+                                                </Col>
+                                            </Grid>
+                                        ))}
+                                    </>
+                                }
+                            </Grid.Container>
+
+                            {!fetching &&
+                                <Grid.Container css={{
+                                    jc: 'center',
+                                }}>
+                                    <Col css={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        jc: 'center',
                                         '@xsMax': {
                                             width: 275
                                         },
                                         '@xsMin': {
                                             width: 450
                                         }
-                                    }} key={index}>
-
-                                        <Col>
-                                            <SpotifyPlayer
-                                                uri={playlist}
-                                                size={size}
-                                                view="list"
-                                                theme="black"
-                                            />
-                                            <Button flat auto color="error"
+                                    }}>
+                                        <Row css={{
+                                            jc: 'space-evenly'
+                                        }}>
+                                            <Button flat auto
                                                 css={{
-                                                    m: '12px'
+                                                    m: '24px',
+                                                    color: "#191414",
+                                                    bg: "#1db954"
                                                 }}
                                                 onPress={() => {
-                                                    // delete this spotify link from the spotify table (collection)
+                                                    setShowSpotifyInput(true)
+                                                    setShowAppleMusicInput(false)
+                                                    setNewSpotifyLink('')
+                                                    setNewAppleMusicLink('')
                                                 }}>
-                                                <Text
-                                                    css={{ color: "inherit" }}
-                                                    size={12}
-                                                    weight="bold"
-                                                    transform="uppercase"
-                                                >
-                                                    Delete
-                                                </Text>
+                                                <Row 
+                                                css={{
+                                                    alignItems: 'center',
+                                                    jc: 'space-evenly'
+                                                }}>
+                                                    <Image src={SpotifyIcon} css={{w: '30px', h: '30px'}}/>
+                                                    <Text
+                                                        css={{ color: "inherit", pl: '4px' }}
+                                                        size={12}
+                                                        weight="bold"
+                                                        transform="uppercase"
+                                                    >
+                                                        Add Spotify Link
+                                                    </Text>
+
+                                                </Row>
                                             </Button>
-                                        </Col>
-                                    </Grid>
-                                ))}
-                            </Grid.Container>
 
-                            <Grid.Container css={{
-                                jc: 'center',
-                            }}>
-                                <Col css={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    jc: 'center',
-                                    '@xsMax': {
-                                        width: 275
-                                    },
-                                    '@xsMin': {
-                                        width: 450
-                                    }
-                                }}>
-                                    <Row css={{
-                                        jc: 'space-evenly'
-                                    }}>
-                                        <Button flat auto
-                                            css={{
-                                                m: '24px',
-                                                color: "#191414",
-                                                bg: "#1db954"
-                                            }}
-                                            onPress={() => {
-                                                setShowSpotifyInput(true)
-                                                setShowAppleMusicInput(false)
-                                                setNewSpotifyLink('')
-                                                setNewAppleMusicLink('')
-                                            }}>
-                                            <Text
-                                                css={{ color: "inherit" }}
-                                                size={12}
-                                                weight="bold"
-                                                transform="uppercase"
-                                            >
-                                                Add Spotify Link
-                                            </Text>
-                                        </Button>
-
-                                        <Button flat auto
-                                            css={{
-                                                m: '24px',
-                                                color: "#c2cad7",
-                                                bg: "#fc3c44"
-                                            }}
-                                            onPress={() => {
-                                                setShowAppleMusicInput(true)
-                                                setShowSpotifyInput(false)
-                                                setNewSpotifyLink('')
-                                                setNewAppleMusicLink('')
-                                            }}>
-                                            <Text
-                                                css={{ color: "inherit" }}
-                                                size={12}
-                                                weight="bold"
-                                                transform="uppercase"
-                                            >
-                                                Add Apple Music
-                                            </Text>
-                                        </Button>
-                                    </Row>
-
-
-                                    {showSpotifyInput &&
-                                        <>
-                                            <Input labelPlaceholder="New Spotify Playlist Link"
+                                            <Button flat auto
                                                 css={{
-                                                    m: '24px'
+                                                    m: '24px',
+                                                    color: "white",
+                                                    bg: "#fc3c44"
                                                 }}
-                                                onChange={handleSpotifyChange} />
-                                            {
-                                                newSpotifyLink &&
-                                                <Grid.Container >
-                                                    <Text css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold'
-                                                    }}>
-                                                        Preview:
-                                                    </Text>
-                                                    <SpotifyPlayer
-                                                        uri={newSpotifyLink}
-                                                        size={size2}
-                                                        view="list"
-                                                        theme="black"
-                                                    />
-                                                </Grid.Container>
-                                            }
-                                            <Grid.Container css={{
-                                                jc: 'center'
-                                            }}>
-                                                <Button flat auto color="success" disabled={spotifyButton}
-                                                    css={{
-                                                        m: '24px'
-                                                    }}
-                                                    onPress={() => {
-                                                        // add this spotify link to the spotify table with the username of the user
-                                                        // currently logged in
-                                                    }}>
+                                                onPress={() => {
+                                                    setShowAppleMusicInput(true)
+                                                    setShowSpotifyInput(false)
+                                                    setNewSpotifyLink('')
+                                                    setNewAppleMusicLink('')
+                                                }}>
+                                                <Row 
+                                                css={{
+                                                    alignItems: 'center',
+                                                    jc: 'space-evenly'
+                                                }}>
+                                                    <Image src={AppleMusicIcon} css={{w: '35px', h: '35px'}}/>
                                                     <Text
-                                                        css={{ color: "inherit" }}
+                                                        css={{ color: "inherit", pl: '4px' }}
                                                         size={12}
                                                         weight="bold"
                                                         transform="uppercase"
                                                     >
-                                                        Add Playlist
+                                                        Add Apple Music
                                                     </Text>
-                                                </Button>
-                                            </Grid.Container>
-                                        </>
-                                    }
+
+                                                </Row>
+                                            </Button>
+                                        </Row>
 
 
-                                    {showAppleMusicInput &&
-                                        <>
-                                            <Input labelPlaceholder="New Apple Music Playlist Link"
-                                                css={{
-                                                    m: '24px'
-                                                }}
-                                                onChange={handleAppleMusicChange} />
-                                            {
-                                                newAppleMusicLink &&
-                                                <Grid.Container >
-                                                    <Text css={{
-                                                        fontSize: '$lg',
-                                                        fontWeight: '$semibold'
-                                                    }}>
-                                                        Preview:
-                                                    </Text>
-                                                    <iframe
-                                                        allow="autoplay *; encrypted-media *;"
-                                                        frameborder="0"
-                                                        height="400"
-                                                        style={{ width: '100%', maxWidth: '660px', overflow: 'hidden', background: 'transparent' }}
-                                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-                                                        src={newAppleMusicLink}></iframe>
-                                                </Grid.Container>
-                                            }
-                                            <Grid.Container css={{
-                                                jc: 'center'
-                                            }}>
-                                                <Button flat auto color="success" disabled={appleMusicButton}
+                                        {showSpotifyInput &&
+                                            <>
+                                                <Input labelPlaceholder="New Spotify Playlist Link"
                                                     css={{
                                                         m: '24px'
                                                     }}
-                                                    onPress={() => {
-                                                        // add this apple music link to the playlists table with the username of the user
-                                                        // currently logged in
-                                                    }}>
-                                                    <Text
-                                                        css={{ color: "inherit" }}
-                                                        size={12}
-                                                        weight="bold"
-                                                        transform="uppercase"
-                                                    >
-                                                        Add Playlist
-                                                    </Text>
-                                                </Button>
-                                            </Grid.Container>
-                                        </>
-                                    }
+                                                    onChange={handleSpotifyChange} clearable/>
+                                                {
+                                                    newSpotifyLink &&
+                                                    <Grid.Container >
+                                                        <Text css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            Preview:
+                                                        </Text>
+                                                        <SpotifyPlayer
+                                                            uri={newSpotifyLink}
+                                                            size={size}
+                                                            view="list"
+                                                            theme="black"
+                                                        />
+                                                    </Grid.Container>
+                                                }
+                                                <Grid.Container css={{
+                                                    jc: 'center'
+                                                }}>
+                                                    <Button flat auto color="success" disabled={spotifyButton}
+                                                        css={{
+                                                            m: '24px'
+                                                        }}
+                                                        onPress={() => {
+                                                            // add this spotify link to the spotify table with the username of the user
+                                                            // currently logged in
+                                                        }}>
+                                                        <Text
+                                                            css={{ color: "inherit" }}
+                                                            size={12}
+                                                            weight="bold"
+                                                            transform="uppercase"
+                                                        >
+                                                            Add Playlist
+                                                        </Text>
+                                                    </Button>
+                                                </Grid.Container>
+                                            </>
+                                        }
 
-                                </Col>
-                            </Grid.Container>
+
+                                        {showAppleMusicInput &&
+                                            <>
+                                                <Input labelPlaceholder="New Apple Music Playlist Link"
+                                                    css={{
+                                                        m: '24px'
+                                                    }}
+                                                    onChange={handleAppleMusicChange} clearable/>
+                                                {
+                                                    newAppleMusicLink &&
+                                                    <Grid.Container >
+                                                        <Text css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            Preview:
+                                                        </Text>
+                                                        <iframe
+                                                            allow="autoplay *; encrypted-media *;"
+                                                            frameborder="0"
+                                                            height="160"
+                                                            style={{ width: '100%', maxWidth: '660px', overflow: 'hidden', background: 'transparent' }}
+                                                            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                                                            src={newAppleMusicLink}></iframe>
+                                                    </Grid.Container>
+                                                }
+                                                <Grid.Container css={{
+                                                    jc: 'center'
+                                                }}>
+                                                    <Button flat auto color="success" disabled={appleMusicButton}
+                                                        css={{
+                                                            m: '24px'
+                                                        }}
+                                                        onPress={() => {
+                                                            // add this apple music link to the playlists table with the username of the user
+                                                            // currently logged in
+                                                        }}>
+                                                        <Text
+                                                            css={{ color: "inherit" }}
+                                                            size={12}
+                                                            weight="bold"
+                                                            transform="uppercase"
+                                                        >
+                                                            Add Playlist
+                                                        </Text>
+                                                    </Button>
+                                                </Grid.Container>
+                                            </>
+                                        }
+
+                                    </Col>
+                                </Grid.Container>
+                            }
                         </Col>
                     </Grid.Container>
                 </div>

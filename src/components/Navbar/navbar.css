@@ -26,13 +26,13 @@
     cursor: pointer;
 }
 
-.fb-icon{
-    background-color: #3b5998;
+.d-icon{
+    background-color: #7289da;
     margin: 0px 8px;
     border-radius: 5px;
     padding: 2px
 }
-.fb-icon:hover{
+.d-icon:hover{
     cursor: pointer;
 }
 

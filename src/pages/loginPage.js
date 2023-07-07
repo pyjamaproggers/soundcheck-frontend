@@ -64,15 +64,16 @@ export default function LoginPage() {
     // }
     return (
         <>
+        <div className="home">
             <Grid.Container
                 css={{
                     width: '100vw',
-                    height: '90vh',
+                    height: '80vh',
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
                 <Grid css={{
-                    backgroundColor: '#262626',
+                    backgroundColor: 'black',
                     padding: '12px',
                     height: 'max-content',
                     width: 'max-content',
@@ -128,6 +129,7 @@ export default function LoginPage() {
                     state: { loggedIn }
                 }}></Link>
             }
+        </div>
         </>
     )
 }
