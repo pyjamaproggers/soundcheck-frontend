@@ -13,12 +13,14 @@ import Temp8 from '../../assets/Temp8.png'
 import Temp9 from '../../assets/Temp9.png'
 import Temp10 from '../../assets/Temp10.png'
 import Temp11 from '../../assets/Temp11.png'
-import { Grid, Image, Row, Col, Text, Loading } from "@nextui-org/react";
-import './news.css'
+import { Grid, Image, Row, Col, Text, Loading, Input } from "@nextui-org/react";
+import './news.css';
+import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 
 export default function News() {
     const [fetching, setFetching] = useState(true)
     const [publishedPosts, setPublishedPosts] = useState()
+    const [dateLatest, setDateLatest] = useState(true)
 
     const posts = [
         {
@@ -177,9 +179,13 @@ export default function News() {
                 <Grid.Container css={{
                     jc: 'center'
                 }}>
-                    <Col>
+                    <Col
+                        css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            jc: 'center'
+                        }}>
                         <Text css={{
-                            width: '100vw',
                             fontWeight: '$semibold',
                             '@xsMax': {
                                 fontSize: '$xl',
@@ -193,7 +199,6 @@ export default function News() {
                             Latest Trends
                         </Text>
                         <Text css={{
-                            width: '100vw',
                             fontWeight: '$semibold',
                             '@xsMax': {
                                 fontSize: '$sm',
@@ -207,11 +212,47 @@ export default function News() {
                         }}>
                             News & Updates of the Desi Hip-Hop world brought right to you.
                         </Text>
+                        <Row css={{
+                            margin: '36px 0 0px 0',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }} >
+                            <Input
+                                css={{
+                                    width: '300px'
+                                }}
+                                labelPlaceholder="Search & Filter"
+                            />
+                            <Row css={{
+                                alignItems: 'center',
+                                jc: 'center',
+                                width: 'max-content',
+                                '&:hover': {
+                                    cursor: 'pointer'
+                                },
+                            }}
+                                onClick={() => {
+                                    setDateLatest(!dateLatest)
+                                }}>
+                                <Text css={{
+                                    fontWeight: '$semibold',
+                                    padding: '0px 4px 0px 8px',
+                                }}>
+                                    Date
+                                </Text>
+                                {dateLatest &&
+                                    <FaChevronUp size={10} />
+                                }
+                                {!dateLatest &&
+                                    <FaChevronDown size={10} />
+                                }
+                            </Row>
+                        </Row>
+                        {fetching &&
+                            <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />
+                        }
                     </Col>
 
-                    {fetching &&
-                        <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />
-                    }
 
                     {publishedPosts && !fetching &&
                         <>
@@ -288,7 +329,7 @@ export default function News() {
                     }
 
                 </Grid.Container>
-                
+
             </div>
 
             <div className="mobile">
@@ -296,9 +337,13 @@ export default function News() {
                 <Grid.Container css={{
                     jc: 'center',
                 }}>
-                    <Col>
+                    <Col
+                        css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            jc: 'center'
+                        }}>
                         <Text css={{
-                            width: '100vw',
                             fontWeight: '$semibold',
                             '@xsMax': {
                                 fontSize: '$xl',
@@ -315,7 +360,7 @@ export default function News() {
                             fontWeight: '$semibold',
                             '@xsMax': {
                                 fontSize: '$sm',
-                                paddingBottom: '24px'
+                                paddingBottom: '6px'
                             },
                             '@xsMin': {
                                 fontSize: '$lg',
@@ -325,76 +370,112 @@ export default function News() {
                         }}>
                             News & Updates of the Desi Hip-Hop world brought right to you.
                         </Text>
-                    </Col>
-
-                    {fetching &&
-                        <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />
-                    }
-
-                    {publishedPosts && !fetching && 
-                    <>
-                    {publishedPosts.map((post,index)=>(
-                        <Grid css={{
-                            m: '24px',
-                            width: '100%',
-                            backgroundColor: 'black',
-                            '&:hover': {
-                                cursor: 'pointer'
-                            },
-                            paddingBottom: '12px'
-                        }}>
-                            <Col>
-                                <Image
-                                    src={post.image}
-                                    width={'100%'}
-                                    height={220}
-                                    css={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover'
-                                    }} />
-                                <Text className="multiline-ellipsis-3" css={{
-                                    fontWeight: '$semibold',
-                                    fontSize: '$lg',
-                                    padding: '6px 0px 2px 0px',
-                                    margin: '0px 24px 0px 24px',
-                                    borderStyle: 'solid',
-                                    borderWidth: '0px 0px 1px 0px',
-                                    borderColor: '$red200',
+                        <Row css={{
+                            margin: '36px 0 0px 0',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }} >
+                            <Input
+                                css={{
+                                    width: '250px'
+                                }}
+                                labelPlaceholder="Search & Filter"
+                            />
+                            <Row css={{
+                                alignItems: 'center',
+                                jc: 'center',
+                                width: 'max-content',
+                                '&:hover': {
+                                    cursor: 'pointer'
+                                },
+                            }}
+                                onClick={() => {
+                                    setDateLatest(!dateLatest)
                                 }}>
-                                    {post.title}
-                                </Text>
-                                <Text className="multiline-ellipsis-2" css={{
-                                    fontWeight: '$normal',
-                                    fontSize: '$lg',
-                                    padding: '6px 24px',
-                                    minWidth: '75px'
-                                }}>
-                                    post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                    post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                    post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                </Text>
                                 <Text css={{
                                     fontWeight: '$semibold',
-                                    fontSize: '$lg',
-                                    padding: '2px 0px 0px 0px',
-                                    margin: '0px 24px 0px 24px',
-                                    borderStyle: 'solid',
-                                    borderWidth: '1px 0px 0px 0px',
-                                    borderColor: '$red200',
-                                    width: 'max-content'
+                                    padding: '0px 4px 0px 8px',
                                 }}>
-                                    post.date
-                                    {/* {post.date} */}
+                                    Date
                                 </Text>
-                            </Col>
-                        </Grid>
-                    ))}
-                    </>
+                                {dateLatest &&
+                                    <FaChevronUp size={10} />
+                                }
+                                {!dateLatest &&
+                                    <FaChevronDown size={10} />
+                                }
+                            </Row>
+                        </Row>
+                        {fetching &&
+                            <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />
+                        }
+                    </Col>
+
+
+                    {publishedPosts && !fetching &&
+                        <>
+                            {publishedPosts.map((post, index) => (
+                                <Grid css={{
+                                    m: '24px',
+                                    width: '100%',
+                                    backgroundColor: 'black',
+                                    '&:hover': {
+                                        cursor: 'pointer'
+                                    },
+                                    paddingBottom: '12px'
+                                }}>
+                                    <Col>
+                                        <Image
+                                            src={post.image}
+                                            width={'100%'}
+                                            height={220}
+                                            css={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover'
+                                            }} />
+                                        <Text className="multiline-ellipsis-3" css={{
+                                            fontWeight: '$semibold',
+                                            fontSize: '$lg',
+                                            padding: '6px 0px 2px 0px',
+                                            margin: '0px 24px 0px 24px',
+                                            borderStyle: 'solid',
+                                            borderWidth: '0px 0px 1px 0px',
+                                            borderColor: '$red200',
+                                        }}>
+                                            {post.title}
+                                        </Text>
+                                        <Text className="multiline-ellipsis-2" css={{
+                                            fontWeight: '$normal',
+                                            fontSize: '$lg',
+                                            padding: '6px 24px',
+                                            minWidth: '75px'
+                                        }}>
+                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
+                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
+                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
+                                        </Text>
+                                        <Text css={{
+                                            fontWeight: '$semibold',
+                                            fontSize: '$lg',
+                                            padding: '2px 0px 0px 0px',
+                                            margin: '0px 24px 0px 24px',
+                                            borderStyle: 'solid',
+                                            borderWidth: '1px 0px 0px 0px',
+                                            borderColor: '$red200',
+                                            width: 'max-content'
+                                        }}>
+                                            post.date
+                                            {/* {post.date} */}
+                                        </Text>
+                                    </Col>
+                                </Grid>
+                            ))}
+                        </>
                     }
 
                 </Grid.Container>
-                
+
             </div>
         </div>
     )

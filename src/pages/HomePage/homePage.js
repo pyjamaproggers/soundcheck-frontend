@@ -50,10 +50,12 @@ export default function HomeScreen() {
                                     objectFit="cover"
                                     className="image"
                                 />
-                                <Text className="overlay"
-                                    css={{ fontSize: '$xs' }}>
-                                    Dummer Article Title
-                                </Text>
+                                <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                             </Grid>
                             <Grid className="container"
                                 css={{ height: "25vh", width: "100%", }}>
@@ -62,10 +64,12 @@ export default function HomeScreen() {
                                     src={Temp2}
                                     objectFit="cover"
                                 />
-                                <Text className="overlay"
-                                    css={{ fontSize: '$xs' }}>
-                                    Dummer Article Title
-                                </Text>
+                                <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                             </Grid>
                         </Grid.Container>
 
@@ -88,10 +92,12 @@ export default function HomeScreen() {
                                     src={Divine}
                                     objectFit="cover"
                                 />
-                                <Text className="overlay"
-                                    css={{ fontSize: '$xs' }}>
-                                    Dummer Article Title
-                                </Text>
+                                <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                             </Grid>
                         </Grid.Container>
 
@@ -110,10 +116,12 @@ export default function HomeScreen() {
                                     src={Temp3}
                                     objectFit="cover"
                                 />
-                                <Text className="overlay"
-                                    css={{ fontSize: '$xs' }}>
-                                    Dummer Article Title
-                                </Text>
+                                <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                             </Grid>
                             <Grid className="container"
                                 css={{ height: "25vh", width: "100%", }}>
@@ -122,10 +130,12 @@ export default function HomeScreen() {
                                     src={Temp4}
                                     objectFit="cover"
                                 />
-                                <Text className="overlay"
-                                    css={{ fontSize: '$xs' }}>
-                                    Dummer Article Title
-                                </Text>
+                                <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                             </Grid>
 
                         </Grid.Container>
@@ -142,10 +152,12 @@ export default function HomeScreen() {
                                 src={Temp5}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -155,10 +167,12 @@ export default function HomeScreen() {
                                 src={Temp6}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -168,10 +182,12 @@ export default function HomeScreen() {
                                 src={Temp7}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -181,10 +197,12 @@ export default function HomeScreen() {
                                 src={Temp8}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -194,10 +212,12 @@ export default function HomeScreen() {
                                 src={Temp9}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -207,10 +227,12 @@ export default function HomeScreen() {
                                 src={Temp10}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -220,10 +242,12 @@ export default function HomeScreen() {
                                 src={Temp11}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
 
                         <Grid className="container"
@@ -233,10 +257,12 @@ export default function HomeScreen() {
                                 src={AB171}
                                 objectFit="cover"
                             />
-                            <Text className="overlay"
-                                css={{ fontSize: '$xs' }}>
-                                Dummer Article Title
-                            </Text>
+                            <div className="overlay">
+                                    <Text id="bottom"
+                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                    </Text>
+                                </div>
                         </Grid>
                     </Grid.Container>
 

@@ -14,10 +14,8 @@ function Header() {
 
     const collapsedItems = [
         { name: 'Home', href: '/' },
-        { name: 'Articles', href: '/blogspage' },
+        { name: 'News', href: '/news' },
         { name: 'Playlists', href: '/playlists' },
-        { name: 'Contact Us', href: '/contactus' },
-        { name: 'Login', href: '/login' },
     ]
 
     var active = window.location.pathname
