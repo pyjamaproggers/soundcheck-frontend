@@ -1,175 +1,50 @@
 import React, { useEffect, useState } from "react";
-import Divine from '../../assets/Divine.jpeg'
-import AB171 from '../../assets/AB171.jpeg'
-import AB172 from '../../assets/AB172.jpeg'
-import Temp1 from '../../assets/Temp1.jpg'
-import Temp2 from '../../assets/Temp2.jpg'
-import Temp3 from '../../assets/Temp3.png'
-import Temp4 from '../../assets/Temp4.png'
-import Temp5 from '../../assets/Temp5.png'
-import Temp6 from '../../assets/Temp6.png'
-import Temp7 from '../../assets/Temp7.png'
-import Temp8 from '../../assets/Temp8.png'
-import Temp9 from '../../assets/Temp9.png'
-import Temp10 from '../../assets/Temp10.png'
-import Temp11 from '../../assets/Temp11.png'
-import { Grid, Image, Row, Col, Text, Loading, Input } from "@nextui-org/react";
+import { Grid, Image, Row, Col, Text, Loading, Input, Link } from "@nextui-org/react";
 import './news.css';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
+import axios from "axios";
+import {useNavigate } from "react-router-dom";
 
 export default function News() {
     const [fetching, setFetching] = useState(true)
     const [publishedPosts, setPublishedPosts] = useState()
     const [dateLatest, setDateLatest] = useState(true)
-
-    const posts = [
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 1',
-            desc: '',
-            image: Divine,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 2',
-            desc: '',
-            image: AB171,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'Post 3',
-            desc: '',
-            image: AB172,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES',
-            desc: '',
-            image: Temp1,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'DRAKE GIVES VIRGIL ABLOH HIS FLOWERS AT ITS ALL A BLUR TOUR, HUMILIATES OVERRATED CHILDISH GAMBINO',
-            desc: '',
-            image: Temp2,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 6',
-            desc: '',
-            image: Temp3,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'BREAKING: AFTER PARTING WAYS WITH KALAMKAAR, KARMA SIGNS EXCLUSIVELY W/ MALSONS REP. SHUBH, GRAVITY & MORE',
-            desc: '',
-            image: Temp4,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'SHOOTER KAHLON SHARES RARE CONVERSATION WITH SIDHU MOOSE WALA AHEAD OF GAME SINGLE',
-            desc: '',
-            image: Temp5,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'BREAKING: SEEDHE MAUT LAYS SEIGE TO INDIAN RAP ON BHUSSI MUSIC VIDEO BY KSHMR F/ KARAN KANCHAN',
-            desc: '',
-            image: Temp6,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'BREAKING: 2 SONGS FROM DRAKES UPCOMING ALBUM FOR ALL THE DOGS LEAK ONLINE',
-            desc: '',
-            image: Temp7,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 11',
-            desc: '',
-            image: Temp8,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'BRAMPTON NEIGHBOURHOOD UNVEILS MURAL DEDICATED TO SIDHU MOOSE WALA, TUPAC SHAKUR, THE NOTORIOUS B.I.G. & MORE',
-            desc: '',
-            image: Temp9,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'BREAKING: INDIAN HIP-HOP SUPERSTAR MC STAN ANNOUNCES NEW ALBUM',
-            desc: '',
-            image: Temp10,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'zahaan',
-            title: 'NICKI MINAJ RAPS FOR RIHANNA ON BECOMING THE FIRST FEMALE ARTIST WITH 10 SONGS OVER A BILLION SPOTIFY STREAMS',
-            desc: '',
-            image: Temp11,
-            isdraft: 'n',
-            date: '',
-        },
-    ]
-
-    const segregatePosts = () => {
-        var published = []
-        var i
-        for (i = 0; i < posts.length; i++) {
-            if (posts[i].isdraft == 'n') {
-                published.push(posts[i])
-            }
+    const [posts, setPosts] = useState([]);
+    const navigate = useNavigate();
+    const segregatePosts = async () => {
+        const published = [];
+        for (let i = 0; i < posts.length; i++) {
+          if (posts[i].isdraft === 'n') {
+            published.push(posts[i]);
+          }
         }
-        console.log(published)
-        setPublishedPosts(published)
-        setFetching(false)
-    }
+        console.log(published);
+        setPublishedPosts(published);
+      };
+      
+
+      const fetchPosts = async () => {
+        try {
+          const response = await axios.get("http://localhost:8800/api/posts");
+          console.log(response.data);
+          setPosts(response.data);
+          await segregatePosts(); // Call segregatePosts after setting the posts state
+          setFetching(false);
+        } catch (error) {
+          console.log(error);
+          setFetching(false);
+        }
+      };
+      
 
     useEffect(() => {
         setFetching(true)
-        window.setTimeout(() => {
-            segregatePosts()
-        }, 3000);
+        fetchPosts()
     }, [])
+
+    useEffect(() => {
+        segregatePosts();
+      }, [posts]);
 
     return (
         <div className="home">
@@ -266,12 +141,12 @@ export default function News() {
                                     }
                                 }} key={index}
                                     onClick={() => {
-                                        // navigate to that post's page to read post
+                                        navigate(`/posts/${post._id}`)
                                     }}
                                 >
                                     <Row>
                                         <Image
-                                            src={post.image}
+                                            src={`http://localhost:8800${post.img.imageUrl}`}
                                             width={300}
                                             height={180}
                                             css={{
@@ -304,9 +179,7 @@ export default function News() {
                                                 padding: '6px 24px',
                                                 minWidth: '75px'
                                             }}>
-                                                post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                                post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                                post.desc post.desc post.desc post.desc post.desc post.desc post.desc
+                                                <div dangerouslySetInnerHTML={{ __html: post.desc }} />
                                             </Text>
                                             <Text css={{
                                                 fontWeight: '$semibold',
@@ -318,7 +191,7 @@ export default function News() {
                                                 borderColor: '$red200',
                                                 width: 'max-content'
                                             }}>
-                                                post.date
+                                                {post.date}
                                                 {/* {post.date} */}
                                             </Text>
                                         </Col>
@@ -426,7 +299,7 @@ export default function News() {
                                 }}>
                                     <Col>
                                         <Image
-                                            src={post.image}
+                                            src={`http://localhost:8800${post.img.imageUrl}`}
                                             width={'100%'}
                                             height={220}
                                             css={{
@@ -451,9 +324,7 @@ export default function News() {
                                             padding: '6px 24px',
                                             minWidth: '75px'
                                         }}>
-                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
-                                            post.desc post.desc post.desc post.desc post.desc post.desc post.desc
+                                        <div dangerouslySetInnerHTML={{ __html: post.desc }} />
                                         </Text>
                                         <Text css={{
                                             fontWeight: '$semibold',
@@ -465,8 +336,7 @@ export default function News() {
                                             borderColor: '$red200',
                                             width: 'max-content'
                                         }}>
-                                            post.date
-                                            {/* {post.date} */}
+                                            {post.date}
                                         </Text>
                                     </Col>
                                 </Grid>
