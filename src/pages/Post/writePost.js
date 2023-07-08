@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Button, Grid, Image, Input, Text, Col, Row } from "@nextui-org/react";
 import TempLogo from "../Post/TempLogo.jpeg";
 import ReactQuill from "react-quill";
@@ -7,9 +7,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import moment from "moment/moment";
 import Grey from '../../assets/Grey.jpeg'
+import { AuthContext } from "../../context/authContext";
 
 export default function WritePost() {
-    const [imageURL, setImageURL] = useState(null);
+    
+    const { currentUser } = useContext(AuthContext);
+    const [imageFile, setImageFile] = useState(null);
+    const [imageURL, setImageURL] = useState("");
     const [value, setValue] = useState('');
     const [loggedin, setLoggedIn] = useState(false);
     const location = useLocation();
@@ -18,17 +22,19 @@ export default function WritePost() {
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
-        console.log(file)
+        setImageFile(file)
         const reader = new FileReader();
-
+    
         reader.onloadend = () => {
-            setImageURL(reader.result);
-        };
-
+            const result = reader.result;
+            setImageURL(result); // Set the result as the imageURL
+            console.log(result);
+          };
+    
         if (file) {
-            console.log(reader.readAsDataURL(file))
+          reader.readAsDataURL(file);
         }
-    };
+      };
 
     useEffect(() => {
         if (location.state != null) {
@@ -38,38 +44,52 @@ export default function WritePost() {
 
     const upload = async () => {
         try {
-            const formData = new FormData();
-            formData.append("file", imageURL);
-
-            const res = await axios.post("http://localhost:8800/api/upload", formData);
-            return res.data;
+          const formData = new FormData();
+          console.log(imageFile)
+          formData.append("file", imageFile);
+    
+          const res = await axios.post("http://localhost:8800/api/upload", formData);
+          return res.data;
         } catch (err) {
-            console.log(err);
+          console.log(err);
         }
-    };
+      };
 
 
-    const handleSubmit = async (e) => {
-        console.log("HANDLING SUBMIT")
-
+      const handlePublish = async () => {
         const imgUrl = await upload();
-        console.log(imageURL)
-
+    
         try {
-            await axios.post(`http://localhost:8800/api/posts/`, {
-                username: 'aryan',
-                title,
-                desc: value,
-                // cat,
-                img: imageURL ? imageURL : "",
-                date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-                isdraft: 'n',
-            });
-            // navigate("/");
+          await axios.post(`http://localhost:8800/api/posts/`, {
+            username: currentUser.username,
+            title,
+            desc: value,
+            img: imgUrl || "", // Use the imgUrl if available, otherwise an empty string
+            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            isdraft: 'n',
+          });
+          navigate("/");
         } catch (err) {
-            console.log(err);
+          console.log(err);
         }
-    };
+      };
+    
+      const handleSave = async () => {
+        const imgUrl = await upload();
+    
+        try {
+          await axios.post(`http://localhost:8800/api/posts/`, {
+            username: currentUser.username,
+            title,
+            desc: value,
+            img: imgUrl || "", // Use the imgUrl if available, otherwise an empty string
+            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            isdraft: 'y',
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      };
 
     return (
         <>
@@ -85,7 +105,7 @@ export default function WritePost() {
                         fontWeight: '$semibold',
                         padding: '24px 48px'
                     }}>
-                        What would you like to write about today, user.name?
+                        What would you like to write about today, {currentUser.username}?
                     </Text>
                     <Input
                         labelPlaceholder="Title"
@@ -147,6 +167,7 @@ export default function WritePost() {
                         <Button flat auto color="primary"
                             onPress={() => {
                                 // upload post details to database with the user username ofc and "isdraft" as "y"
+                                handleSave()
                             }}>
                             <Text
                                 css={{ color: "inherit" }}
@@ -160,6 +181,7 @@ export default function WritePost() {
                         <Button flat auto color="secondary"
                             onPress={() => {
                                 // upload post details to database with the user username ofc and "isdraft" as "n"
+                                handlePublish()
                             }}>
                             <Text
                                 css={{ color: "inherit" }}
