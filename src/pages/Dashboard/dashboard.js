@@ -13,6 +13,10 @@ import './dashboard.css';
 import SpotifyPlayer from "react-spotify-player"
 import SpotifyIcon from '../../assets/spotify.png'
 import AppleMusicIcon from '../../assets/applemusic.png'
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Dashboard() {
     const [fetching, setFetching] = useState(true)
@@ -29,6 +33,10 @@ export default function Dashboard() {
 
     const [spotifyLinks, setSpotifyLinks] = useState()
     const [appleMusicLinks, setAppleMusicLinks] = useState()
+    const [posts, setPosts] = useState([]);
+
+    const { currentUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const playlists = [
         {
@@ -60,80 +68,80 @@ export default function Dashboard() {
     // pull all playlists links from the database and segregate the ones uploaded by the current logged in user into a state varible array
     // so that it likes like the array above
 
-    const posts = [
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 1',
-            desc: '',
-            image: Divine,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 2',
-            desc: '',
-            image: AB171,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 3',
-            desc: '',
-            image: AB172,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 4',
-            desc: '',
-            image: Temp8,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 5',
-            desc: '',
-            image: Temp9,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 6',
-            desc: '',
-            image: Temp10,
-            isdraft: 'n',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 7',
-            desc: '',
-            image: Temp11,
-            isdraft: 'y',
-            date: '',
-        },
-        {
-            id: '',
-            username: 'aryan',
-            title: 'Post 8',
-            desc: '',
-            image: Temp6,
-            isdraft: 'n',
-            date: '',
-        },
-    ]
+    // const posts = [
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 1',
+    //         desc: '',
+    //         image: Divine,
+    //         isdraft: 'n',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 2',
+    //         desc: '',
+    //         image: AB171,
+    //         isdraft: 'n',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 3',
+    //         desc: '',
+    //         image: AB172,
+    //         isdraft: 'n',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 4',
+    //         desc: '',
+    //         image: Temp8,
+    //         isdraft: 'y',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 5',
+    //         desc: '',
+    //         image: Temp9,
+    //         isdraft: 'y',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 6',
+    //         desc: '',
+    //         image: Temp10,
+    //         isdraft: 'n',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 7',
+    //         desc: '',
+    //         image: Temp11,
+    //         isdraft: 'y',
+    //         date: '',
+    //     },
+    //     {
+    //         id: '',
+    //         username: 'aryan',
+    //         title: 'Post 8',
+    //         desc: '',
+    //         image: Temp6,
+    //         isdraft: 'n',
+    //         date: '',
+    //     },
+    // ]
 
     const size = {
         width: '100%',
@@ -193,17 +201,31 @@ export default function Dashboard() {
         setAppleMusicLinks(applemusic)
     }
 
+    const fetchPosts = async () =>
+    {
+        try{
+            const response = await axios.get("http://localhost:8800/api/posts");
+            console.log("RESP"+response.data)
+            setPosts(response.data);
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
-        //fetch all posts on load
-        setFetching(true)
-        //segregate posts into drafts and non-drafts
+        SegregatePosts();
         window.setTimeout(() => {
             SegregatePosts()
             SegregatePlaylists()
             setFetching(false)
-        }, 2000) //i've put this in a timeout because in a useffect the code was being executed before the spotify scripts were being loaded 
-        // into the html headers, i dont think we'll have to put this into timeout because you'll be pulling the data from mongodb which is 
-        //bound to take longer than spotify headers loading
+        }, 2000)
+      }, [posts]);
+
+    useEffect(() => {
+        setFetching(true)
+        fetchPosts()
     }, [])
 
     return (
@@ -228,7 +250,7 @@ export default function Dashboard() {
                             fontWeight: '$semibold'
                         }
                     }}>
-                        Welcome, user.name
+                        Welcome, {currentUser.username}
                     </Text>
                     <Text css={{
                         '@xsMax': {
@@ -249,6 +271,7 @@ export default function Dashboard() {
                         }}
                         onPress={() => {
                             //navigate to write post component for user to create a new post
+                            navigate("/writepost", { state: { loggedIn: true } });
                         }}>
                         <Text
                             css={{ color: "inherit" }}
@@ -308,11 +331,12 @@ export default function Dashboard() {
                                                     },
                                                 }} isPressable
                                                     onPress={() => {
+                                                        navigate(`/posts/${post._id}`)
                                                         // navigate to the post live (published) page
                                                     }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={post.image}
+                                                            src={`http://localhost:8800${post.img.imageUrl}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"
@@ -357,6 +381,7 @@ export default function Dashboard() {
                                                                             // navigate to the write post component but with this post's details
                                                                             // so that the text editor already has this post's title, desc, 
                                                                             // image etc filled in for the user to edit
+                                                                            navigate(`/editpost/${post._id}`, { state: { loggedIn: true } });
                                                                         }}>
                                                                         <Text
                                                                             css={{ color: "inherit" }}
@@ -429,7 +454,7 @@ export default function Dashboard() {
                                                 }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={post.image}
+                                                            src={`http://localhost:8800${post.img.imageUrl}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"

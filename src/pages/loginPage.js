@@ -30,7 +30,7 @@ export default function LoginPage() {
             const res = await login(inputs);
             console.log(res)
             setLoggedIn(true); // Update loggedIn state
-            navigate("/writepost", { state: { loggedIn: true } });
+            navigate("/dashboard", { state: { loggedIn: true } });
         } catch (err) {
             //   setError(err.response.data);
         }
