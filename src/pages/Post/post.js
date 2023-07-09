@@ -15,10 +15,21 @@ export default function Post() {
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
     const [post, setPost] = useState(null);
     const id = location.pathname.split("/")[2]; 
+
+    // if(post)
+    // {
+    //     console.log("post found")
+    //     const twitterEmbedRegex = /<blockquote class="twitter-tweet"[^>]*>(.*?)<\/blockquote>\s*<script async src="https:\/\/platform\.twitter\.com\/widgets\.js"[^>]*><\/script>/g;
+    //     const updatedDesc = post.desc.replace(twitterEmbedRegex, '<div dangerouslySetInnerHTML={{ __html: `$1` }} />');
+    //     post.desc = updatedDesc
+    //     console.log(updatedDesc)
+    // }
+
     const s = document.createElement("script");
     s.setAttribute("src", "https://platform.twitter.com/widgets.js");
     s.setAttribute("async", "true");
     document.head.appendChild(s);
+
     const setDate = () => {
         if (current.getMonth() + 1 == 1) {
             setMonth('January')
@@ -176,7 +187,7 @@ export default function Post() {
                                     <Text css={{
                                         margin: '8px 0px'
                                     }}>
-                                        <div dangerouslySetInnerHTML={{ __html: post.desc }} />
+                                         <div dangerouslySetInnerHTML={{ __html: `<div>${post.desc}</div>` }} />
                                     </Text>}
     
                                 </Col>

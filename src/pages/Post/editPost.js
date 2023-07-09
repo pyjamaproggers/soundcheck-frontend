@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Button, Grid, Image, Input, Text, Col, Row } from "@nextui-org/react";
-import TempLogo from "../Post/TempLogo.jpeg";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css'
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,7 +20,7 @@ export default function EditPost() {
     const [post, setPost] = useState(null);
     const [title, setTitle] = useState(post ? post.title : "");
     const [value, setValue] = useState(post ? post.desc : "");
-
+    const [initialImage, setInitialImg] = useState(null)
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -49,6 +48,7 @@ export default function EditPost() {
               {
                 setImageURL(`http://localhost:8800${response.data.img.imageUrl}`)
                 console.log(post.title)
+                setInitialImg(response.data.img)
               }
               
           }
@@ -101,6 +101,7 @@ export default function EditPost() {
         else{
             try {
                 await axios.put(`http://localhost:8800/api/posts/${id}`, {
+                  ...post,
                   username: currentUser.username,
                   title,
                   desc: value,
@@ -135,6 +136,7 @@ export default function EditPost() {
         else{
             try {
                 await axios.put(`http://localhost:8800/api/posts/${id}`, { 
+                  ...post,  
                   username: currentUser.username,
                   title,
                   desc: value,
@@ -156,7 +158,7 @@ export default function EditPost() {
             setImageURL(`http://localhost:8800${post.img.imageUrl}`);
           }
         }
-      }, [post]);
+      }, [post, initialImage]);
     return (
         <>
             {loggedin &&
