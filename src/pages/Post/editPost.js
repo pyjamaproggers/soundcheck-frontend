@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Button, Grid, Image, Input, Text, Col, Row } from '@nextui-org/react';
-import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
@@ -198,7 +200,6 @@ export default function EditPost() {
             <Editor
               editorState={editorState}
               onEditorStateChange={setEditorState}
-              placeholder="Content"
               wrapperClassName="demo-wrapper"
               editorClassName="demo-editor"
             />

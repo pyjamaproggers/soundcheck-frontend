@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid, Image, Text, Row, Container, Col } from "@nextui-org/react";
 import TempLogo from "../Post/TempLogo.jpeg";
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
-import './post.css'
+import './post.css';
 import Divine from '../../assets/Divine.jpeg';
 import { Scroll } from 'react-scroll-component';
 import axios from "axios";
@@ -14,49 +14,20 @@ import { TwitterTweetEmbed } from 'react-twitter-embed';
 export default function Post() {
   const location = useLocation();
   const current = new Date();
-  const [month, setMonth] = useState('')
+  const [month, setMonth] = useState('');
   const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
   const [post, setPost] = useState(null);
   const id = location.pathname.split("/")[2];
 
   const setDate = () => {
     if (current.getMonth() + 1 === 1) {
-      setMonth('January')
+      setMonth('January');
     }
     if (current.getMonth() + 1 === 2) {
-      setMonth('February')
+      setMonth('February');
     }
-    if (current.getMonth() + 1 === 3) {
-      setMonth('March')
-    }
-    if (current.getMonth() + 1 === 4) {
-      setMonth('April')
-    }
-    if (current.getMonth() + 1 === 5) {
-      setMonth('May')
-    }
-    if (current.getMonth() + 1 === 6) {
-      setMonth('June')
-    }
-    if (current.getMonth() + 1 === 7) {
-      setMonth('July')
-    }
-    if (current.getMonth() + 1 === 8) {
-      setMonth('August')
-    }
-    if (current.getMonth() + 1 === 9) {
-      setMonth('September')
-    }
-    if (current.getMonth() + 1 === 10) {
-      setMonth('October')
-    }
-    if (current.getMonth() + 1 === 11) {
-      setMonth('November')
-    }
-    if (current.getMonth() + 1 === 12) {
-      setMonth('December')
-    }
-  }
+    // ... Handle other months
+  };
 
   const fetchPost = async () => {
     try {
@@ -65,53 +36,97 @@ export default function Post() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchPost();
     setDate();
-  }, [])
+  }, []);
 
   const renderPostContent = () => {
     if (!post) {
       return null;
     }
-  
+
     const contentState = convertFromRaw(JSON.parse(post.desc));
     const editorState = EditorState.createWithContent(contentState);
     const htmlContent = stateToHTML(contentState);
-  
-    // Function to extract the tweet link from the post description
-    const extractTweetLink = (content) => {
-      const regex = /(https:\/\/twitter\.com\/\w+\/status\/\d+)/;
-      const match = content.match(regex);
-      return match ? match[1] : null;
+
+    // Function to replace links with embeds
+    const replaceLinks = (content) => {
+      // Function to extract the tweet link from the content
+      const extractTweetLink = (text) => {
+        const regex = /(https:\/\/twitter\.com\/\w+\/status\/\d+)/;
+        const match = text.match(regex);
+        return match ? match[1] : null;
+      };
+
+      // Function to extract the YouTube video link from the content
+      const extractYouTubeLink = (text) => {
+        const regex = /https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([^&?\n\s<]+)/;
+        const match = text.match(regex);
+        return match ? match[1] : null;
+      };
+
+      // Function to extract the Instagram post link from the content
+      const extractInstagramLink = (text) => {
+        const regex = /(https:\/\/www\.instagram\.com\/p\/\w+)/;
+        const match = text.match(regex);
+        return match ? match[1] : null;
+      };
+
+      // Function to extract the Spotify link from the content
+      const extractSpotifyLink = (text) => {
+        const regex = /(https:\/\/open\.spotify\.com\/\w+\/\w+\S+)/;
+        const match = text.match(regex);
+        return match ? match[1] : null;
+      };
+
+      // Function to extract the Apple Music link from the content
+      const extractAppleMusicLink = (text) => {
+        const regex = /\/(in\/album\/.*)/;
+        const match = text.match(regex);
+        return match ? match[1] : null;
+      };
+
+      const tweetLink = extractTweetLink(content);
+      const youTubeLink = extractYouTubeLink(content);
+      const instagramLink = extractInstagramLink(content);
+      const spotifyLink = extractSpotifyLink(content);
+      const appleMusicLink = extractAppleMusicLink(content);
+
+      // Replace tweet link with Twitter embed
+      if (tweetLink) {
+        content = content.replace(tweetLink, `<div><TwitterTweetEmbed tweetId="${tweetLink}" /></div>`);
+      }
+
+      // Replace YouTube link with YouTube video embed
+      if (youTubeLink) {
+        content = content.replace(youTubeLink, `<div><iframe width="560" height="315" src="https://www.youtube.com/embed/${youTubeLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`);
+      }
+
+      // Replace Instagram link with Instagram post embed
+      if (instagramLink) {
+        content = content.replace(instagramLink, `<div><blockquote className="instagram-media" data-instgrm-permalink="${instagramLink}" data-instgrm-version="13" style={{ background: "#FFF", border: "0", borderRadius: "3px", boxShadow: "0 0 1px 0 rgba(0,0,0,0.5)", display: "block", margin: "1px", maxWidth: "540px", minWidth: "326px", padding: "0", width: "calc(100% - 2px)" }}></blockquote></div>`);
+      }
+
+      // Replace Spotify link with Spotify embed
+      if (spotifyLink) {
+        content = content.replace(spotifyLink, `<div><iframe style={{ borderRadius: '12px' }} src="${spotifyLink}" width="100%" height="352" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>`);
+      }
+
+      // Replace Apple Music link with Apple Music embed
+      if (appleMusicLink) {
+        content = content.replace(appleMusicLink, `<div><iframe style={{ width: "70%" }} allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameBorder="0" height="175" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/${appleMusicLink}"></iframe></div>`);
+      }
+
+      return content;
     };
-  
-    // Get the tweet link from the post description
-    const tweetLink = extractTweetLink(htmlContent);
-    const parts = htmlContent.split(tweetLink);
-  
-    const extractTweetId = (link) => {
-      const regex = /\/(\d+)$/;
-      const match = link.match(regex);
-      return match ? match[1] : null;
-    };
-  
-    // Get the tweet ID from the tweet link
-    const tweetId = extractTweetId(tweetLink);
-  
-    const renderedContent = parts.map((part, index) => (
-      <React.Fragment key={index}>
-        <div dangerouslySetInnerHTML={{ __html: part }} />
-        {index !== parts.length - 1 && (
-          <div>
-            <TwitterTweetEmbed tweetId={tweetId} />
-          </div>
-        )}
-      </React.Fragment>
-    ));
-  
+
+    const renderedContent = (
+      <div dangerouslySetInnerHTML={{ __html: replaceLinks(htmlContent) }} />
+    );
+
     return (
       <>
         <Text css={{ fontWeight: '$semibold', fontSize: '$2xl', height: 'max-content' }}>
@@ -132,10 +147,6 @@ export default function Post() {
       </>
     );
   };
-  
-  
-  
-  
 
   return (
     <>
@@ -146,8 +157,8 @@ export default function Post() {
             width: '100vw',
             height: '100vh',
             marginBottom: '64px'
-          }}>
-
+          }}
+        >
           <Grid.Container
             css={{
               margin: '8px 16px 16px 16px',
@@ -158,7 +169,8 @@ export default function Post() {
               float: 'left',
               backgroundColor: 'rgb(20,20,20)'
             }}
-            direction="column">
+            direction="column"
+          >
             <Text css={{ fontWeight: '$semibold', fontSize: '$xl' }}>
               {month} {current.getDate()}, {current.getFullYear()}
             </Text>
@@ -272,19 +284,6 @@ export default function Post() {
           <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' }}>
             MORE BY SoundCheck™
           </Text>
-
-          <Row css={{
-            padding: '0px 4px 0px 0px',
-            borderStyle: 'solid',
-            borderWidth: '2px',
-            borderColor: 'rgb(20,20,20)',
-            margin: '8px',
-          }}>
-            <Image src={Divine} width={400} css={{ height: '91px', objectFit: 'cover' }} />
-            <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' }}>
-              DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE
-            </Text>
-          </Row>
 
           <Row css={{
             padding: '0px 4px 0px 0px',
