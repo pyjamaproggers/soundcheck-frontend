@@ -40,11 +40,11 @@ export default function EditPost() {
 
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`https://soundcheck-backend.onrender.com//api/posts/${id}`);
+      const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
       console.log('RESP' + response.data.title);
       setPost(response.data);
       if (response.data.img) {
-        setImageURL(`https://soundcheck-backend.onrender.com/${response.data.img.imageUrl}`);
+        setImageURL(`https://soundcheck-backend.onrender.com${response.data.img.imageUrl}`);
         console.log(post.title);
         setInitialImg(response.data.img);
       }
@@ -67,7 +67,7 @@ export default function EditPost() {
       console.log(imageFile);
       formData.append('file', imageFile);
 
-      const res = await axios.post('https://soundcheck-backend.onrender.com//api/upload', formData);
+      const res = await axios.post('https://soundcheck-backend.onrender.com/api/upload', formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -82,7 +82,7 @@ export default function EditPost() {
     if (imgUrl) {
       try {
         await axios.put(
-          `https://soundcheck-backend.onrender.com//api/posts/${id}`,
+          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
           {
             username: currentUser.username,
             title,
@@ -100,7 +100,7 @@ export default function EditPost() {
     } else {
       try {
         await axios.put(
-          `https://soundcheck-backend.onrender.com//api/posts/${id}`,
+          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
           {
             ...post,
             username: currentUser.username,
@@ -126,7 +126,7 @@ export default function EditPost() {
     if (imgUrl) {
       try {
         await axios.put(
-          `https://soundcheck-backend.onrender.com//api/posts/${id}`,
+          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
           {
             username: currentUser.username,
             title,
@@ -143,7 +143,7 @@ export default function EditPost() {
     } else {
       try {
         await axios.put(
-          `https://soundcheck-backend.onrender.com//api/posts/${id}`,
+          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
           {
             ...post,
             username: currentUser.username,
@@ -165,7 +165,7 @@ export default function EditPost() {
       setTitle(post.title);
       setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(post.desc))));
       if (post.img) {
-        setImageURL(`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`);
+        setImageURL(`https://soundcheck-backend.onrender.com${post.img.imageUrl}`);
       }
     }
   }, [post, initialImage]);
