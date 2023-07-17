@@ -19,7 +19,7 @@ export default function News() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:8800/api/posts');
+      const response = await axios.get('https://soundcheck-backend.onrender.com//api/posts');
       console.log(response.data);
       setPosts(response.data);
       await segregatePosts(); // Call segregatePosts after setting the posts state
@@ -141,7 +141,7 @@ export default function News() {
                 >
                   <Row>
                     <Image
-                      src={`http://localhost:8800${post.img.imageUrl}`}
+                      src={`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`}
                       width={300}
                       height={180}
                       css={{
@@ -306,7 +306,7 @@ export default function News() {
                 >
                   <Col>
                     <Image
-                      src={`http://localhost:8800${post.img.imageUrl}`}
+                      src={`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`}
                       width={'100%'}
                       height={220}
                       css={{

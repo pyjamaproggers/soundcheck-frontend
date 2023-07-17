@@ -48,7 +48,7 @@ export default function WritePost() {
       console.log(imageFile);
       formData.append("file", imageFile);
 
-      const res = await axios.post("http://localhost:8800/api/upload", formData);
+      const res = await axios.post("https://soundcheck-backend.onrender.com//api/upload", formData);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -62,7 +62,7 @@ export default function WritePost() {
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
   
-      await axios.post(`http://localhost:8800/api/posts/`, {
+      await axios.post(`https://soundcheck-backend.onrender.com//api/posts/`, {
         isdraft: "n",
         username: currentUser.username,
         title,
@@ -83,7 +83,7 @@ export default function WritePost() {
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
   
-      await axios.post(`http://localhost:8800/api/posts/`, {
+      await axios.post(`https://soundcheck-backend.onrender.com//api/posts/`, {
         isdraft: "y",
         username: currentUser.username,
         title,
