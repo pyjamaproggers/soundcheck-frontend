@@ -175,7 +175,7 @@ export default function Post() {
           {post.title}
         </Text>
         <Image
-          src={`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`}
+          src={`${post.img.imageUrl}`}
           width={500}
           height={400}
           css={{
