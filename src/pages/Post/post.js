@@ -31,7 +31,7 @@ export default function Post() {
 
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`https://soundcheck-backend.onrender.com//api/posts/${id}`);
+      const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
       setPost(response.data);
     } catch (error) {
       console.log(error);
