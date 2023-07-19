@@ -204,7 +204,7 @@ export default function Dashboard() {
     const fetchPosts = async () =>
     {
         try{
-            const response = await axios.get("https://soundcheck-backend.onrender.com//api/posts");
+            const response = await axios.get("https://soundcheck-backend.onrender.com/api/posts");
             console.log("RESP"+response.data)
             setPosts(response.data);
         }
@@ -336,7 +336,7 @@ export default function Dashboard() {
                                                     }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`}
+                                                            src={`${post.img.imageUrl}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"
