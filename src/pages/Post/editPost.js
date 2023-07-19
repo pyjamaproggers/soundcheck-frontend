@@ -165,7 +165,7 @@ export default function EditPost() {
       setTitle(post.title);
       setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(post.desc))));
       if (post.img) {
-        setImageURL(`https://soundcheck-backend.onrender.com${post.img.imageUrl}`);
+        setImageURL(`${post.img.imageUrl}`);
       }
     }
   }, [post, initialImage]);
