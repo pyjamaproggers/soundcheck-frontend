@@ -15,6 +15,7 @@ import Temp8 from '../../assets/Temp8.png'
 import Temp9 from '../../assets/Temp9.png'
 import Temp10 from '../../assets/Temp10.png'
 import Temp11 from '../../assets/Temp11.png'
+import { BsArrowRight } from 'react-icons/bs';
 
 export default function HomeScreen() {
     return (
@@ -30,6 +31,7 @@ export default function HomeScreen() {
                     }}
 
                 >
+                    {/* First Row - small, big, small */}
                     <Grid.Container
                         css={{ height: "50vh", width: "100%", position: "relative" }}
                         direction="row"
@@ -42,7 +44,7 @@ export default function HomeScreen() {
                                 flexDirection: 'column'
                             }}
                         >
-                            <Grid className="container"
+                            <Grid className="left-container"
                                 css={{ height: "25vh", width: "100%", }}>
                                 <Image
                                     css={{ height: "25vh", width: "100%", }}
@@ -50,27 +52,114 @@ export default function HomeScreen() {
                                     objectFit="cover"
                                     className="image"
                                 />
-                                <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
+                                <div className="card">
+                                    <Col css={{
+                                        backgroundColor: '$gray400',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text
+                                            css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$xs'
+                                                },
+                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                fontWeight: '$semibold',
+                                                backgroundColor: '$gray400',
+                                            }}>
+                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        </Text>
+                                        <Row css={{
+                                            w: 'max-content',
+                                            padding: '1% 0% 1.5% 0%',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Text css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$sm'
+                                                },
+                                                color: 'white',
+                                                paddingRight: '4px',
+                                                '&:hover': {
+                                                    textDecoration: 'underline'
+                                                },
+                                                fontWeight: '$medium'
+                                            }}>
+                                                READ MORE
+                                            </Text>
+                                            <BsArrowRight
+                                                size={'16px'}
+                                                color="white" />
+                                        </Row>
+                                    </Col>
                                 </div>
                             </Grid>
-                            <Grid className="container"
+
+                            <Grid className="left-container"
                                 css={{ height: "25vh", width: "100%", }}>
                                 <Image
                                     css={{ height: "25vh", width: "100%" }}
                                     src={Temp2}
                                     objectFit="cover"
+                                    className="image"
                                 />
-                                <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
+                                <div className="card">
+                                    <Col css={{
+                                        backgroundColor: '$gray400',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text
+                                            css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$xs'
+                                                },
+                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                fontWeight: '$semibold',
+                                                backgroundColor: '$gray400',
+                                            }}>
+                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        </Text>
+                                        <Row css={{
+                                            w: 'max-content',
+                                            padding: '1% 0% 1.5% 0%',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Text css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$sm'
+                                                },
+                                                color: 'white',
+                                                paddingRight: '4px',
+                                                '&:hover': {
+                                                    textDecoration: 'underline'
+                                                },
+                                                fontWeight: '$medium'
+                                            }}>
+                                                READ MORE
+                                            </Text>
+                                            <BsArrowRight
+                                                size={'16px'}
+                                                color="white" />
+                                        </Row>
+                                    </Col>
                                 </div>
                             </Grid>
+
                         </Grid.Container>
 
                         <Grid.Container
@@ -91,12 +180,55 @@ export default function HomeScreen() {
                                     }}
                                     src={Divine}
                                     objectFit="cover"
+                                    className="image"
                                 />
-                                <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
+                                <div className="card">
+                                    <Col css={{
+                                        backgroundColor: '$gray400',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text
+                                            css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$xs'
+                                                },
+                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                fontWeight: '$semibold',
+                                                backgroundColor: '$gray400',
+                                            }}>
+                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        </Text>
+                                        <Row css={{
+                                            w: 'max-content',
+                                            padding: '1% 0% 1.5% 0%',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Text css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$sm'
+                                                },
+                                                color: 'white',
+                                                paddingRight: '4px',
+                                                '&:hover': {
+                                                    textDecoration: 'underline'
+                                                },
+                                                fontWeight: '$medium'
+                                            }}>
+                                                READ MORE
+                                            </Text>
+                                            <BsArrowRight
+                                                size={'16px'}
+                                                color="white" />
+                                        </Row>
+                                    </Col>
                                 </div>
                             </Grid>
                         </Grid.Container>
@@ -109,55 +241,185 @@ export default function HomeScreen() {
                                 flexDirection: 'column'
                             }}
                         >
-                            <Grid className="container"
+                            <Grid className="right-container"
                                 css={{ height: "25vh", width: "100%", }}>
                                 <Image
                                     css={{ height: "25vh", width: "100%", }}
                                     src={Temp3}
                                     objectFit="cover"
+                                    className="image"
                                 />
-                                <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
+                                <div className="card">
+                                    <Col css={{
+                                        backgroundColor: '$gray400',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text
+                                            css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$xs'
+                                                },
+                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                fontWeight: '$semibold',
+                                                backgroundColor: '$gray400',
+                                            }}>
+                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        </Text>
+                                        <Row css={{
+                                            w: 'max-content',
+                                            padding: '1% 0% 1.5% 0%',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Text css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$sm'
+                                                },
+                                                color: 'white',
+                                                paddingRight: '4px',
+                                                '&:hover': {
+                                                    textDecoration: 'underline'
+                                                },
+                                                fontWeight: '$medium'
+                                            }}>
+                                                READ MORE
+                                            </Text>
+                                            <BsArrowRight
+                                                size={'16px'}
+                                                color="white" />
+                                        </Row>
+                                    </Col>
                                 </div>
                             </Grid>
-                            <Grid className="container"
+                            <Grid className="right-container"
                                 css={{ height: "25vh", width: "100%", }}>
                                 <Image
                                     css={{ height: "25vh", width: "100%" }}
                                     src={Temp4}
                                     objectFit="cover"
+                                    className="image"
                                 />
-                                <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
+                                <div className="card">
+                                    <Col css={{
+                                        backgroundColor: '$gray400',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text
+                                            css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$xs'
+                                                },
+                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                fontWeight: '$semibold',
+                                                backgroundColor: '$gray400',
+                                            }}>
+                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        </Text>
+                                        <Row css={{
+                                            w: 'max-content',
+                                            padding: '1% 0% 1.5% 0%',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Text css={{
+                                                '@xsMax': {
+                                                    fontSize: '$xs',
+                                                },
+                                                '@xsMin': {
+                                                    fontSize: '$sm'
+                                                },
+                                                color: 'white',
+                                                paddingRight: '4px',
+                                                '&:hover': {
+                                                    textDecoration: 'underline'
+                                                },
+                                                fontWeight: '$medium'
+                                            }}>
+                                                READ MORE
+                                            </Text>
+                                            <BsArrowRight
+                                                size={'16px'}
+                                                color="white" />
+                                        </Row>
+                                    </Col>
                                 </div>
                             </Grid>
 
                         </Grid.Container>
                     </Grid.Container>
 
+                    {/* Second Row - equally */}
                     <Grid.Container
-                        css={{ height: "50vh", width: "100%", position: "relative" }}
+                        css={{ height: "50vh", width: "100%", position: "relative", }}
                         direction="row"
                     >
-                        <Grid className="container"
+                        <Grid className="left-container"
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp5}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
                         <Grid className="container"
@@ -166,13 +428,56 @@ export default function HomeScreen() {
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp6}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
                         <Grid className="container"
@@ -181,43 +486,172 @@ export default function HomeScreen() {
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp7}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
-                        <Grid className="container"
+                        <Grid className="right-container"
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp8}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
-                        <Grid className="container"
+                        <Grid className="left-container"
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp9}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
                         <Grid className="container"
@@ -226,13 +660,56 @@ export default function HomeScreen() {
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp10}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
                         <Grid className="container"
@@ -241,28 +718,114 @@ export default function HomeScreen() {
                                 css={{ height: "25vh", width: "100%", }}
                                 src={Temp11}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
 
-                        <Grid className="container"
+                        <Grid className="right-container"
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={AB171}
                                 objectFit="cover"
+                                className="image"
                             />
-                            <div className="overlay">
-                                    <Text id="bottom"
-                                        css={{ fontSize: '$sm', padding: '4px', fontWeight: '$semibold'}}>
+                            <div className="card">
+                                <Col css={{
+                                    backgroundColor: '$gray400',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                        css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$xs'
+                                            },
+                                            padding: '1.5% 2.5% 1% 2.5%',
+                                            fontWeight: '$semibold',
+                                            backgroundColor: '$gray400',
+                                        }}>
                                         AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
                                     </Text>
-                                </div>
+                                    <Row css={{
+                                        w: 'max-content',
+                                        padding: '1% 0% 1.5% 0%',
+                                        alignItems: 'center'
+                                    }}>
+                                        <Text css={{
+                                            '@xsMax': {
+                                                fontSize: '$xs',
+                                            },
+                                            '@xsMin': {
+                                                fontSize: '$sm'
+                                            },
+                                            color: 'white',
+                                            paddingRight: '4px',
+                                            '&:hover': {
+                                                textDecoration: 'underline'
+                                            },
+                                            fontWeight: '$medium'
+                                        }}>
+                                            READ MORE
+                                        </Text>
+                                        <BsArrowRight
+                                            size={'16px'}
+                                            color="white" />
+                                    </Row>
+                                </Col>
+                            </div>
                         </Grid>
                     </Grid.Container>
 
@@ -777,74 +1340,6 @@ export default function HomeScreen() {
 
                 </Grid.Container>
             </div>
-
-            <Grid.Container
-                css={{
-                    justifyContent: 'center',
-                    margin: '24px 0px'
-                }}>
-                <Col
-                    css={{
-                        width: 'max-content',
-                        textAlign: 'center'
-                    }}>
-                    <Text css={{
-                        '@smMin': {
-                            fontSize: '$3xl',
-                            padding: '16px 16px 0px 16px'
-                        },
-                        '@smMax': {
-                            fontSize: '$xl',
-                            padding: '16px 16px 0px 16px'
-                        },
-                        fontWeight: '$semibold'
-                    }}>
-                        Subscribe
-                    </Text>
-                    <Text css={{
-                        '@smMin': {
-                            fontSize: '$xl',
-                        },
-                        '@smMax': {
-                            fontSize: '$lg',
-                        },
-                        pb: '16px',
-                        fontWeight: '$medium',
-                        color: '$gray600'
-                    }}>
-                        To get email updates from SoundCheck™ India.
-                    </Text>
-                    <div className="subscribe-desktop">
-                        <Row css={{
-                            width: '100%',
-                            jc: 'center'
-                        }}>
-                            <Input placeholder="Your email address" />
-                            <Button auto flat color='error' css={{
-                                backgroundColor: '#300313',
-                            }}>
-                                <Text css={{
-                                    fontWeight: 600,
-                                }}>
-                                    Subscribe
-                                </Text>
-                            </Button>
-                        </Row>
-                    </div>
-                    <div className="subscribe-mobile">
-                        <Input placeholder="Your email address" />
-                        <Button auto flat color='error' css={{
-                            backgroundColor: '#300313',
-                        }}>
-                            <Text css={{
-                                fontWeight: 600,
-                            }}>
-                                Subscribe
-                            </Text>
-                        </Button>
-                    </div>
-                </Col>
-            </Grid.Container>
         </div>
     );
 }

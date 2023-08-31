@@ -44,3 +44,10 @@
 .yt-icon:hover{
     cursor: pointer;
 }
+
+.icon{
+    margin: 0px 7.5px
+}
+.icon:hover{
+    cursor: pointer
+}

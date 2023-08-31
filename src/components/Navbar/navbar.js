@@ -24,7 +24,7 @@ function Header() {
         <>
             <Grid.Container css={{
                 width: 'auto',
-                height: '66px',
+                height: '1px',
                 margin: '0px 24px',
                 borderStyle: 'solid',
                 borderWidth: '4px 0px 0px 0px',
@@ -40,7 +40,7 @@ function Header() {
                         fontSize: '$2xl'
                     }
                 }}>
-                    SoundCheck™ India
+                    {}
                 </Text>
             </Grid.Container>
             <Navbar className="navbar" variant="sticky">
@@ -80,16 +80,24 @@ function Header() {
                 </Navbar.Content>
                 <Navbar.Content hideIn={'xs'}>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaDiscord className="d-icon" size={'20px'} />
+                        <FaDiscord 
+                        // className="d-icon" 
+                        size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaInstagram className="ig-icon" size={'20px'} />
+                        <FaInstagram 
+                        // className="ig-icon" 
+                        size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaYoutube className="yt-icon" size={'20px'} />
+                        <FaYoutube 
+                        // className="yt-icon" 
+                        size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaTwitter className="t-icon" size={'20px'} />
+                        <FaTwitter
+                        // className="t-icon" 
+                        size={'20px'} />
                     </Navbar.Item>
                 </Navbar.Content>
 
