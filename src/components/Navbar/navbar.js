@@ -43,7 +43,7 @@ function Header() {
                     {}
                 </Text>
             </Grid.Container>
-            <Navbar className="navbar" variant="sticky">
+            <Navbar className="navbar" variant="static">
                 <Navbar.Toggle color="inherit" showIn="xs" />
                 <Navbar.Brand hideIn="xs">
                     <Image css={{
@@ -58,9 +58,7 @@ function Header() {
                             window.location.pathname = ''
                         }} />
                 </Navbar.Brand>
-                <Navbar.Content hideIn={'xs'} css={{ w: '30px', }}>
-                </Navbar.Content>
-                <Navbar.Content hideIn={'xs'} css={{ w: '0px', }}>
+                <Navbar.Content hideIn={'xs'} css={{ w: '10%', }}>
                 </Navbar.Content>
                 <Navbar.Content hideIn="xs" variant="highlight" >
                     {items.map((item, index) => (
