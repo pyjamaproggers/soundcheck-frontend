@@ -64,6 +64,22 @@
     filter: brightness(100%);
 }
 
+.desktop .left-container:not(:hover){
+    filter: brightness(80%);
+}
+
+.desktop .left-container:hover{
+    filter: brightness(100%);
+}
+
+.desktop .right-container:not(:hover){
+    filter: brightness(80%);
+}
+
+.desktop .right-container:hover{
+    filter: brightness(100%);
+}
+
 .container:hover{
     cursor: pointer;
     transform: scale(1.2);
