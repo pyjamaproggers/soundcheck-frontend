@@ -13,6 +13,8 @@ export default function EditPost() {
   const { currentUser } = useContext(AuthContext);
   const [imageFile, setImageFile] = useState(null);
   const [imageURL, setImageURL] = useState('');
+  const [imageFile2, setImageFile2] = useState(null);
+  const [imageURL2, setImageURL2] = useState("");
   const [loggedin, setLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,6 +40,27 @@ export default function EditPost() {
     }
   };
 
+  const handleImageUpload2 = (event) => {
+    const file = event.target.files[0];
+    setImageFile2(file);
+    if (file) {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const result = reader.result;
+      setImageURL2(result); // Set the result as the imageURL
+      console.log(result);
+    };
+
+    
+      reader.readAsDataURL(file);
+    }
+    else
+    {
+      setImageURL2("")
+    }
+  };
+
   const fetchPost = async () => {
     try {
       const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
@@ -58,7 +81,7 @@ export default function EditPost() {
       setLoggedIn(location.state.loggedIn);
     }
     fetchPost();
-  }, []);
+  }, [imageFile, imageFile2]);
 
   const upload = async () => {
     if (!imageFile) return null;
@@ -74,8 +97,22 @@ export default function EditPost() {
     }
   };
 
+  const upload2 = async () => {
+    try {
+      const formData = new FormData();
+      console.log(imageFile2);
+      formData.append("file", imageFile2);
+
+      const res = await axios.post("https://soundcheck-backend.onrender.com/api/upload", formData);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handlePublish = async () => {
     const imgUrl = await upload();
+    const imgUrl2 = await upload2();
     const contentState = editorState.getCurrentContent();
     const rawContentState = convertToRaw(contentState);
 
@@ -88,6 +125,7 @@ export default function EditPost() {
             title,
             desc: JSON.stringify(rawContentState),
             img: imgUrl || '', // Use the imgUrl if available, otherwise an empty string
+            homeImg: imgUrl2 || "",
             date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
             isdraft: 'n',
           },
@@ -256,6 +294,53 @@ export default function EditPost() {
             onChange={handleImageUpload}
             style={{ padding: '12px' }}
           />
+          <Grid>
+            <Col
+              css={{
+                w: 350,
+              }}
+            >
+              <Text
+                css={{
+                  "@xsMin": {
+                    fontSize: "$lg",
+                  },
+                  "@xsMax": {
+                    fontSize: "$md",
+                  },
+                  fontWeight: "$medium",
+                  padding: "12px",
+                }}
+              >
+                Upload Home Screen Picture
+              </Text>
+              {imageURL2 && (
+                <Image
+                  src={imageURL2}
+                  width={350}
+                  height={275}
+                  css={{
+                    w: "100%",
+                    h: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+              {!imageURL2 && (
+                <Image
+                  src={Grey}
+                  width={350}
+                  height={275}
+                  css={{
+                    w: "100%",
+                    h: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+            </Col>
+          </Grid>
+          <input type="file" label="Upload Home Screen Picture" onChange={handleImageUpload2} style={{ padding: "12px" }} />
           <Row
             css={{
               jc: 'space-evenly',
