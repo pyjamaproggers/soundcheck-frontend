@@ -67,7 +67,8 @@ export default function EditPost() {
       console.log('RESP' + response.data.title);
       setPost(response.data);
       if (response.data.img) {
-        setImageURL(`https://soundcheck-backend.onrender.com${response.data.img.imageUrl}`);
+        setImageURL(`${response.data.img.imageUrl}`);
+        setImageURL2(`${response.data.homeImg.imageUrl}`);
         console.log(post.title);
         setInitialImg(response.data.img);
       }
