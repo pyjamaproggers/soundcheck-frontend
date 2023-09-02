@@ -336,7 +336,7 @@ export default function Dashboard() {
                                                     }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={`${post.img.imageUrl}`}
+                                                            src={`${post.homeImg.imageUrl}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"

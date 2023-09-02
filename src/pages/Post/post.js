@@ -138,7 +138,7 @@ export default function Post() {
 
     return (
       <>
-        <Text css={{ fontWeight: '$semibold', fontSize: '$2xl', height: 'max-content' }}>
+        <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' }}>
           {post.title}
         </Text>
         <Image
@@ -151,8 +151,9 @@ export default function Post() {
             objectFit: 'cover',
             margin: '48px 0px'
           }}
-        />
+        /><div style={{marginTop:"48px"}}>
         {renderedContent}
+        </div>
       </>
     );
   };

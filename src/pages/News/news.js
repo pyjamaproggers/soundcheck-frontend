@@ -141,7 +141,7 @@ export default function News() {
                 >
                   <Row>
                     <Image
-                      src={`${post.img.imageUrl}`}
+                      src={`${post.homeImg.imageUrl}`}
                       width={300}
                       height={180}
                       css={{
@@ -306,7 +306,7 @@ export default function News() {
                 >
                   <Col>
                     <Image
-                      src={`${post.img.imageUrl}`}
+                      src={`${post.homeImg.imageUrl}`}
                       width={'100%'}
                       height={220}
                       css={{
