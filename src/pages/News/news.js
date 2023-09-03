@@ -12,6 +12,45 @@ export default function News() {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
 
+
+  function getDayWithSuffix(day) {
+    if (day >= 11 && day <= 13) {
+      return `${day}th`;
+    } else {
+      const lastDigit = day % 10;
+      switch (lastDigit) {
+        case 1:
+          return `${day}st`;
+        case 2:
+          return `${day}nd`;
+        case 3:
+          return `${day}rd`;
+        default:
+          return `${day}th`;
+      }
+    }
+  }
+
+  function convertDate(date)
+  {
+    
+    const originalDate = new Date(date);
+
+   
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    
+    const day = originalDate.getDate();
+    const month = monthNames[originalDate.getMonth()];
+    const year = originalDate.getFullYear();
+
+    
+    return `${getDayWithSuffix(day)} ${month} ${year}`;
+  }
+
   const segregatePosts = async () => {
     const published = posts.filter((post) => post.isdraft === 'n');
     setPublishedPosts(published);
@@ -197,7 +236,7 @@ export default function News() {
                           width: 'max-content',
                         }}
                       >
-                        {post.date.slice(0, 10)}
+                        {convertDate(post.date.slice(0, 10))}
                       </Text>
                     </Col>
                   </Row>
@@ -352,7 +391,7 @@ export default function News() {
                         width: 'max-content',
                       }}
                     >
-                      {post.date}
+                      {convertDate(post.date.slice(0, 10))}
                     </Text>
                   </Col>
                 </Grid>
