@@ -20,6 +20,7 @@ export default function WritePost() {
   const [loggedin, setLoggedIn] = useState(false);
   const location = useLocation();
   const [title, setTitle] = useState("");
+  const [gridNumber, setGridNumber] = useState(0)
   const navigate = useNavigate();
 
   const handleImageUpload = (event) => {
@@ -112,6 +113,7 @@ export default function WritePost() {
         img: imgUrl || "",
         homeImg: imgUrl2 || "",
         date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        gridNumber: gridNumber
       });
       navigate("/");
     } catch (err) {
@@ -133,6 +135,7 @@ export default function WritePost() {
         desc: JSON.stringify(rawContentState),
         img: imgUrl || "",
         date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        gridNumber: gridNumber
       });
     } catch (err) {
       console.log(err);
@@ -268,6 +271,13 @@ export default function WritePost() {
             </Col>
           </Grid>
           <input type="file" label="Upload Home Screen Picture" onChange={handleImageUpload2} style={{ padding: "12px" }} />
+          <Input
+            labelPlaceholder="Home Page Grid Number"
+            bordered
+            clearable
+            css={{ marginBottom: "48px", position: "relative", mt: "24px" }}
+            onChange={(e) => setGridNumber(e.target.value)}
+          />
           <Row
             css={{
               jc: "space-evenly",

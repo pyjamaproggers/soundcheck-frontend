@@ -65,83 +65,6 @@ export default function Dashboard() {
         },
 
     ]
-    // pull all playlists links from the database and segregate the ones uploaded by the current logged in user into a state varible array
-    // so that it likes like the array above
-
-    // const posts = [
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 1',
-    //         desc: '',
-    //         image: Divine,
-    //         isdraft: 'n',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 2',
-    //         desc: '',
-    //         image: AB171,
-    //         isdraft: 'n',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 3',
-    //         desc: '',
-    //         image: AB172,
-    //         isdraft: 'n',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 4',
-    //         desc: '',
-    //         image: Temp8,
-    //         isdraft: 'y',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 5',
-    //         desc: '',
-    //         image: Temp9,
-    //         isdraft: 'y',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 6',
-    //         desc: '',
-    //         image: Temp10,
-    //         isdraft: 'n',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 7',
-    //         desc: '',
-    //         image: Temp11,
-    //         isdraft: 'y',
-    //         date: '',
-    //     },
-    //     {
-    //         id: '',
-    //         username: 'aryan',
-    //         title: 'Post 8',
-    //         desc: '',
-    //         image: Temp6,
-    //         isdraft: 'n',
-    //         date: '',
-    //     },
-    // ]
 
     const size = {
         width: '100%',
@@ -228,6 +151,21 @@ export default function Dashboard() {
         fetchPosts()
     }, [])
 
+    async function deletePost(id)
+    {
+        try{
+            console.log(id)
+            const response = await axios.delete(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
+            if(response.status==200)
+            {
+                console.log("Post Deleted Successfully!")
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    }
     return (
         <>
             {/* If user logged in (check via context api) then show the dashboard (all posts saved by that username)*/}
@@ -393,10 +331,28 @@ export default function Dashboard() {
                                                                         </Text>
                                                                     </Button>
                                                                 </Row>
-                                                            </Col>
+                                                                
+                                                            </Col>                                                      
                                                         </Row>
                                                     </Card.Footer>
                                                 </Card>
+                                                <Button flat auto color="error"
+                                                        css={{
+                                                            m: '12px',
+                                                            zIndex: 1
+                                                        }}
+                                                        onPress={() => {
+                                                            deletePost(post._id)
+                                                        }}>
+                                                        <Text
+                                                            css={{ color: "inherit" }}
+                                                            size={12}
+                                                            weight="bold"
+                                                            transform="uppercase"
+                                                        >
+                                                            Delete
+                                                        </Text>
+                                                    </Button>
                                             </Grid>
                                         ))}
                                     </>

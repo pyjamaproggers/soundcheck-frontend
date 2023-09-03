@@ -21,6 +21,7 @@ export default function EditPost() {
   const id = location.pathname.split('/')[2];
   const [post, setPost] = useState(null);
   const [title, setTitle] = useState('');
+  const [gridNumber, setGridNumber] = useState(0)
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [initialImage, setInitialImg] = useState(null);
 
@@ -129,6 +130,7 @@ export default function EditPost() {
             homeImg: imgUrl2 || "",
             date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
             isdraft: 'n',
+            gridNumber: gridNumber
           },
           { withCredentials: true }
         );
@@ -173,6 +175,7 @@ export default function EditPost() {
             img: imgUrl || '', // Use the imgUrl if available, otherwise an empty string
             date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
             isdraft: 'y',
+            gridNumber: gridNumber
           },
           { withCredentials: true }
         );
@@ -190,6 +193,7 @@ export default function EditPost() {
             desc: JSON.stringify(rawContentState),
             date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
             isdraft: 'y',
+            gridNumber: gridNumber
           },
           { withCredentials: true }
         );
@@ -342,6 +346,13 @@ export default function EditPost() {
             </Col>
           </Grid>
           <input type="file" label="Upload Home Screen Picture" onChange={handleImageUpload2} style={{ padding: "12px" }} />
+          <Input
+            labelPlaceholder="Home Page Grid Number"
+            bordered
+            clearable
+            css={{ marginBottom: "48px", position: "relative", mt: "24px" }}
+            onChange={(e) => setGridNumber(e.target.value)}
+          />
           <Row
             css={{
               jc: 'space-evenly',
