@@ -635,7 +635,7 @@ export default function HomeScreen() {
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
-                                src={Temp9}
+                                src={posts[9].homeImg}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -658,7 +658,7 @@ export default function HomeScreen() {
                                             fontWeight: '$semibold',
                                             backgroundColor: '$gray400',
                                         }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        {posts[9].title}
                                     </Text>
                                     <Row css={{
                                         w: 'max-content',
@@ -693,7 +693,7 @@ export default function HomeScreen() {
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
-                                src={Temp10}
+                                src={posts[10].homeImg}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -716,7 +716,7 @@ export default function HomeScreen() {
                                             fontWeight: '$semibold',
                                             backgroundColor: '$gray400',
                                         }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        {posts[10].title}
                                     </Text>
                                     <Row css={{
                                         w: 'max-content',
