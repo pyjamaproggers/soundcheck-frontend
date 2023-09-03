@@ -197,7 +197,7 @@ export default function News() {
                           width: 'max-content',
                         }}
                       >
-                        {post.date}
+                        {post.date.slice(0, 10)}
                       </Text>
                     </Col>
                   </Row>
