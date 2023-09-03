@@ -142,7 +142,7 @@ export default function Post() {
           {post.title}
         </Text>
         <Image
-          src={`${post.img.imageUrl}`}
+          src={`${post.img}`}
           width={500}
           height={400}
           css={{

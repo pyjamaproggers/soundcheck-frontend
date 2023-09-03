@@ -2,7 +2,7 @@ import React from "react";
 import './navbar.css'
 import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
 import { FaYoutube, FaInstagram, FaTwitter, FaDiscord} from 'react-icons/fa';
-import Logo from '../../assets/TempLogo.jpeg'
+import Logo from '../../assets/TEMPLOGO.jpeg'
 
 function Header() {
 
@@ -47,9 +47,10 @@ function Header() {
                 <Navbar.Toggle color="inherit" showIn="xs" />
                 <Navbar.Brand hideIn="xs">
                     <Image css={{
-                        width: '40px',
-                        height: '40px',
+                        width: '150px',
+                        height: '70px',
                         borderRadius: '5px',
+                        left:0,
                         '&:hover': {
                             cursor: 'pointer'
                         }

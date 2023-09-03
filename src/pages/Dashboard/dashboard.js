@@ -274,7 +274,7 @@ export default function Dashboard() {
                                                     }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={`${post.homeImg.imageUrl}`}
+                                                            src={`${post.homeImg}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"
@@ -410,7 +410,7 @@ export default function Dashboard() {
                                                 }}>
                                                     <Card.Body css={{ p: 0 }}>
                                                         <Card.Image
-                                                            src={`https://soundcheck-backend.onrender.com/${post.img.imageUrl}`}
+                                                            src={`https://soundcheck-backend.onrender.com/${post.img}`}
                                                             width="100%"
                                                             height="100%"
                                                             objectFit="cover"

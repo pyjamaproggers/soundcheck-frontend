@@ -9,6 +9,8 @@ import axios from "axios";
 import moment from "moment/moment";
 import Grey from "../../assets/Grey.jpeg";
 import { AuthContext } from "../../context/authContext";
+import S3 from 'react-aws-s3';
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export default function WritePost() {
   const { currentUser } = useContext(AuthContext);
@@ -23,46 +25,21 @@ export default function WritePost() {
   const [gridNumber, setGridNumber] = useState(0)
   const navigate = useNavigate();
 
+  const config = {
+    bucketName: process.env.REACT_APP_BUCKET_NAME,
+    region: process.env.REACT_APP_REGION,
+    accessKeyId: process.env.REACT_APP_ACCESS,
+    secretAccessKey: process.env.REACT_APP_SECRET,
+}
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setImageFile(file);
-    if (file) {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const result = reader.result;
-      setImageURL(result); // Set the result as the imageURL
-      console.log(result);
-    };
-
-    
-      reader.readAsDataURL(file);
-    }
-    else
-    {
-      setImageURL("")
-    }
   };
 
   const handleImageUpload2 = (event) => {
     const file = event.target.files[0];
     setImageFile2(file);
-    if (file) {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const result = reader.result;
-      setImageURL2(result); // Set the result as the imageURL
-      console.log(result);
-    };
-
-    
-      reader.readAsDataURL(file);
-    }
-    else
-    {
-      setImageURL2("")
-    }
   };
 
   useEffect(() => {
@@ -73,35 +50,30 @@ export default function WritePost() {
 
   const upload = async () => {
     try {
-      const formData = new FormData();
-      console.log(imageFile);
-      formData.append("file", imageFile);
-
-      const res = await axios.post("https://soundcheck-backend.onrender.com/api/upload", formData);
-      return res.data;
+      const ReactS3Client = new S3(config);
+      const data = await ReactS3Client.uploadFile(imageFile, imageFile.name);
+      return data.location;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      throw err;
     }
   };
 
   const upload2 = async () => {
     try {
-      const formData = new FormData();
-      console.log(imageFile2);
-      formData.append("file", imageFile2);
-
-      const res = await axios.post("https://soundcheck-backend.onrender.com/api/upload", formData);
-      return res.data;
+      const ReactS3Client = new S3(config);
+      const data = await ReactS3Client.uploadFile(imageFile2, imageFile2.name);
+      return data.location;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      throw err;
     }
   };
 
   const handlePublish = async () => {
     const imgUrl = await upload();
     const imgUrl2 = await upload2();
-  
-    try {
+    try { 
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
   
@@ -123,7 +95,7 @@ export default function WritePost() {
   
   const handleSave = async () => {
     const imgUrl = await upload();
-  
+    const imgUrl2 = await upload2();
     try {
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
@@ -134,6 +106,7 @@ export default function WritePost() {
         title,
         desc: JSON.stringify(rawContentState),
         img: imgUrl || "",
+        homeImg: imgUrl2 || "",
         date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         gridNumber: gridNumber
       });
@@ -197,30 +170,6 @@ export default function WritePost() {
               >
                 Upload Cover Picture
               </Text>
-              {imageURL && (
-                <Image
-                  src={imageURL}
-                  width={350}
-                  height={275}
-                  css={{
-                    w: "100%",
-                    h: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
-              {!imageURL && (
-                <Image
-                  src={Grey}
-                  width={350}
-                  height={275}
-                  css={{
-                    w: "100%",
-                    h: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
             </Col>
           </Grid>
           <input type="file" label="Upload Cover Picture" onChange={handleImageUpload} style={{ padding: "12px" }} />
@@ -244,30 +193,6 @@ export default function WritePost() {
               >
                 Upload Home Screen Picture
               </Text>
-              {imageURL2 && (
-                <Image
-                  src={imageURL2}
-                  width={350}
-                  height={275}
-                  css={{
-                    w: "100%",
-                    h: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
-              {!imageURL2 && (
-                <Image
-                  src={Grey}
-                  width={350}
-                  height={275}
-                  css={{
-                    w: "100%",
-                    h: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
             </Col>
           </Grid>
           <input type="file" label="Upload Home Screen Picture" onChange={handleImageUpload2} style={{ padding: "12px" }} />

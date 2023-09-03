@@ -1,7 +1,7 @@
 import { Grid, Image, Row, Link, Col, Text, Input, Button } from "@nextui-org/react";
 import './footer.css';
 import React from "react";
-import Logo from '../../assets/TempLogo.jpeg';
+import Logo from '../../assets/TEMPLOGO.jpeg';
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaBorderStyle, } from 'react-icons/fa';
 
 export default function Footer() {

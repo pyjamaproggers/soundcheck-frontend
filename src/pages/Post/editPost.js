@@ -8,6 +8,8 @@ import axios from 'axios';
 import moment from 'moment/moment';
 import Grey from '../../assets/Grey.jpeg';
 import { AuthContext } from '../../context/authContext';
+import S3 from 'react-aws-s3';
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export default function EditPost() {
   const { currentUser } = useContext(AuthContext);
@@ -25,54 +27,27 @@ export default function EditPost() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [initialImage, setInitialImg] = useState(null);
 
+  const config = {
+    bucketName: process.env.REACT_APP_BUCKET_NAME,
+    region: process.env.REACT_APP_REGION,
+    accessKeyId: process.env.REACT_APP_ACCESS,
+    secretAccessKey: process.env.REACT_APP_SECRET,
+}
+
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setImageFile(file);
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const result = reader.result;
-      setImageURL(result); // Set the result as the imageURL
-      console.log(result);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    setImageFile(file?file:null);
   };
 
   const handleImageUpload2 = (event) => {
     const file = event.target.files[0];
-    setImageFile2(file);
-    if (file) {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const result = reader.result;
-      setImageURL2(result); // Set the result as the imageURL
-      console.log(result);
-    };
-
-    
-      reader.readAsDataURL(file);
-    }
-    else
-    {
-      setImageURL2("")
-    }
+    setImageFile2(file?file:null);
   };
 
   const fetchPost = async () => {
     try {
       const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
-      console.log('RESP' + response.data.title);
       setPost(response.data);
-      if (response.data.img) {
-        setImageURL(`${response.data.img.imageUrl}`);
-        setImageURL2(`${response.data.homeImg.imageUrl}`);
-        console.log(post.title);
-        setInitialImg(response.data.img);
-      }
     } catch (error) {
       console.log(error);
     }
@@ -86,30 +61,35 @@ export default function EditPost() {
   }, [imageFile, imageFile2]);
 
   const upload = async () => {
-    if (!imageFile) return null;
+    if(imageFile){
     try {
-      const formData = new FormData();
-      console.log(imageFile);
-      formData.append('file', imageFile);
-
-      const res = await axios.post('https://soundcheck-backend.onrender.com/api/upload', formData);
-      return res.data;
+      const ReactS3Client = new S3(config);
+      const data = await ReactS3Client.uploadFile(imageFile, imageFile.name);
+      return data.location;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      throw err;
     }
+  }
+  else{
+    return imageURL
+  }
   };
 
   const upload2 = async () => {
+    if(imageFile2){
     try {
-      const formData = new FormData();
-      console.log(imageFile2);
-      formData.append("file", imageFile2);
-
-      const res = await axios.post("https://soundcheck-backend.onrender.com/api/upload", formData);
-      return res.data;
+      const ReactS3Client = new S3(config);
+      const data = await ReactS3Client.uploadFile(imageFile2, imageFile2.name);
+      return data.location;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+      throw err;
     }
+  }
+  else{
+    return imageURL2
+  }
   };
 
   const handlePublish = async () => {
@@ -117,8 +97,6 @@ export default function EditPost() {
     const imgUrl2 = await upload2();
     const contentState = editorState.getCurrentContent();
     const rawContentState = convertToRaw(contentState);
-
-    if (imgUrl) {
       try {
         await axios.put(
           `https://soundcheck-backend.onrender.com/api/posts/${id}`,
@@ -138,33 +116,14 @@ export default function EditPost() {
       } catch (err) {
         console.log(err);
       }
-    } else {
-      try {
-        await axios.put(
-          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
-          {
-            ...post,
-            username: currentUser.username,
-            title,
-            desc: JSON.stringify(rawContentState),
-            date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
-            isdraft: 'n',
-          },
-          { withCredentials: true }
-        );
-        navigate('/');
-      } catch (err) {
-        console.log(err);
-      }
-    }
   };
 
   const handleSave = async () => {
     const imgUrl = await upload();
+    const imgUrl2 = await upload2();
     const contentState = editorState.getCurrentContent();
     const rawContentState = convertToRaw(contentState);
 
-    if (imgUrl) {
       try {
         await axios.put(
           `https://soundcheck-backend.onrender.com/api/posts/${id}`,
@@ -173,6 +132,7 @@ export default function EditPost() {
             title,
             desc: JSON.stringify(rawContentState),
             img: imgUrl || '', // Use the imgUrl if available, otherwise an empty string
+            homeImg: imgUrl2 || "",
             date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
             isdraft: 'y',
             gridNumber: gridNumber
@@ -182,33 +142,20 @@ export default function EditPost() {
       } catch (err) {
         console.log(err);
       }
-    } else {
-      try {
-        await axios.put(
-          `https://soundcheck-backend.onrender.com/api/posts/${id}`,
-          {
-            ...post,
-            username: currentUser.username,
-            title,
-            desc: JSON.stringify(rawContentState),
-            date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
-            isdraft: 'y',
-            gridNumber: gridNumber
-          },
-          { withCredentials: true }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    
   };
 
   useEffect(() => {
     if (post) {
       setTitle(post.title);
+      setGridNumber(post.gridNumber)
       setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(post.desc))));
       if (post.img) {
-        setImageURL(`${post.img.imageUrl}`);
+        setImageURL(`${post.img}`);
+      }
+      if(post.homeImg)
+      {
+        setImageURL2(`${post.homeImg}`)
       }
     }
   }, [post, initialImage]);
@@ -352,6 +299,7 @@ export default function EditPost() {
             clearable
             css={{ marginBottom: "48px", position: "relative", mt: "24px" }}
             onChange={(e) => setGridNumber(e.target.value)}
+            initialValue={gridNumber}
           />
           <Row
             css={{
