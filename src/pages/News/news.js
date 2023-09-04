@@ -211,7 +211,7 @@ export default function News() {
                           borderColor: '$red200',
                         }}
                       >
-                        {post.title}
+                        {post.title.toUpperCase()}
                       </Text>
                       <Text
                         className="multiline-ellipsis-2"
@@ -366,7 +366,7 @@ export default function News() {
                         borderColor: '$red200',
                       }}
                     >
-                      {post.title}
+                      {post.title.toUpperCase()}
                     </Text>
                     <Text
                       className="multiline-ellipsis-2"
