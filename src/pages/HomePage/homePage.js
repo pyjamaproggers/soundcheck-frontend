@@ -86,6 +86,9 @@ export default function HomeScreen() {
                                     src={posts[1].homeImg}
                                     objectFit="cover"
                                     className="image"
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[1]._id}`);
+                                      }}
                                 />
                                 <div className="card">
                                     <Col css={{
@@ -142,6 +145,9 @@ export default function HomeScreen() {
                                 <Image
                                     css={{ height: "25vh", width: "100%" }}
                                     src={posts[3].homeImg}
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[3]._id}`);
+                                      }}
                                     objectFit="cover"
                                     className="image"
                                 />
@@ -214,6 +220,9 @@ export default function HomeScreen() {
                                         width: "100%",
                                     }}
                                     src={posts[0].homeImg}
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[0]._id}`);
+                                      }}
                                     objectFit="cover"
                                     className="image"
                                 />
@@ -281,6 +290,9 @@ export default function HomeScreen() {
                                 <Image
                                     css={{ height: "25vh", width: "100%", }}
                                     src={posts[2].homeImg}
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[2]._id}`);
+                                      }}
                                     objectFit="cover"
                                     className="image"
                                 />
@@ -338,6 +350,9 @@ export default function HomeScreen() {
                                 <Image
                                     css={{ height: "25vh", width: "100%" }}
                                     src={posts[4].homeImg}
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[4]._id}`);
+                                      }}
                                     objectFit="cover"
                                     className="image"
                                 />
@@ -404,6 +419,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[5].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[5]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -462,6 +480,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[6].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[6]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -520,6 +541,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[7].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[7]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -578,6 +602,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[8].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[8]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -636,6 +663,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[9].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[9]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -694,6 +724,9 @@ export default function HomeScreen() {
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
                                 src={posts[10].homeImg}
+                                onClick={() => {
+                                    navigate(`/posts/${posts[10]._id}`);
+                                  }}
                                 objectFit="cover"
                                 className="image"
                             />
@@ -751,9 +784,12 @@ export default function HomeScreen() {
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
-                                src={Temp11}
-                                objectFit="cover"
-                                className="image"
+                                src={posts[11].homeImg}
+                                    objectFit="cover"
+                                    className="image"
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[11]._id}`);
+                                      }}
                             />
                             <div className="card">
                                 <Col css={{
@@ -774,7 +810,7 @@ export default function HomeScreen() {
                                             fontWeight: '$semibold',
                                             backgroundColor: '$gray400',
                                         }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        {posts[11].title}
                                     </Text>
                                     <Row css={{
                                         w: 'max-content',
@@ -809,9 +845,12 @@ export default function HomeScreen() {
                             css={{ height: "25vh", width: "25%", }}>
                             <Image
                                 css={{ height: "25vh", width: "100%", }}
-                                src={AB171}
-                                objectFit="cover"
-                                className="image"
+                                src={posts[12].homeImg}
+                                    objectFit="cover"
+                                    className="image"
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[12]._id}`);
+                                      }}
                             />
                             <div className="card">
                                 <Col css={{
@@ -832,7 +871,7 @@ export default function HomeScreen() {
                                             fontWeight: '$semibold',
                                             backgroundColor: '$gray400',
                                         }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
+                                        {posts[12].title}
                                     </Text>
                                     <Row css={{
                                         w: 'max-content',
@@ -926,6 +965,9 @@ export default function HomeScreen() {
                                 <Image
                                     css={{ height: "25vh", width: "100%", }}
                                     src={posts[1].homeImg}
+                                    onClick={() => {
+                                        navigate(`/posts/${posts[1]._id}`);
+                                      }}
                                     objectFit="cover"
                                     className="image"
                                 />

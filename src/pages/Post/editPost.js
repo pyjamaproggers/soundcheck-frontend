@@ -148,6 +148,7 @@ export default function EditPost() {
   useEffect(() => {
     if (post) {
       setTitle(post.title);
+      console.log(post.gridNumber)
       setGridNumber(post.gridNumber)
       setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(post.desc))));
       if (post.img) {
