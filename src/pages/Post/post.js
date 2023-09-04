@@ -6,7 +6,7 @@ import './post.css';
 import Divine from '../../assets/Divine.jpeg';
 import { Scroll } from 'react-scroll-component';
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { convertFromRaw, EditorState, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 
@@ -17,6 +17,36 @@ export default function Post() {
   const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
   const [post, setPost] = useState(null);
   const id = location.pathname.split("/")[2];
+  const [publishedPosts, setPublishedPosts] = useState();
+  const [dateLatest, setDateLatest] = useState(true);
+  const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
+
+
+  const segregatePosts = async () => {
+    const published = posts.filter((Post) => Post.isdraft === 'n' && Post._id !== id);
+    setPublishedPosts(published);
+    console.log(published);
+  };
+  
+  const fetchPosts = async () => {
+    console.log(post)
+    try {
+      const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
+      setPosts(response.data);
+      await segregatePosts(); // Call segregatePosts after setting the posts state
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    segregatePosts();
+  }, [posts]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, [post]);
 
   const setDate = () => {
     const current = new Date();
@@ -66,6 +96,10 @@ export default function Post() {
     fetchPost();
     setDate();
   }, []);
+  useEffect(() => {
+    fetchPost();
+    setDate();
+  }, [id]);
 
   const renderPostContent = () => {
     if (!post) {
@@ -79,7 +113,6 @@ export default function Post() {
     
     function extractTwitterEmbed()
     {
-      console.log(htmlContent)
       var mySubString = htmlContent.substring(
         htmlContent.indexOf(`&lt;blockquote class="twitter-tweet"`), 
         htmlContent.indexOf("&lt;/script&gt;")+15
@@ -226,11 +259,30 @@ export default function Post() {
             </Grid.Container>
           </Scroll>
 
-          <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right" }}>
+          { publishedPosts && publishedPosts.length>4 && 
+          <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight:"20px" }}>
             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' }}>
               MORE BY SoundCheck™
             </Text>
+                <Grid css={{width:'100%', cursor: 'pointer'}} onClick={() => {
+              navigate(`/posts/${publishedPosts[publishedPosts.length -1]._id}`);
+            }}>
+            <Row css={{
+              padding: '0px 4px 0px 0px',
+              borderStyle: 'solid',
+              borderWidth: '2px',
+              borderColor: 'rgb(20,20,20)',
+              margin: '8px',
+            }} >
+              <Image src={publishedPosts[publishedPosts.length -1].homeImg} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
+              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' , marginLeft:"5px"}}>
+                {publishedPosts[publishedPosts.length -1].title}
+              </Text>
+            </Row></Grid>
 
+            <Grid css={{width:'100%', cursor: 'pointer'}} onClick={() => {
+              navigate(`/posts/${publishedPosts[publishedPosts.length -2]._id}`);
+            }}>
             <Row css={{
               padding: '0px 4px 0px 0px',
               borderStyle: 'solid',
@@ -238,12 +290,15 @@ export default function Post() {
               borderColor: 'rgb(20,20,20)',
               margin: '8px',
             }}>
-              <Image src={Divine} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
-              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' }}>
-                DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE
+              <Image src={publishedPosts[publishedPosts.length -2].homeImg} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
+              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' , marginLeft:"5px" }}>
+              {publishedPosts[publishedPosts.length -2].title}
               </Text>
             </Row>
-
+            </Grid>
+            <Grid css={{width:'100%', cursor: 'pointer'}} onClick={() => {
+              navigate(`/posts/${publishedPosts[publishedPosts.length -3]._id}`);
+            }}>
             <Row css={{
               padding: '0px 4px 0px 0px',
               borderStyle: 'solid',
@@ -251,12 +306,15 @@ export default function Post() {
               borderColor: 'rgb(20,20,20)',
               margin: '8px',
             }}>
-              <Image src={Divine} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
-              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' }}>
-                DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE
+              <Image src={publishedPosts[publishedPosts.length -3].homeImg} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
+              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft:"5px" }}>
+              {publishedPosts[publishedPosts.length -3].title}
               </Text>
             </Row>
-
+            </Grid>
+            <Grid css={{width:'100%', cursor: 'pointer'}} onClick={() => {
+              navigate(`/posts/${publishedPosts[publishedPosts.length -4]._id}`);
+            }} >
             <Row css={{
               padding: '0px 4px 0px 0px',
               borderStyle: 'solid',
@@ -264,25 +322,12 @@ export default function Post() {
               borderColor: 'rgb(20,20,20)',
               margin: '8px',
             }}>
-              <Image src={Divine} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
-              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' }}>
-                DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE
+              <Image src={publishedPosts[publishedPosts.length -4].homeImg} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
+              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft:"5px" }}>
+              {publishedPosts[publishedPosts.length -4].title}
               </Text>
-            </Row>
-
-            <Row css={{
-              padding: '0px 4px 0px 0px',
-              borderStyle: 'solid',
-              borderWidth: '2px',
-              borderColor: 'rgb(20,20,20)',
-              margin: '8px',
-            }}>
-              <Image src={Divine} width={'30vw'} css={{ height: '91px', objectFit: 'cover' }} />
-              <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px' }}>
-                DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE DUMMY ARTICLE TITLE
-              </Text>
-            </Row>
-          </Grid.Container>
+            </Row></Grid>
+          </Grid.Container>}
         </Grid.Container>
       </div>
       <div className="mobile">
