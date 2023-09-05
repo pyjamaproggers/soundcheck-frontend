@@ -22,8 +22,8 @@ export default function EditPost() {
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
   const [post, setPost] = useState(null);
-  const [title, setTitle] = useState('');
-  const [gridNumber, setGridNumber] = useState(0)
+  const [title, setTitle] = useState(null);
+  const [gridNumber, setGridNumber] = useState(null)
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [initialImage, setInitialImg] = useState(null);
 
@@ -48,6 +48,7 @@ export default function EditPost() {
     try {
       const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
       setPost(response.data);
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -179,14 +180,14 @@ export default function EditPost() {
           >
             What would you like to write about today, {currentUser.username}?
           </Text>
-          <Input
+          {title && <Input
             labelPlaceholder="Title"
             bordered
             clearable
             css={{ marginBottom: '48px', position: 'relative', mt: '24px' }}
             onChange={(e) => setTitle(e.target.value)}
             initialValue={title}
-          />
+          />}
           <Grid alignItems="center" css={{ marginBottom: '2rem', position: 'relative' }}>
             <Editor
               editorState={editorState}
@@ -294,14 +295,14 @@ export default function EditPost() {
             </Col>
           </Grid>
           <input type="file" label="Upload Home Screen Picture" onChange={handleImageUpload2} style={{ padding: "12px" }} />
-          <Input
+          { gridNumber && <Input
             labelPlaceholder="Home Page Grid Number"
             bordered
             clearable
             css={{ marginBottom: "48px", position: "relative", mt: "24px" }}
             onChange={(e) => setGridNumber(e.target.value)}
             initialValue={gridNumber}
-          />
+          />}
           <Row
             css={{
               jc: 'space-evenly',
