@@ -54,8 +54,13 @@ function Header() {
                 <Navbar.Content showIn={'xs'}>
                     <Image css={{
                         width: '152px',
-                        height: '76px'
+                        height: '66px'
                     }} src={Logo} />
+                </Navbar.Content>
+
+                <Navbar.Content showIn={'xs'} css={{
+                    width: '30px'
+                }}>
                 </Navbar.Content>
 
                 <Navbar.Content hideIn={'xs'}>
