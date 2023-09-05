@@ -22,34 +22,38 @@ import { useNavigate } from "react-router-dom";
 export default function HomeScreen() {
 
     const [fetching, setFetching] = useState(true);
-    const [publishedPosts, setPublishedPosts] = useState();
+    const [gridPosts, setGridPosts] = useState();
     const [dateLatest, setDateLatest] = useState(true);
     const [posts, setPosts] = useState(null);
     const navigate = useNavigate();
     const [postsFound, setPostsFound] = useState(false)
-  
+    
 
     const fetchPosts = async () => {
-      try {
-        const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
-        console.log(response.data);
-        setPosts(response.data);
-        setFetching(false);
-      } catch (error) {
-        console.log(error);
-        setFetching(false);
-      }
-    };
+        try {
+          const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
+          const allPosts = response.data;
+      
+          // Filter and sort the posts
+          const filteredPosts = allPosts
+            .filter(post => post.gridNumber >= 1 && post.gridNumber <= 13)
+            .sort((a, b) => a.gridNumber - b.gridNumber);
+      
+          console.log(filteredPosts);
+          setPosts(filteredPosts);
+          setFetching(false);
+        } catch (error) {
+          console.log(error);
+          setFetching(false);
+        }
+      };
+      
   
     useEffect(() => {
       setFetching(true);
       fetchPosts();
     }, []);
   
-    // useEffect(() => {
-    //   segregatePosts();
-    // }, [posts]);
-
     return (
         <div className="home">
 
