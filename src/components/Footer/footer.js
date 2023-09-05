@@ -116,7 +116,7 @@ export default function Footer() {
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'top',
-                    marginTop: '120px',
+                    marginTop: '24px',
                 }}
             >
                 <Grid

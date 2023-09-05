@@ -124,15 +124,13 @@ export default function Dashboard() {
         setAppleMusicLinks(applemusic)
     }
 
-    const fetchPosts = async () =>
-    {
-        try{
+    const fetchPosts = async () => {
+        try {
             const response = await axios.get("https://soundcheck-backend.onrender.com/api/posts");
-            console.log("RESP"+response.data)
+            console.log("RESP" + response.data)
             setPosts(response.data);
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
         }
     }
@@ -144,25 +142,22 @@ export default function Dashboard() {
             SegregatePlaylists()
             setFetching(false)
         }, 2000)
-      }, [posts]);
+    }, [posts]);
 
     useEffect(() => {
         setFetching(true)
         fetchPosts()
     }, [])
 
-    async function deletePost(id)
-    {
-        try{
+    async function deletePost(id) {
+        try {
             console.log(id)
             const response = await axios.delete(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
-            if(response.status==200)
-            {
+            if (response.status == 200) {
                 console.log("Post Deleted Successfully!")
             }
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
         }
     }
@@ -295,7 +290,7 @@ export default function Dashboard() {
                                                         }}>
                                                             <Col css={{
                                                                 '@smMin': {
-                                                                    w: "275px",
+                                                                    w: "250px",
                                                                 },
                                                                 '@smMax': {
                                                                     w: "100px",
@@ -331,28 +326,28 @@ export default function Dashboard() {
                                                                         </Text>
                                                                     </Button>
                                                                 </Row>
-                                                                
-                                                            </Col>                                                      
+
+                                                            </Col>
                                                         </Row>
                                                     </Card.Footer>
                                                 </Card>
                                                 <Button flat auto color="error"
-                                                        css={{
-                                                            m: '12px',
-                                                            zIndex: 1
-                                                        }}
-                                                        onPress={() => {
-                                                            deletePost(post._id)
-                                                        }}>
-                                                        <Text
-                                                            css={{ color: "inherit" }}
-                                                            size={12}
-                                                            weight="bold"
-                                                            transform="uppercase"
-                                                        >
-                                                            Delete
-                                                        </Text>
-                                                    </Button>
+                                                    css={{
+                                                        m: '12px',
+                                                        zIndex: 1
+                                                    }}
+                                                    onPress={() => {
+                                                        deletePost(post._id)
+                                                    }}>
+                                                    <Text
+                                                        css={{ color: "inherit" }}
+                                                        size={12}
+                                                        weight="bold"
+                                                        transform="uppercase"
+                                                    >
+                                                        Delete
+                                                    </Text>
+                                                </Button>
                                             </Grid>
                                         ))}
                                     </>
@@ -649,12 +644,12 @@ export default function Dashboard() {
                                                     setNewSpotifyLink('')
                                                     setNewAppleMusicLink('')
                                                 }}>
-                                                <Row 
-                                                css={{
-                                                    alignItems: 'center',
-                                                    jc: 'space-evenly'
-                                                }}>
-                                                    <Image src={SpotifyIcon} css={{w: '30px', h: '30px'}}/>
+                                                <Row
+                                                    css={{
+                                                        alignItems: 'center',
+                                                        jc: 'space-evenly'
+                                                    }}>
+                                                    <Image src={SpotifyIcon} css={{ w: '30px', h: '30px' }} />
                                                     <Text
                                                         css={{ color: "inherit", pl: '4px' }}
                                                         size={12}
@@ -679,12 +674,12 @@ export default function Dashboard() {
                                                     setNewSpotifyLink('')
                                                     setNewAppleMusicLink('')
                                                 }}>
-                                                <Row 
-                                                css={{
-                                                    alignItems: 'center',
-                                                    jc: 'space-evenly'
-                                                }}>
-                                                    <Image src={AppleMusicIcon} css={{w: '35px', h: '35px'}}/>
+                                                <Row
+                                                    css={{
+                                                        alignItems: 'center',
+                                                        jc: 'space-evenly'
+                                                    }}>
+                                                    <Image src={AppleMusicIcon} css={{ w: '35px', h: '35px' }} />
                                                     <Text
                                                         css={{ color: "inherit", pl: '4px' }}
                                                         size={12}
@@ -705,7 +700,7 @@ export default function Dashboard() {
                                                     css={{
                                                         m: '24px'
                                                     }}
-                                                    onChange={handleSpotifyChange} clearable/>
+                                                    onChange={handleSpotifyChange} clearable />
                                                 {
                                                     newSpotifyLink &&
                                                     <Grid.Container >
@@ -754,7 +749,7 @@ export default function Dashboard() {
                                                     css={{
                                                         m: '24px'
                                                     }}
-                                                    onChange={handleAppleMusicChange} clearable/>
+                                                    onChange={handleAppleMusicChange} clearable />
                                                 {
                                                     newAppleMusicLink &&
                                                     <Grid.Container >

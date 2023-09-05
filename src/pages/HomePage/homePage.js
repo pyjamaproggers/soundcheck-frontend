@@ -1,4 +1,4 @@
-import { Grid, Image, Text, Container, Col, Card, Row, Button, Input } from "@nextui-org/react";
+import { Grid, Image, Text, Container, Col, Card, Row, Button, Input, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './homePage.css'
 import Divine from '../../assets/Divine.jpeg'
@@ -27,2210 +27,833 @@ export default function HomeScreen() {
     const [posts, setPosts] = useState(null);
     const navigate = useNavigate();
     const [postsFound, setPostsFound] = useState(false)
-    
+
+    const gridFilledD = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    const gridFilledM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //13 - 0s represent grid is empty, 1 represents grid is filled with the first article found of that grid number
+
 
     const fetchPosts = async () => {
         try {
-          const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
-          const allPosts = response.data;
-      
-          // Filter and sort the posts
-          const filteredPosts = allPosts
-            .filter(post => post.gridNumber >= 1 && post.gridNumber <= 13)
-            .sort((a, b) => a.gridNumber - b.gridNumber);
-      
-          console.log(filteredPosts);
-          setPosts(filteredPosts);
-          setFetching(false);
+            const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
+            const allPosts = response.data;
+
+            // Filter and sort the posts
+            const filteredPosts = allPosts
+                .filter(post => post.gridNumber >= 1 && post.gridNumber <= 13)
+                .sort((a, b) => a.gridNumber - b.gridNumber);
+
+            console.log(filteredPosts);
+            setPosts(filteredPosts);
+            setFetching(false);
         } catch (error) {
-          console.log(error);
-          setFetching(false);
+            console.log(error);
+            setFetching(false);
         }
-      };
-      
-  
+    };
+
+
     useEffect(() => {
-      setFetching(true);
-      fetchPosts();
+        setFetching(true);
+        fetchPosts();
     }, []);
-  
+
     return (
         <div className="home">
+            {fetching &&
+                <Grid.Container css={{
+                    w: '100vw',
+                    jc: 'center',
+                    h: '100vh',
+                    alignItems: 'center'
+                }}>
+                    <Loading size="xl" color={'white'} />
+                </Grid.Container>
+            }
 
             <div className="desktop">
+
                 {
                     posts &&
                     <Grid.Container
-                    direction="column"
-                    css={{
-                        height: "100vh",
-                        width: "95%",
-                        jc: 'center'
-                    }}
-
-                >
-                    {/* First Row - small, big, small */}
-                    
-                    <Grid.Container
-                        css={{ height: "50vh", width: "100%", position: "relative" }}
-                        direction="row"
+                        direction="column"
+                        css={{
+                            height: "100vh",
+                            width: "95%",
+                            jc: 'center',
+                            marginBottom: '120px'
+                        }}
                     >
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "50vh",
-                                width: "25%",
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <Grid className="left-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%", }}
-                                    src={posts[1].homeImg}
-                                    objectFit="cover"
-                                    className="image"
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[1]._id}`);
-                                      }}
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[1].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-
-                            <Grid className="left-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%" }}
-                                    src={posts[3].homeImg}
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[3]._id}`);
-                                      }}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[3].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-
-                        </Grid.Container>
+                        {/* First Row - small, big, small */}
 
                         <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "50vh",
-                                width: "50%",
-                                flexDirection: 'column',
-
-                            }}
+                            css={{ height: "50vh", width: "100%", position: "relative" }}
+                            direction="row"
                         >
-                            <Grid className="container"
-                                css={{ height: "50vh", width: "100%", }}>
-                                <Image
-                                    css={{
-                                        height: "50vh",
-                                        width: "100%",
-                                    }}
-                                    src={posts[0].homeImg}
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[0]._id}`);
-                                      }}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[0].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
+
+                            <Grid.Container
+                                direction="column"
+                                css={{
+                                    height: "50vh",
+                                    width: "25%",
+                                    flexDirection: 'column'
+                                }}
+                            >
+
+                                {posts.map(post => {
+                                    if (post.gridNumber == 2) {
+                                        if (gridFilledD[post.gridNumber - 1] == 0) {
+                                            gridFilledD[post.gridNumber - 1] = 1
+                                            return (
+                                                <Grid className="left-container"
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Image
+                                                        css={{ height: "25vh", width: "100%", }}
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                        className="image"
+                                                        onClick={() => {
+                                                            navigate(`/posts/${post._id}`);
+                                                        }}
+                                                    />
+                                                    <div className="card">
+                                                        <Col css={{
+                                                            backgroundColor: '$gray400',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text
+                                                                css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$xs'
+                                                                    },
+                                                                    padding: '1.5% 2.5% 1% 2.5%',
+                                                                    fontWeight: '$semibold',
+                                                                    backgroundColor: '$gray400',
+                                                                }}>
+                                                                {post.title}
+                                                            </Text>
+                                                            <Row css={{
+                                                                w: 'max-content',
+                                                                padding: '1% 0% 1.5% 0%',
+                                                                alignItems: 'center'
+                                                            }} onClick={() => {
+                                                                navigate(`/posts/${post._id}`);
+                                                            }}>
+                                                                <Text css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$sm'
+                                                                    },
+                                                                    color: 'white',
+                                                                    paddingRight: '4px',
+                                                                    '&:hover': {
+                                                                        textDecoration: 'underline'
+                                                                    },
+                                                                    fontWeight: '$medium'
+                                                                }}
+                                                                >
+                                                                    READ MORE
+                                                                </Text>
+                                                                <BsArrowRight
+                                                                    size={'16px'}
+                                                                    color="white" />
+                                                            </Row>
+                                                        </Col>
+                                                    </div>
+                                                </Grid>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                                {posts.map(post => {
+                                    if (post.gridNumber == 4) {
+                                        if (gridFilledD[post.gridNumber - 1] == 0) {
+                                            gridFilledD[post.gridNumber - 1] = 1
+                                            return (
+                                                <Grid className="left-container"
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Image
+                                                        css={{ height: "25vh", width: "100%", }}
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                        className="image"
+                                                        onClick={() => {
+                                                            navigate(`/posts/${post._id}`);
+                                                        }}
+                                                    />
+                                                    <div className="card">
+                                                        <Col css={{
+                                                            backgroundColor: '$gray400',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text
+                                                                css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$xs'
+                                                                    },
+                                                                    padding: '1.5% 2.5% 1% 2.5%',
+                                                                    fontWeight: '$semibold',
+                                                                    backgroundColor: '$gray400',
+                                                                }}>
+                                                                {post.title}
+                                                            </Text>
+                                                            <Row css={{
+                                                                w: 'max-content',
+                                                                padding: '1% 0% 1.5% 0%',
+                                                                alignItems: 'center'
+                                                            }} onClick={() => {
+                                                                navigate(`/posts/${post._id}`);
+                                                            }}>
+                                                                <Text css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$sm'
+                                                                    },
+                                                                    color: 'white',
+                                                                    paddingRight: '4px',
+                                                                    '&:hover': {
+                                                                        textDecoration: 'underline'
+                                                                    },
+                                                                    fontWeight: '$medium'
+                                                                }}
+                                                                >
+                                                                    READ MORE
+                                                                </Text>
+                                                                <BsArrowRight
+                                                                    size={'16px'}
+                                                                    color="white" />
+                                                            </Row>
+                                                        </Col>
+                                                    </div>
+                                                </Grid>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                            </Grid.Container>
+
+                            <Grid.Container
+                                direction="column"
+                                css={{
+                                    height: "50vh",
+                                    width: "50%",
+                                    flexDirection: 'column',
+
+                                }}
+                            >
+                                {posts.map(post => {
+                                    if (post.gridNumber == 1) {
+                                        if (gridFilledD[post.gridNumber - 1] == 0) {
+                                            gridFilledD[post.gridNumber - 1] = 1
+
+                                            return (
+                                                <Grid className="container"
+                                                    css={{ height: "50vh", width: "100%", }}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Image
+                                                        css={{ height: "50vh", width: "100%", }}
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                        className="image"
+                                                        onClick={() => {
+                                                            navigate(`/posts/${post._id}`);
+                                                        }}
+                                                    />
+                                                    <div className="card">
+                                                        <Col css={{
+                                                            backgroundColor: '$gray400',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text
+                                                                css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$xs'
+                                                                    },
+                                                                    padding: '1.5% 2.5% 1% 2.5%',
+                                                                    fontWeight: '$semibold',
+                                                                    backgroundColor: '$gray400',
+                                                                }}>
+                                                                {post.title}
+                                                            </Text>
+                                                            <Row css={{
+                                                                w: 'max-content',
+                                                                padding: '1% 0% 1.5% 0%',
+                                                                alignItems: 'center'
+                                                            }} onClick={() => {
+                                                                navigate(`/posts/${post._id}`);
+                                                            }}>
+                                                                <Text css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$sm'
+                                                                    },
+                                                                    color: 'white',
+                                                                    paddingRight: '4px',
+                                                                    '&:hover': {
+                                                                        textDecoration: 'underline'
+                                                                    },
+                                                                    fontWeight: '$medium'
+                                                                }}
+                                                                >
+                                                                    READ MORE
+                                                                </Text>
+                                                                <BsArrowRight
+                                                                    size={'16px'}
+                                                                    color="white" />
+                                                            </Row>
+                                                        </Col>
+                                                    </div>
+                                                </Grid>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                            </Grid.Container>
+
+                            <Grid.Container
+                                direction="column"
+                                css={{
+                                    height: "50vh",
+                                    width: "25%",
+                                    flexDirection: 'column'
+                                }}
+                            >
+                                {posts.map(post => {
+                                    if (post.gridNumber == 3) {
+                                        if (gridFilledD[post.gridNumber - 1] == 0) {
+                                            gridFilledD[post.gridNumber - 1] = 1
+                                            return (
+                                                <Grid className="right-container"
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Image
+                                                        css={{ height: "25vh", width: "100%", }}
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                        className="image"
+                                                        onClick={() => {
+                                                            navigate(`/posts/${post._id}`);
+                                                        }}
+                                                    />
+                                                    <div className="card">
+                                                        <Col css={{
+                                                            backgroundColor: '$gray400',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text
+                                                                css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$xs'
+                                                                    },
+                                                                    padding: '1.5% 2.5% 1% 2.5%',
+                                                                    fontWeight: '$semibold',
+                                                                    backgroundColor: '$gray400',
+                                                                }}>
+                                                                {post.title}
+                                                            </Text>
+                                                            <Row css={{
+                                                                w: 'max-content',
+                                                                padding: '1% 0% 1.5% 0%',
+                                                                alignItems: 'center'
+                                                            }} onClick={() => {
+                                                                navigate(`/posts/${post._id}`);
+                                                            }}>
+                                                                <Text css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$sm'
+                                                                    },
+                                                                    color: 'white',
+                                                                    paddingRight: '4px',
+                                                                    '&:hover': {
+                                                                        textDecoration: 'underline'
+                                                                    },
+                                                                    fontWeight: '$medium'
+                                                                }}
+                                                                >
+                                                                    READ MORE
+                                                                </Text>
+                                                                <BsArrowRight
+                                                                    size={'16px'}
+                                                                    color="white" />
+                                                            </Row>
+                                                        </Col>
+                                                    </div>
+                                                </Grid>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                                {posts.map(post => {
+                                    if (post.gridNumber == 5) {
+                                        if (gridFilledD[post.gridNumber - 1] == 0) {
+                                            gridFilledD[post.gridNumber - 1] = 1
+                                            return (
+                                                <Grid className="right-container"
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Image
+                                                        css={{ height: "25vh", width: "100%", }}
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                        className="image"
+                                                        onClick={() => {
+                                                            navigate(`/posts/${post._id}`);
+                                                        }}
+                                                    />
+                                                    <div className="card">
+                                                        <Col css={{
+                                                            backgroundColor: '$gray400',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text
+                                                                css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$xs'
+                                                                    },
+                                                                    padding: '1.5% 2.5% 1% 2.5%',
+                                                                    fontWeight: '$semibold',
+                                                                    backgroundColor: '$gray400',
+                                                                }}>
+                                                                {post.title}
+                                                            </Text>
+                                                            <Row css={{
+                                                                w: 'max-content',
+                                                                padding: '1% 0% 1.5% 0%',
+                                                                alignItems: 'center'
+                                                            }} onClick={() => {
+                                                                navigate(`/posts/${post._id}`);
+                                                            }}>
+                                                                <Text css={{
+                                                                    '@xsMax': {
+                                                                        fontSize: '$xs',
+                                                                    },
+                                                                    '@xsMin': {
+                                                                        fontSize: '$sm'
+                                                                    },
+                                                                    color: 'white',
+                                                                    paddingRight: '4px',
+                                                                    '&:hover': {
+                                                                        textDecoration: 'underline'
+                                                                    },
+                                                                    fontWeight: '$medium'
+                                                                }}
+                                                                >
+                                                                    READ MORE
+                                                                </Text>
+                                                                <BsArrowRight
+                                                                    size={'16px'}
+                                                                    color="white" />
+                                                            </Row>
+                                                        </Col>
+                                                    </div>
+                                                </Grid>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                            </Grid.Container>
                         </Grid.Container>
+
+                        {/* Second Row - equally */}
 
                         <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "50vh",
-                                width: "25%",
-                                flexDirection: 'column'
-                            }}
+                            css={{ height: "50vh", width: "100%", position: "relative", }}
+                            direction="row"
                         >
-                            <Grid className="right-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%", }}
-                                    src={posts[2].homeImg}
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[2]._id}`);
-                                      }}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[2].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-                            <Grid className="right-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%" }}
-                                    src={posts[4].homeImg}
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[4]._id}`);
-                                      }}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[4].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-
+                            {posts.map((post) => {
+                                if (post.gridNumber == 6 || post.gridNumber == 10) {
+                                    if (gridFilledD[post.gridNumber - 1] == 0) {
+                                        gridFilledD[post.gridNumber - 1] = 1
+                                        return (
+                                            <Grid className="left-container"
+                                                css={{ height: "25vh", width: "25%", }}
+                                                onClick={() => {
+                                                    navigate(`/posts/${post._id}`);
+                                                }}>
+                                                <Image
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    src={post.homeImg}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}
+                                                    objectFit="cover"
+                                                    className="image"
+                                                />
+                                                <div className="card">
+                                                    <Col css={{
+                                                        backgroundColor: '$gray400',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        alignItems: 'center'
+                                                    }}>
+                                                        <Text
+                                                            css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$xs'
+                                                                },
+                                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                                fontWeight: '$semibold',
+                                                                backgroundColor: '$gray400',
+                                                            }}>
+                                                            {post.title}
+                                                        </Text>
+                                                        <Row css={{
+                                                            w: 'max-content',
+                                                            padding: '1% 0% 1.5% 0%',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$sm'
+                                                                },
+                                                                color: 'white',
+                                                                paddingRight: '4px',
+                                                                '&:hover': {
+                                                                    textDecoration: 'underline'
+                                                                },
+                                                                fontWeight: '$medium'
+                                                            }}>
+                                                                READ MORE
+                                                            </Text>
+                                                            <BsArrowRight
+                                                                size={'16px'}
+                                                                color="white" />
+                                                        </Row>
+                                                    </Col>
+                                                </div>
+                                            </Grid>
+                                        )
+                                    }
+                                }
+                                else if (post.gridNumber == 7 || post.gridNumber == 8 || post.gridNumber == 11 || post.gridNumber == 12) {
+                                    if (gridFilledD[post.gridNumber - 1] == 0) {
+                                        gridFilledD[post.gridNumber - 1] = 1
+                                        return (
+                                            <Grid className="container"
+                                                css={{ height: "25vh", width: "25%", }}
+                                                onClick={() => {
+                                                    navigate(`/posts/${post._id}`);
+                                                }}>
+                                                <Image
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    src={post.homeImg}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}
+                                                    objectFit="cover"
+                                                    className="image"
+                                                />
+                                                <div className="card">
+                                                    <Col css={{
+                                                        backgroundColor: '$gray400',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        alignItems: 'center'
+                                                    }}>
+                                                        <Text
+                                                            css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$xs'
+                                                                },
+                                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                                fontWeight: '$semibold',
+                                                                backgroundColor: '$gray400',
+                                                            }}>
+                                                            {post.title}
+                                                        </Text>
+                                                        <Row css={{
+                                                            w: 'max-content',
+                                                            padding: '1% 0% 1.5% 0%',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$sm'
+                                                                },
+                                                                color: 'white',
+                                                                paddingRight: '4px',
+                                                                '&:hover': {
+                                                                    textDecoration: 'underline'
+                                                                },
+                                                                fontWeight: '$medium'
+                                                            }}>
+                                                                READ MORE
+                                                            </Text>
+                                                            <BsArrowRight
+                                                                size={'16px'}
+                                                                color="white" />
+                                                        </Row>
+                                                    </Col>
+                                                </div>
+                                            </Grid>
+                                        )
+                                    }
+                                }
+                                else if (post.gridNumber == 9 || post.gridNumber == 13) {
+                                    if (gridFilledD[post.gridNumber - 1] == 0) {
+                                        gridFilledD[post.gridNumber - 1] = 1
+                                        return (
+                                            <Grid className="right-container"
+                                                css={{ height: "25vh", width: "25%", }}
+                                                onClick={() => {
+                                                    navigate(`/posts/${post._id}`);
+                                                }}>
+                                                <Image
+                                                    css={{ height: "25vh", width: "100%", }}
+                                                    src={post.homeImg}
+                                                    onClick={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}
+                                                    objectFit="cover"
+                                                    className="image"
+                                                />
+                                                <div className="card">
+                                                    <Col css={{
+                                                        backgroundColor: '$gray400',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        alignItems: 'center'
+                                                    }}>
+                                                        <Text
+                                                            css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$xs'
+                                                                },
+                                                                padding: '1.5% 2.5% 1% 2.5%',
+                                                                fontWeight: '$semibold',
+                                                                backgroundColor: '$gray400',
+                                                            }}>
+                                                            {post.title}
+                                                        </Text>
+                                                        <Row css={{
+                                                            w: 'max-content',
+                                                            padding: '1% 0% 1.5% 0%',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            <Text css={{
+                                                                '@xsMax': {
+                                                                    fontSize: '$xs',
+                                                                },
+                                                                '@xsMin': {
+                                                                    fontSize: '$sm'
+                                                                },
+                                                                color: 'white',
+                                                                paddingRight: '4px',
+                                                                '&:hover': {
+                                                                    textDecoration: 'underline'
+                                                                },
+                                                                fontWeight: '$medium'
+                                                            }}>
+                                                                READ MORE
+                                                            </Text>
+                                                            <BsArrowRight
+                                                                size={'16px'}
+                                                                color="white" />
+                                                        </Row>
+                                                    </Col>
+                                                </div>
+                                            </Grid>
+                                        )
+                                    }
+                                }
+                            })}
                         </Grid.Container>
+
                     </Grid.Container>
-                    
-                    {/* Second Row - equally */}
-                    <Grid.Container
-                        css={{ height: "50vh", width: "100%", position: "relative", }}
-                        direction="row"
-                    >
-                        <Grid className="left-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[5].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[5]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[5].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[6].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[6]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[6].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[7].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[7]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[7].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="right-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[8].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[8]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[8].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="left-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[9].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[9]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[9].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[10].homeImg}
-                                onClick={() => {
-                                    navigate(`/posts/${posts[10]._id}`);
-                                  }}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[10].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[11].homeImg}
-                                    objectFit="cover"
-                                    className="image"
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[11]._id}`);
-                                      }}
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[11].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="right-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={posts[12].homeImg}
-                                    objectFit="cover"
-                                    className="image"
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[12]._id}`);
-                                      }}
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        {posts[12].title}
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-                    </Grid.Container>
-
-                </Grid.Container>
                 }
-                
 
             </div>
             <div className="mobile">
-                { posts &&
-                <Grid.Container
-                    css={{
-                        height: "270vh",
-                        width: "95%",
-                        jc: 'center',
-                    }}
-                >
+
+                {posts &&
                     <Grid.Container
                         css={{
-                            height: "30vh",
+                            height: "270vh",
                             width: "95%",
                             jc: 'center',
-                            position: "relative"
                         }}
                     >
                         <Grid.Container
-                            direction="column"
                             css={{
                                 height: "30vh",
-                                width: "100%",
+                                width: "95%",
+                                jc: 'center',
+                                position: "relative"
                             }}
                         >
-                            <Card
-                                css={{ height: "30vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={<Grid.Container
-                    direction="column"
-                    css={{
-                        height: "100vh",
-                        width: "95%",
-                        jc: 'center'
-                    }}
+                            <Grid.Container
+                                direction="column"
+                                css={{
+                                    height: "30vh",
+                                    width: "100%",
+                                }}
+                            >
+                                {posts.map(post => {
+                                    if (post.gridNumber == 1) {
+                                        if (gridFilledM[post.gridNumber - 1] == 0) {
+                                            gridFilledM[post.gridNumber - 1] = 1
+                                            return (
+                                                <Card isPressable
+                                                    css={{ height: "30vh", width: "100%", borderRadius: '0' }}
+                                                    onPress={() => {
+                                                        navigate(`/posts/${post._id}`);
+                                                    }}>
+                                                    <Card.Image
+                                                        width='100%'
+                                                        height='100%'
+                                                        src={post.homeImg}
+                                                        objectFit="cover"
+                                                    />
+                                                    <Card.Footer isBlurred
+                                                        css={{
+                                                            position: "absolute",
+                                                            bgBlur: "#00000044",
+                                                            bottom: 0,
+                                                            zIndex: 1,
+                                                            borderRadius: '0',
+                                                            textAlign: 'center',
+                                                            jc: 'center'
+                                                        }}>
+                                                        <Text css={{
+                                                            fontSize: '$sm'
+                                                        }}>
+                                                            {post.title}
+                                                        </Text>
 
-                >
-                    {/* First Row - small, big, small */}
-                    
-                    <Grid.Container
-                        css={{ height: "50vh", width: "100%", position: "relative" }}
-                        direction="row"
-                    >
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "50vh",
-                                width: "25%",
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <Grid className="left-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%", }}
-                                    src={posts[1].homeImg}
-                                    onClick={() => {
-                                        navigate(`/posts/${posts[1]._id}`);
-                                      }}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            {posts[1].title}
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-
-                            <Grid className="left-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%" }}
-                                    src={Temp2}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
+                                                    </Card.Footer>
+                                                </Card>
+                                            )
+                                        }
+                                    }
+                                })}
+                            </Grid.Container>
 
                         </Grid.Container>
 
                         <Grid.Container
-                            direction="column"
                             css={{
-                                height: "50vh",
-                                width: "50%",
-                                flexDirection: 'column',
-
+                                height: "240vh",
+                                width: "95%",
+                                jc: 'center',
+                                position: "relative",
                             }}
                         >
-                            <Grid className="container"
-                                css={{ height: "50vh", width: "100%", }}>
-                                <Image
-                                    css={{
-                                        height: "50vh",
-                                        width: "100%",
-                                    }}
-                                    src={Divine}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
+
+                            {posts.map(post => {
+                                if (gridFilledM[post.gridNumber - 1] == 0) {
+                                    gridFilledM[post.gridNumber-1] = 1
+                                    return (
+                                        <Grid.Container
+                                            direction="column"
                                             css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-                        </Grid.Container>
+                                                height: "20vh",
+                                                width: "100%",
+                                                padding: '0 5%',
+                                                flexWrap: 'nowrap'
+                                            }}
+                                        >
+                                            <Card isPressable
+                                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}
+                                                onPress={() => {
+                                                    navigate(`/posts/${post._id}`);
+                                                }}>
+                                                <Card.Image
+                                                    width='100%'
+                                                    height='100%'
+                                                    src={post.homeImg}
+                                                    objectFit="cover"
+                                                />
+                                                <Card.Footer isBlurred
+                                                    css={{
+                                                        position: "absolute",
+                                                        bgBlur: "#00000044",
+                                                        bottom: 0,
+                                                        zIndex: 1,
+                                                        borderRadius: '0',
+                                                        textAlign: 'center',
+                                                        jc: 'center'
+                                                    }}>
+                                                    <Text css={{
+                                                        fontSize: '$sm'
+                                                    }}>
+                                                        {post.title}
+                                                    </Text>
 
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "50vh",
-                                width: "25%",
-                                flexDirection: 'column'
-                            }}
-                        >
-                            <Grid className="right-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%", }}
-                                    src={Temp3}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
-                            <Grid className="right-container"
-                                css={{ height: "25vh", width: "100%", }}>
-                                <Image
-                                    css={{ height: "25vh", width: "100%" }}
-                                    src={Temp4}
-                                    objectFit="cover"
-                                    className="image"
-                                />
-                                <div className="card">
-                                    <Col css={{
-                                        backgroundColor: '$gray400',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text
-                                            css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$xs'
-                                                },
-                                                padding: '1.5% 2.5% 1% 2.5%',
-                                                fontWeight: '$semibold',
-                                                backgroundColor: '$gray400',
-                                            }}>
-                                            AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                        </Text>
-                                        <Row css={{
-                                            w: 'max-content',
-                                            padding: '1% 0% 1.5% 0%',
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text css={{
-                                                '@xsMax': {
-                                                    fontSize: '$xs',
-                                                },
-                                                '@xsMin': {
-                                                    fontSize: '$sm'
-                                                },
-                                                color: 'white',
-                                                paddingRight: '4px',
-                                                '&:hover': {
-                                                    textDecoration: 'underline'
-                                                },
-                                                fontWeight: '$medium'
-                                            }}>
-                                                READ MORE
-                                            </Text>
-                                            <BsArrowRight
-                                                size={'16px'}
-                                                color="white" />
-                                        </Row>
-                                    </Col>
-                                </div>
-                            </Grid>
+                                                </Card.Footer>
+                                            </Card>
+                                        </Grid.Container>
+                                    )
+                                }
+                            })}
 
-                        </Grid.Container>
-                    </Grid.Container>
-                    
-                    {/* Second Row - equally */}
-                    <Grid.Container
-                        css={{ height: "50vh", width: "100%", position: "relative", }}
-                        direction="row"
-                    >
-                        <Grid className="left-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp5}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp6}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp7}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="right-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp8}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="left-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp9}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp10}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={Temp11}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-
-                        <Grid className="right-container"
-                            css={{ height: "25vh", width: "25%", }}>
-                            <Image
-                                css={{ height: "25vh", width: "100%", }}
-                                src={AB171}
-                                objectFit="cover"
-                                className="image"
-                            />
-                            <div className="card">
-                                <Col css={{
-                                    backgroundColor: '$gray400',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text
-                                        css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$xs'
-                                            },
-                                            padding: '1.5% 2.5% 1% 2.5%',
-                                            fontWeight: '$semibold',
-                                            backgroundColor: '$gray400',
-                                        }}>
-                                        AFTER LOGIC AND METRO BOOMIN, WIZ KHALIFA PARTS WAYS WITH RAP MUSIC CATALOGUE FOR UNDISCLOSED FIGURES TESTING
-                                    </Text>
-                                    <Row css={{
-                                        w: 'max-content',
-                                        padding: '1% 0% 1.5% 0%',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Text css={{
-                                            '@xsMax': {
-                                                fontSize: '$xs',
-                                            },
-                                            '@xsMin': {
-                                                fontSize: '$sm'
-                                            },
-                                            color: 'white',
-                                            paddingRight: '4px',
-                                            '&:hover': {
-                                                textDecoration: 'underline'
-                                            },
-                                            fontWeight: '$medium'
-                                        }}>
-                                            READ MORE
-                                        </Text>
-                                        <BsArrowRight
-                                            size={'16px'}
-                                            color="white" />
-                                    </Row>
-                                </Col>
-                            </div>
-                        </Grid>
-                    </Grid.Container>
-
-                </Grid.Container>}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
                         </Grid.Container>
 
                     </Grid.Container>
-
-                    <Grid.Container
-                        css={{
-                            height: "240vh",
-                            width: "95%",
-                            jc: 'center',
-                            position: "relative",
-                        }}
-                    >
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB171}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB171}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB171}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB171}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB172}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-
-                        <Grid.Container
-                            direction="column"
-                            css={{
-                                height: "20vh",
-                                width: "100%",
-                                padding: '0 5%',
-                                flexWrap: 'nowrap'
-                            }}
-                        >
-                            <Card
-                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}>
-                                <Card.Image
-                                    width='100%'
-                                    height='100%'
-                                    src={AB171}
-                                    objectFit="cover"
-                                />
-                                <Card.Footer isBlurred
-                                    css={{
-                                        position: "absolute",
-                                        bgBlur: "#00000044",
-                                        bottom: 0,
-                                        zIndex: 1,
-                                        borderRadius: '0',
-                                        textAlign: 'center',
-                                        jc: 'center'
-                                    }}>
-                                    <Text css={{
-                                        fontSize: '$sm'
-                                    }}>
-                                        Dummer Article Title
-                                    </Text>
-
-                                </Card.Footer>
-                            </Card>
-                        </Grid.Container>
-                    </Grid.Container>
-
-                </Grid.Container>
                 }
             </div>
         </div>
