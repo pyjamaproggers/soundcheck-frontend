@@ -2,7 +2,7 @@ import React from "react";
 import './navbar.css'
 import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
 import { FaYoutube, FaInstagram, FaTwitter, FaDiscord} from 'react-icons/fa';
-import Logo from '../../assets/TEMPLOGO.jpeg'
+import Logo from '../../assets/TempLogo.jpeg'
 
 function Header() {
 
@@ -22,33 +22,12 @@ function Header() {
 
     return (
         <>
-            <Grid.Container css={{
-                width: 'auto',
-                height: '1px',
-                margin: '0px 24px',
-                borderStyle: 'solid',
-                borderWidth: '4px 0px 0px 0px',
-                borderColor: '#44041A',
-            }}>
-                <Text css={{
-                    fontWeight: '$semibold',
-                    alignSelf: 'center',
-                    '@xsMin': {
-                        fontSize: '$3xl',
-                    },
-                    '@xsMax': {
-                        fontSize: '$2xl'
-                    }
-                }}>
-                    {}
-                </Text>
-            </Grid.Container>
             <Navbar className="navbar" variant="static">
                 <Navbar.Toggle color="inherit" showIn="xs" />
                 <Navbar.Brand hideIn="xs">
                     <Image css={{
-                        width: '150px',
-                        height: '70px',
+                        width: '152px',
+                        height: '76px',
                         borderRadius: '5px',
                         left:0,
                         '&:hover': {
@@ -59,8 +38,10 @@ function Header() {
                             window.location.pathname = ''
                         }} />
                 </Navbar.Brand>
-                <Navbar.Content hideIn={'xs'} css={{ w: '10%', }}>
-                </Navbar.Content>
+
+                {/* <Navbar.Content hideIn={'xs'} css={{ w: '10%', }}>
+                </Navbar.Content> */}
+
                 <Navbar.Content hideIn="xs" variant="highlight" >
                     {items.map((item, index) => (
                         <Navbar.Link key={index} isActive={item.href === active.substring(0, item.href.length + 1)} href={item.href}>
@@ -69,14 +50,14 @@ function Header() {
                     ))}
 
                 </Navbar.Content>
-                <Navbar.Content hideIn={'xs'} css={{ w: '0px', }}>
-                </Navbar.Content>
+
                 <Navbar.Content showIn={'xs'}>
                     <Image css={{
-                        width: '40px',
+                        width: '152px',
                         height: '40px'
                     }} src={Logo} />
                 </Navbar.Content>
+
                 <Navbar.Content hideIn={'xs'}>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
                         <FaDiscord 
@@ -98,9 +79,6 @@ function Header() {
                         // className="t-icon" 
                         size={'20px'} />
                     </Navbar.Item>
-                </Navbar.Content>
-
-                <Navbar.Content showIn={'xs'} css={{ w: '30px', }}>
                 </Navbar.Content>
 
                 <Navbar.Collapse showIn={"xs"}>

@@ -1,7 +1,7 @@
 import { Grid, Image, Row, Link, Col, Text, Input, Button } from "@nextui-org/react";
 import './footer.css';
 import React from "react";
-import Logo from '../../assets/TEMPLOGO.jpeg';
+import Logo from '../../assets/TempLogo.jpeg';
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaBorderStyle, } from 'react-icons/fa';
 
 export default function Footer() {
@@ -136,8 +136,8 @@ export default function Footer() {
                     }}>
                     <Image
                         css={{
-                            borderRadius: '12.5px'
-                        }} src={Logo} width={'90px'} height={'90px'} />
+                            borderRadius: '0px'
+                        }} src={Logo} width={'152px'} height={'76px'} />
                     <Row
                         css={{
                             margin: '20px 0px 10px 0px',
