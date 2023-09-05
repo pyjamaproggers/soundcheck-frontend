@@ -341,6 +341,9 @@ export default function News() {
                                         paddingBottom: '12px',
                                     }}
                                     key={index}
+                                    onClick={() => {
+                                        navigate(`/posts/${post._id}`);
+                                    }}
                                 >
                                     <Col>
                                         <Image
