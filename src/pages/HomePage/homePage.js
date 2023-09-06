@@ -824,7 +824,7 @@ export default function HomeScreen() {
                                             }}
                                         >
                                             <Card isPressable
-                                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}
+                                                css={{ height: "30vh", width: "100%", borderRadius: '0' }}
                                                 onPress={() => {
                                                     navigate(`/posts/${post._id}`);
                                                 }}>
