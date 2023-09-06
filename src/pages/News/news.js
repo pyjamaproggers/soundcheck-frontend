@@ -14,8 +14,6 @@ export default function News() {
     const [searched, setSearched] = useState('')
     const [filteredPosts, setFilteredPosts] = useState([]); 
 
-
-
     function getDayWithSuffix(day) {
         if (day >= 11 && day <= 13) {
             return `${day}th`;
@@ -160,6 +158,7 @@ export default function News() {
                                 }}
                                 onClick={() => {
                                     setDateLatest(!dateLatest);
+                                    filteredPosts = filteredPosts.reverse()
                                 }}
                             >
                                 <Text
@@ -330,6 +329,7 @@ export default function News() {
                                 }}
                                 onClick={() => {
                                     setDateLatest(!dateLatest);
+                                    
                                 }}
                             >
                                 <Text
