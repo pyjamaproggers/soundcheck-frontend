@@ -30,11 +30,9 @@ export default function HomeScreen() {
                 .filter(post => post.gridNumber >= 1 && post.gridNumber <= 13)
                 .sort((a, b) => a.gridNumber - b.gridNumber);
 
-            console.log(filteredPosts);
             setPosts(filteredPosts);
             setFetching(false);
         } catch (error) {
-            console.log(error);
             setFetching(false);
         }
     };

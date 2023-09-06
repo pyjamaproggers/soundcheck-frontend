@@ -29,11 +29,9 @@ export default function Post() {
     const segregatePosts = async () => {
         const published = posts.filter((Post) => Post.isdraft === 'n' && Post._id !== id);
         setPublishedPosts(published);
-        console.log(published);
     };
 
     const fetchPosts = async () => {
-        console.log(post)
         try {
             const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
             setPosts(response.data);
@@ -283,7 +281,7 @@ export default function Post() {
                                         <Grid css={{ width: '100%', cursor: 'pointer' }} onClick={() => {
                                             navigate(`/posts/${post._id}`);
                                         }}>
-                                            {console.log(post.homeImg)}
+                                            
                                             <Row css={{
                                                 padding: '0px 4px 0px 0px',
                                                 borderStyle: 'solid',
@@ -329,7 +327,6 @@ export default function Post() {
                                         <Grid css={{ width: '100%', cursor: 'pointer' }} onClick={() => {
                                             navigate(`/posts/${post._id}`);
                                         }}>
-                                            {console.log(post.homeImg)}
                                             <Row css={{
                                                 padding: '0px 4px 0px 0px',
                                                 borderStyle: 'solid',

@@ -61,7 +61,6 @@ export default function News() {
     const fetchPosts = async () => {
         try {
             const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
-            console.log(response.data);
             setPosts(response.data);
             await segregatePosts(); // Call segregatePosts after setting the posts state
             setFetching(false);
