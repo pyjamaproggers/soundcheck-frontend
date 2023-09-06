@@ -10,6 +10,8 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { convertFromRaw, EditorState, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 
 export default function Post() {
     const location = useLocation();
@@ -134,7 +136,7 @@ export default function Post() {
             var mySubString = htmlContent.substring(
                 htmlContent.indexOf(`&lt;iframe width="560"`),
                 htmlContent.indexOf("allowfullscreen&gt;&lt;/iframe&gt;") + 36
-            );
+            );  
             var decodedSubString = mySubString.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
             htmlContent = htmlContent.replace(mySubString, decodedSubString)
         };
@@ -175,7 +177,7 @@ export default function Post() {
 
         return (
             <Grid.Container>
-                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' }}>
+                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' , fontFamily:"Oswald"}}>
                     {post.title}
                 </Text>
                 <Image
@@ -217,7 +219,7 @@ export default function Post() {
                         }}
                         direction="column"
                     >
-                        <Text css={{ fontWeight: '$semibold', fontSize: '$xl' }}>
+                        <Text css={{ fontWeight: '$semibold', fontSize: '$xl' , fontFamily:"Oswald"}}>
                             {month} {current.getDate()}, {current.getFullYear()}
                         </Text>
                         <Grid.Container css={{ alignItems: 'center', jc: 'center', p: '8px 0px 16px 0px' }}>
@@ -271,7 +273,7 @@ export default function Post() {
 
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
-                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' }}>
+                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Oswald" }}>
                                 MORE BY SoundCheck
                             </Text>
 
@@ -290,7 +292,7 @@ export default function Post() {
                                                 margin: '8px',
                                             }}>
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
-                                                <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' }}>
+                                                <Text className="multiline-ellipsis" css={{ fontFamily:"Oswald", fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' }}>
                                                     {post.title}
                                                 </Text>
                                             </Row>
@@ -317,7 +319,7 @@ export default function Post() {
 
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '85vw', jc: 'center',}}>
-                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' }}>
+                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Oswald"}}>
                                 MORE BY SoundCheck
                             </Text>
 
@@ -337,7 +339,7 @@ export default function Post() {
                                                 alignItems: 'center'
                                             }} >
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
-                                                <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' }}>
+                                                <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' , fontFamily:"Oswald"}}>
                                                     {post.title}
                                                 </Text>
                                             </Row>
