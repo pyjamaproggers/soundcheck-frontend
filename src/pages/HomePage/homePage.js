@@ -1,20 +1,8 @@
 import { Grid, Image, Text, Container, Col, Card, Row, Button, Input, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './homePage.css'
-import Divine from '../../assets/Divine.jpeg'
-import AB171 from '../../assets/AB171.jpeg'
-import AB172 from '../../assets/AB172.jpeg'
-import Temp1 from '../../assets/Temp1.jpg'
-import Temp2 from '../../assets/Temp2.jpg'
-import Temp3 from '../../assets/Temp3.png'
-import Temp4 from '../../assets/Temp4.png'
-import Temp5 from '../../assets/Temp5.png'
-import Temp6 from '../../assets/Temp6.png'
-import Temp7 from '../../assets/Temp7.png'
-import Temp8 from '../../assets/Temp8.png'
-import Temp9 from '../../assets/Temp9.png'
-import Temp10 from '../../assets/Temp10.png'
-import Temp11 from '../../assets/Temp11.png'
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 import { BsArrowRight } from 'react-icons/bs';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -136,6 +124,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -158,7 +147,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -212,6 +202,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -234,7 +225,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -300,6 +292,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -322,7 +315,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -373,7 +367,7 @@ export default function HomeScreen() {
                                                             backgroundColor: '$gray400',
                                                             display: 'flex',
                                                             flexDirection: 'column',
-                                                            alignItems: 'center'
+                                                            alignItems: 'center',
                                                         }}>
                                                             <Text
                                                                 css={{
@@ -386,6 +380,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald",
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -408,7 +403,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -462,6 +458,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -484,7 +481,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -547,6 +545,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -567,7 +566,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -617,6 +617,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald",
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -637,7 +638,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -674,7 +676,8 @@ export default function HomeScreen() {
                                                         backgroundColor: '$gray400',
                                                         display: 'flex',
                                                         flexDirection: 'column',
-                                                        alignItems: 'center'
+                                                        alignItems: 'center',
+                                                        fontFamily:"Oswald"
                                                     }}>
                                                         <Text
                                                             css={{
@@ -687,6 +690,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -707,7 +711,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -780,7 +785,8 @@ export default function HomeScreen() {
                                                             jc: 'center'
                                                         }}>
                                                         <Text css={{
-                                                            fontSize: '$sm'
+                                                            fontSize: '$sm',
+                                                            fontFamily:"Oswald"
                                                         }}>
                                                             {post.title}
                                                         </Text>
@@ -839,7 +845,8 @@ export default function HomeScreen() {
                                                         jc: 'center'
                                                     }}>
                                                     <Text css={{
-                                                        fontSize: '$sm'
+                                                        fontSize: '$sm',
+                                                        fontFamily:"Oswald"
                                                     }}>
                                                         {post.title}
                                                     </Text>
