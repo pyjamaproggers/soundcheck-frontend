@@ -739,14 +739,14 @@ export default function HomeScreen() {
                     <Grid.Container
                         css={{
                             height: "270vh",
-                            width: "95%",
+                            width: "100%",
                             jc: 'center',
                         }}
                     >
                         <Grid.Container
                             css={{
                                 height: "30vh",
-                                width: "95%",
+                                width: "100%",
                                 jc: 'center',
                                 position: "relative"
                             }}
@@ -804,7 +804,7 @@ export default function HomeScreen() {
                         <Grid.Container
                             css={{
                                 height: "240vh",
-                                width: "95%",
+                                width: "100%",
                                 jc: 'center',
                                 position: "relative",
                             }}
