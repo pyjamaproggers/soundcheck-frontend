@@ -743,63 +743,6 @@ export default function HomeScreen() {
                             jc: 'center',
                         }}
                     >
-                        <Grid.Container
-                            css={{
-                                height: "30vh",
-                                width: "100%",
-                                jc: 'center',
-                                position: "relative"
-                            }}
-                        >
-                            <Grid.Container
-                                direction="column"
-                                css={{
-                                    height: "30vh",
-                                    width: "100%",
-                                }}
-                            >
-                                {posts.map(post => {
-                                    if (post.gridNumber == 1) {
-                                        if (gridFilledM[post.gridNumber - 1] == 0) {
-                                            gridFilledM[post.gridNumber - 1] = 1
-                                            return (
-                                                <Card isPressable
-                                                    css={{ height: "30vh", width: "100%", borderRadius: '0' }}
-                                                    onPress={() => {
-                                                        navigate(`/posts/${post._id}`);
-                                                    }}>
-                                                    <Card.Image
-                                                        width='100%'
-                                                        height='100%'
-                                                        src={post.homeImg}
-                                                        objectFit="cover"
-                                                    />
-                                                    <Card.Footer isBlurred
-                                                        css={{
-                                                            position: "absolute",
-                                                            bgBlur: "#00000044",
-                                                            bottom: 0,
-                                                            zIndex: 1,
-                                                            borderRadius: '0',
-                                                            textAlign: 'center',
-                                                            jc: 'center'
-                                                        }}>
-                                                        <Text css={{
-                                                            fontSize: '$sm',
-                                                            fontFamily:"Oswald"
-                                                        }}>
-                                                            {post.title}
-                                                        </Text>
-
-                                                    </Card.Footer>
-                                                </Card>
-                                            )
-                                        }
-                                    }
-                                })}
-                            </Grid.Container>
-
-                        </Grid.Container>
 
                         <Grid.Container
                             css={{
@@ -811,8 +754,6 @@ export default function HomeScreen() {
                         >
 
                             {posts.map(post => {
-                                if (gridFilledM[post.gridNumber - 1] == 0) {
-                                    gridFilledM[post.gridNumber-1] = 1
                                     return (
                                         <Grid.Container
                                             direction="column"
@@ -855,7 +796,7 @@ export default function HomeScreen() {
                                             </Card>
                                         </Grid.Container>
                                     )
-                                }
+                                
                             })}
 
                         </Grid.Container>
