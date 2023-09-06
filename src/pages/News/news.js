@@ -329,7 +329,7 @@ export default function News() {
                                 }}
                                 onClick={() => {
                                     setDateLatest(!dateLatest);
-                                    
+                                    filteredPosts = filteredPosts.reverse()
                                 }}
                             >
                                 <Text
@@ -347,9 +347,9 @@ export default function News() {
                         {fetching && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
                     </Col>
 
-                    {publishedPosts && !fetching && (
+                    {filteredPosts && !fetching && (
                         <>
-                            {publishedPosts.map((post, index) => (
+                            {filteredPosts.map((post, index) => (
                                 <Grid
                                     css={{
                                         m: '24px',
