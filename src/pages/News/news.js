@@ -177,7 +177,7 @@ export default function News() {
                         {fetching && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
                     </Col>
 
-                    {filteredPosts.length > 0 && !fetching && (
+                    {filteredPosts && !fetching && (
                         <>
                             {filteredPosts.map((post, index) => (
                                 <Grid
