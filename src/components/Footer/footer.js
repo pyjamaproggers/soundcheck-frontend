@@ -1,122 +1,19 @@
 import { Grid, Image, Row, Link, Col, Text, Input, Button } from "@nextui-org/react";
 import './footer.css';
 import React from "react";
-import Logo from '../../assets/TEMPLOGO.jpeg';
-import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaBorderStyle, } from 'react-icons/fa';
+import Logo from '../../assets/logo.png';
+import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
+import { SiApple, SiApplemusic } from 'react-icons/si'
 
 export default function Footer() {
     return (
-        // <Grid.Container
-        //     css={{
-        //         jc: 'center',
-        //         textAlign: 'center',
-        //         alignItems: 'center',
-        //     }}>
-
-        //     <Grid.Container gap={0}
-        //         css={{
-        //             jc: 'center',
-        //             textAlign: 'center',
-        //             alignItems: 'center',
-        //             marginTop: '15px',
-        //         }}>
-        //         <Grid
-        //             css={{
-        //                 padding: '12px'
-        //             }}>
-        //             <Image
-        //                 css={{
-        //                     borderRadius: '12.5px'
-        //                 }} src={Logo} width={'90px'} height={'90px'} />
-        //         </Grid>
-        //     </Grid.Container>
-
-        //     <Grid.Container gap={0}
-        //         css={{
-        //             jc: 'center',
-        //             textAlign: 'center',
-        //             alignItems: 'center',
-
-        //         }}>
-        //         <Row
-        //             css={{
-        //                 jc: 'center',
-        //                 textAlign: 'center',
-        //                 alignItems: 'center'
-        //             }}>
-        //             <Grid.Container gap={0}
-        //                 css={{
-        //                     jc: 'center',
-        //                     textAlign: 'center',
-        //                     alignItems: 'center'
-        //                 }}>
-        //                 <Grid
-        //                     css={{
-        //                         padding: '12px'
-        //                     }}>
-        //                     <Link className="footnavbar-item" href="/">
-        //                         Home
-        //                     </Link>
-        //                 </Grid>
-        //                 <Grid
-        //                     css={{
-        //                         padding: '12px'
-        //                     }}>
-        //                     <Link className="footnavbar-item" href="/news" >
-        //                         News
-        //                     </Link>
-        //                 </Grid>
-        //                 <Grid
-        //                     css={{
-        //                         padding: '12px'
-        //                     }}>
-        //                     <Link className="footnavbar-item" href="/playlists" >
-        //                         Playlists
-        //                     </Link>
-        //                 </Grid>
-        //             </Grid.Container>
-        //         </Row>
-        //     </Grid.Container>
-
-        //     <Row
-        //         css={{
-        //             margin: '5px 0px 20px 0px',
-        //             jc: 'center',
-        //             textAlign: 'center',
-        //             alignItems: 'center'
-        //         }}>
-        //         <FaFacebookF onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
-        //         <FaYoutube onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
-        //         <FaInstagram onClick={() => { window.location = "https://www.instagram.com/fanup_inc/?hl=en" }} className="icon" size={'20px'} />
-        //         <FaTwitter onClick={() => { window.location = "https://twitter.com/fanup_inc?s=20" }} className="icon" size={'20px'} />
-        //     </Row>
-
-        //     <Col>
-        //         <Text
-        //             css={{
-        //                 color: '$gray700',
-        //                 jc: 'center',
-        //                 textAlign: 'center',
-        //                 padding: '10px 0px',
-        //                 borderStyle: 'solid',
-        //                 borderColor: '#300313',
-        //                 borderWidth: '1px 0px 0px 0px',
-        //                 '@xsMax': {
-        //                     fontSize: '$xs'
-        //                 }
-        //             }}>
-        //             © 2023 SoundCheck India. All Rights Reserved.
-        //         </Text>
-        //     </Col>
-
-        // </Grid.Container>
         <>
             <Grid.Container
                 css={{
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'top',
-                    marginTop: '120px',
+                    marginTop: '24px',
                 }}
             >
                 <Grid
@@ -127,17 +24,25 @@ export default function Footer() {
                         '@smMin': {
                             width: '336px',
                             borderWidth: '0px 1px 0px 0px',
-                            borderColor: '#300313',
+                            borderColor: '#8b0214',
                             borderStyle: 'solid',
                         },
                         '@smMax': {
                             width: '336px'
                         },
                     }}>
-                    <Image
-                        css={{
-                            borderRadius: '0px'
-                        }} src={Logo} width={'152px'} height={'76px'} />
+                    <Image css={{
+                        width: '100%',
+                        height: '100px',
+                        borderRadius: '5px',
+                        left:0,
+                        '&:hover': {
+                            cursor: 'pointer'
+                        }
+                    }} src={Logo}
+                        onClick={() => {
+                            window.location.pathname = ''
+                        }} />
                     <Row
                         css={{
                             margin: '20px 0px 10px 0px',
@@ -145,10 +50,10 @@ export default function Footer() {
                             textAlign: 'center',
                             alignItems: 'center'
                         }}>
-                        <FaFacebookF onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
-                        <FaYoutube onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
+                        <FaSpotify onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
                         <FaInstagram onClick={() => { window.location = "https://www.instagram.com/fanup_inc/?hl=en" }} className="icon" size={'20px'} />
                         <FaTwitter onClick={() => { window.location = "https://twitter.com/fanup_inc?s=20" }} className="icon" size={'20px'} />
+                        <SiApplemusic onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
                     </Row>
                 </Grid>
 
@@ -186,10 +91,11 @@ export default function Footer() {
                     </Col>
                 </Grid>
 
-                <Grid css={{
+                <Grid 
+                css={{
                     '@smMin': {
                         borderWidth: '0px 0px 0px 1px',
-                        borderColor: '#300313',
+                        borderColor: '#8b0214',
                         borderStyle: 'solid'
                     }
                 }}>
@@ -233,7 +139,7 @@ export default function Footer() {
                             }}>
                                 <Input placeholder="Your email address" />
                                 <Button auto flat color='error' css={{
-                                    backgroundColor: '#8b0214',
+                                    backgroundColor: '#300313',
                                 }}>
                                     <Text css={{
                                         fontWeight: 600,
@@ -246,7 +152,7 @@ export default function Footer() {
                         <div className="subscribe-mobile">
                             <Input placeholder="Your email address" />
                             <Button auto flat color='error' css={{
-                                backgroundColor: '#8b0214',
+                                backgroundColor: '#300313',
                             }}>
                                 <Text css={{
                                     fontWeight: 600,
@@ -275,7 +181,7 @@ export default function Footer() {
                             textAlign: 'center',
                             padding: '10px 0px',
                             borderStyle: 'solid',
-                            borderColor: '#300313',
+                            borderColor: '#8b0214',
                             borderWidth: '1px 0px 0px 0px',
                             '@xsMax': {
                                 fontSize: '$xs'
