@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Image, Text, Row, Container, Col } from "@nextui-org/react";
 import TempLogo from "../../assets/TempLogo.jpeg";
-import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
+import { SiApple, SiApplemusic } from 'react-icons/si'
 import './post.css';
 import Divine from '../../assets/Divine.jpeg';
 import { Scroll } from 'react-scroll-component';
@@ -234,16 +235,16 @@ export default function Post() {
                         </Grid.Container>
                         <Grid.Container css={{ justifyContent: 'center' }}>
                             <Grid>
-                                <FaFacebookF className="icon" size={'24px'} />
+                                <FaSpotify className="icon" size={'24px'} />
                             </Grid>
                             <Grid>
                                 <FaInstagram className="icon" size={'24px'} />
                             </Grid>
                             <Grid>
-                                <FaYoutube className="icon" size={'24px'} />
+                                <FaTwitter className="icon" size={'24px'} />
                             </Grid>
                             <Grid>
-                                <FaTwitter className="icon" size={'24px'} />
+                                <SiApplemusic className="icon" size={'24px'} />
                             </Grid>
                         </Grid.Container>
                     </Grid.Container>
