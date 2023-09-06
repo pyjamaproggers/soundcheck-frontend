@@ -232,8 +232,8 @@ export default function Footer() {
                                 jc: 'center'
                             }}>
                                 <Input placeholder="Your email address" />
-                                <Button auto flat css={{
-                                    backgroundColor: '#300313',
+                                <Button auto flat color='error' css={{
+                                    backgroundColor: '#8b0214',
                                 }}>
                                     <Text css={{
                                         fontWeight: 600,
@@ -245,8 +245,8 @@ export default function Footer() {
                         </div>
                         <div className="subscribe-mobile">
                             <Input placeholder="Your email address" />
-                            <Button auto flat css={{
-                                backgroundColor: '#300313',
+                            <Button auto flat color='error' css={{
+                                backgroundColor: '#8b0214',
                             }}>
                                 <Text css={{
                                     fontWeight: 600,
