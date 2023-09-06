@@ -139,7 +139,7 @@ export default function Footer() {
                             }}>
                                 <Input placeholder="Your email address" />
                                 <Button auto flat color='error' css={{
-                                    backgroundColor: '#300313',
+                                    backgroundColor: '#8b0214',
                                 }}>
                                     <Text css={{
                                         fontWeight: 600,
@@ -152,7 +152,7 @@ export default function Footer() {
                         <div className="subscribe-mobile">
                             <Input placeholder="Your email address" />
                             <Button auto flat color='error' css={{
-                                backgroundColor: '#300313',
+                                backgroundColor: '#8b0214',
                             }}>
                                 <Text css={{
                                     fontWeight: 600,
