@@ -11,6 +11,7 @@ export default function News() {
     const [dateLatest, setDateLatest] = useState(true);
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
+    const [searched, setSearched] = useState('')
 
 
     function getDayWithSuffix(day) {
@@ -131,6 +132,9 @@ export default function News() {
                                     width: '300px',
                                 }}
                                 labelPlaceholder="Search & Filter"
+                                onChange={(e)=>{
+                                    setSearched(e.target.value)
+                                }}
                             />
                             <Row
                                 css={{
@@ -207,7 +211,7 @@ export default function News() {
                                                     margin: '0px 24px 0px 24px',
                                                     borderStyle: 'solid',
                                                     borderWidth: '0px 0px 1px 0px',
-                                                    borderColor: '$red200',
+                                                    borderColor: '#8b0214',
                                                 }}
                                             >
                                                 {post.title.toUpperCase()}
@@ -231,7 +235,7 @@ export default function News() {
                                                     margin: '0px 24px 0px 24px',
                                                     borderStyle: 'solid',
                                                     borderWidth: '1px 0px 0px 0px',
-                                                    borderColor: '$red200',
+                                                    borderColor: '#8b0214',
                                                     width: 'max-content',
                                                 }}
                                             >
@@ -298,6 +302,9 @@ export default function News() {
                                     width: '250px',
                                 }}
                                 labelPlaceholder="Search & Filter"
+                                onChange={(e)=>{
+                                    setSearched(e.target.value)
+                                }}
                             />
                             <Row
                                 css={{
@@ -365,7 +372,7 @@ export default function News() {
                                                 margin: '0px 24px 0px 24px',
                                                 borderStyle: 'solid',
                                                 borderWidth: '0px 0px 1px 0px',
-                                                borderColor: '$red200',
+                                                borderColor: '#8b0214',
                                             }}
                                         >
                                             {post.title.toUpperCase()}
@@ -389,7 +396,7 @@ export default function News() {
                                                 margin: '0px 24px 0px 24px',
                                                 borderStyle: 'solid',
                                                 borderWidth: '1px 0px 0px 0px',
-                                                borderColor: '$red200',
+                                                borderColor: '#8b0214',
                                                 width: 'max-content',
                                             }}
                                         >

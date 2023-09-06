@@ -1,8 +1,9 @@
 import React from "react";
 import './navbar.css'
 import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
-import { FaYoutube, FaInstagram, FaTwitter, FaDiscord} from 'react-icons/fa';
-import Logo from '../../assets/TempLogo.jpeg'
+import { FaYoutube, FaInstagram, FaTwitter, FaDiscord, FaSpotify, } from 'react-icons/fa';
+import { SiApplemusic } from 'react-icons/si'
+import Logo from '../../assets/logo.png'
 
 function Header() {
 
@@ -29,7 +30,8 @@ function Header() {
                         width: '152px',
                         height: '76px',
                         borderRadius: '5px',
-                        left:0,
+                        left: 0,
+                        overflow: 'hidden',
                         '&:hover': {
                             cursor: 'pointer'
                         }
@@ -65,24 +67,24 @@ function Header() {
 
                 <Navbar.Content hideIn={'xs'}>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaDiscord 
-                        // className="d-icon" 
-                        size={'20px'} />
+                        <FaSpotify
+                            // className="d-icon" 
+                            size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaInstagram 
-                        // className="ig-icon" 
-                        size={'20px'} />
-                    </Navbar.Item>
-                    <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
-                        <FaYoutube 
-                        // className="yt-icon" 
-                        size={'20px'} />
+                        <FaInstagram
+                            // className="ig-icon" 
+                            size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
                         <FaTwitter
-                        // className="t-icon" 
-                        size={'20px'} />
+                            // className="t-icon" 
+                            size={'20px'} />
+                    </Navbar.Item>
+                    <Navbar.Item target="_blank" href="https://www.instagram.com/apl.ashoka/">
+                        <SiApplemusic
+                            // className="yt-icon" 
+                            size={'20px'} />
                     </Navbar.Item>
                 </Navbar.Content>
 
