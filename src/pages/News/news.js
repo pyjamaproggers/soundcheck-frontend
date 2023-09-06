@@ -12,6 +12,8 @@ export default function News() {
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
     const [searched, setSearched] = useState('')
+    const [filteredPosts, setFilteredPosts] = useState([]); 
+
 
 
     function getDayWithSuffix(day) {
@@ -77,6 +79,17 @@ export default function News() {
     useEffect(() => {
         segregatePosts();
     }, [posts]);
+
+    useEffect(() => {
+        if (searched.trim() === '') {
+            setFilteredPosts(publishedPosts);
+        } else {
+            const filtered = publishedPosts.filter((post) =>
+                post.title.toLowerCase().includes(searched.toLowerCase())
+            );
+            setFilteredPosts(filtered);
+        }
+    }, [searched, publishedPosts]);
 
     return (
         <div className="home">
@@ -164,9 +177,9 @@ export default function News() {
                         {fetching && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
                     </Col>
 
-                    {publishedPosts && !fetching && (
+                    {filteredPosts.length > 0 && !fetching && (
                         <>
-                            {publishedPosts.map((post, index) => (
+                            {filteredPosts.map((post, index) => (
                                 <Grid
                                     css={{
                                         m: '24px',
