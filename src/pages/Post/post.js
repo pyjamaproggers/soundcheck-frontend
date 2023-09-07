@@ -170,6 +170,7 @@ export default function Post() {
             }}>
                 <div dangerouslySetInnerHTML={{ __html: htmlContent }}
                     className="post-content" 
+                    style={{ fontFamily: "Oswald" }}
                 />
             </Grid.Container>
         );
