@@ -3,7 +3,7 @@ import './navbar.css'
 import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
 import { FaYoutube, FaInstagram, FaTwitter, FaDiscord, FaSpotify, } from 'react-icons/fa';
 import { SiApplemusic } from 'react-icons/si'
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/logo.jpeg'
 
 function Header() {
 

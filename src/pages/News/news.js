@@ -170,7 +170,7 @@ export default function News() {
                                 <Grid
                                     css={{
                                         m: '24px',
-                                        maxW: '900px',
+                                        maxW: '1050px',
                                         backgroundColor: 'black',
                                         '&:hover': {
                                             cursor: 'pointer',
@@ -190,6 +190,8 @@ export default function News() {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
+                                                borderTopLeftRadius: '5px',
+                                                borderBottomLeftRadius: '5px'
                                             }}
                                         />
                                         <Col
@@ -200,6 +202,8 @@ export default function News() {
                                                 jc: 'space-evenly',
                                                 padding: '6px 0px',
                                                 height: '180px',
+                                                borderTopRightRadius: '5px',
+                                                borderBottomRightRadius: '5px'
                                             }}
                                         >
                                             <Text
@@ -352,7 +356,9 @@ export default function News() {
                                         navigate(`/posts/${post._id}`);
                                     }}
                                 >
-                                    <Col>
+                                    <Col css={{
+                                        borderRadius: '5px'
+                                    }}>
                                         <Image
                                             src={`${post.homeImg}`}
                                             width={'100%'}
