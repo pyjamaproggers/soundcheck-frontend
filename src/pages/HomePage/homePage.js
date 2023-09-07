@@ -17,8 +17,6 @@ export default function HomeScreen() {
     const [postsFound, setPostsFound] = useState(false)
 
     const gridFilledD = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    const gridFilledM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //13 - 0s represent grid is empty, 1 represents grid is filled with the first article found of that grid number
-
 
     const fetchPosts = async () => {
         try {
