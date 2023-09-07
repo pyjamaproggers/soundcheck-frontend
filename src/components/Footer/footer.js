@@ -2,6 +2,8 @@ import { Grid, Image, Row, Link, Col, Text, Input, Button } from "@nextui-org/re
 import './footer.css';
 import React from "react";
 import Logo from '../../assets/logo.jpeg';
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
 import { SiApple, SiApplemusic } from 'react-icons/si'
 
@@ -74,17 +76,17 @@ export default function Footer() {
                         alignItems: 'center'
                     }}>
                         <Link className="footnavbar-item" href="/" css={{
-                            padding: '5px 0px'
+                            padding: '5px 0px', fontFamily:"Oswald"
                         }}>
                             Home
                         </Link>
                         <Link className="footnavbar-item" href="/news" css={{
-                            padding: '5px 0px'
+                            padding: '5px 0px', fontFamily:"Oswald"
                         }} >
                             News
                         </Link>
                         <Link className="footnavbar-item" href="/playlists" css={{
-                            padding: '5px 0px'
+                            padding: '5px 0px', fontFamily:"Oswald"
                         }} >
                             Playlists
                         </Link>
@@ -116,7 +118,7 @@ export default function Footer() {
                                 fontSize: '$xl',
                                 padding: '16px 16px 0px 16px'
                             },
-                            fontWeight: '$semibold'
+                            fontWeight: '$semibold', fontFamily:"Oswald"
                         }}>
                             Subscribe
                         </Text>
@@ -129,7 +131,7 @@ export default function Footer() {
                             },
                             pb: '16px',
                             fontWeight: '$medium',
-                            color: '$gray600'
+                            color: '$gray600', fontFamily:"Oswald"
                         }}>
                             To get email updates from SoundCheck™ India.
                         </Text>
@@ -140,10 +142,10 @@ export default function Footer() {
                             }}>
                                 <Input placeholder="Your email address" />
                                 <Button auto flat color='error' css={{
-                                    backgroundColor: '#300313',
+                                    backgroundColor: '#8b0214',
                                 }}>
                                     <Text css={{
-                                        fontWeight: 600,
+                                        fontWeight: 600, fontFamily:"Oswald"
                                     }}>
                                         Subscribe
                                     </Text>
@@ -153,10 +155,10 @@ export default function Footer() {
                         <div className="subscribe-mobile">
                             <Input placeholder="Your email address" />
                             <Button auto flat color='error' css={{
-                                backgroundColor: '#300313',
+                                backgroundColor: '#8b0214'
                             }}>
                                 <Text css={{
-                                    fontWeight: 600,
+                                    fontWeight: 600, fontFamily:"Oswald"
                                 }}>
                                     Subscribe
                                 </Text>
@@ -186,7 +188,7 @@ export default function Footer() {
                             borderWidth: '1px 0px 0px 0px',
                             '@xsMax': {
                                 fontSize: '$xs'
-                            }
+                            }, fontFamily:"Oswald"
                         }}>
                         © 2023 SoundCheck India. All Rights Reserved.
                     </Text>

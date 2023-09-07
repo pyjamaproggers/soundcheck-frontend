@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import SpotifyPlayer from "react-spotify-player"
 import { Col, Grid, Text, Loading } from '@nextui-org/react'
 import './playlists.css'
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 
 export default function Playlists() {
     const [fetching, setFetching] = useState(true)
@@ -90,7 +92,8 @@ export default function Playlists() {
                                 fontSize: '$3xl',
                             },
                             textAlign: 'center',
-                            margin: '24px 0px 0px 0px'
+                            margin: '24px 0px 0px 0px',
+                            fontFamily:"Oswald"
                         }}>
                             Curated Music Playlists
                         </Text>
@@ -105,7 +108,8 @@ export default function Playlists() {
                                 fontSize: '$lg',
                             },
                             textAlign: 'center',
-                            margin: '6px 0px 0px 0px'
+                            margin: '6px 0px 0px 0px',
+                            fontFamily:"Oswald"
                         }}>
                             Just for you.
                         </Text>

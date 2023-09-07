@@ -1,20 +1,8 @@
 import { Grid, Image, Text, Container, Col, Card, Row, Button, Input, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './homePage.css'
-import Divine from '../../assets/Divine.jpeg'
-import AB171 from '../../assets/AB171.jpeg'
-import AB172 from '../../assets/AB172.jpeg'
-import Temp1 from '../../assets/Temp1.jpg'
-import Temp2 from '../../assets/Temp2.jpg'
-import Temp3 from '../../assets/Temp3.png'
-import Temp4 from '../../assets/Temp4.png'
-import Temp5 from '../../assets/Temp5.png'
-import Temp6 from '../../assets/Temp6.png'
-import Temp7 from '../../assets/Temp7.png'
-import Temp8 from '../../assets/Temp8.png'
-import Temp9 from '../../assets/Temp9.png'
-import Temp10 from '../../assets/Temp10.png'
-import Temp11 from '../../assets/Temp11.png'
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 import { BsArrowRight } from 'react-icons/bs';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +17,6 @@ export default function HomeScreen() {
     const [postsFound, setPostsFound] = useState(false)
 
     const gridFilledD = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    const gridFilledM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //13 - 0s represent grid is empty, 1 represents grid is filled with the first article found of that grid number
-
 
     const fetchPosts = async () => {
         try {
@@ -42,11 +28,9 @@ export default function HomeScreen() {
                 .filter(post => post.gridNumber >= 1 && post.gridNumber <= 13)
                 .sort((a, b) => a.gridNumber - b.gridNumber);
 
-            console.log(filteredPosts);
             setPosts(filteredPosts);
             setFetching(false);
         } catch (error) {
-            console.log(error);
             setFetching(false);
         }
     };
@@ -136,6 +120,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -158,7 +143,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -212,6 +198,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -234,7 +221,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -300,6 +288,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -322,7 +311,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -373,7 +363,7 @@ export default function HomeScreen() {
                                                             backgroundColor: '$gray400',
                                                             display: 'flex',
                                                             flexDirection: 'column',
-                                                            alignItems: 'center'
+                                                            alignItems: 'center',
                                                         }}>
                                                             <Text
                                                                 css={{
@@ -386,6 +376,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald",
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -408,7 +399,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -462,6 +454,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
+                                                                    fontFamily:"Oswald"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -484,7 +477,8 @@ export default function HomeScreen() {
                                                                     '&:hover': {
                                                                         textDecoration: 'underline'
                                                                     },
-                                                                    fontWeight: '$medium'
+                                                                    fontWeight: '$medium',
+                                                                    fontFamily:"Oswald"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -547,6 +541,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -567,7 +562,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -617,6 +613,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald",
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -637,7 +634,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -674,7 +672,8 @@ export default function HomeScreen() {
                                                         backgroundColor: '$gray400',
                                                         display: 'flex',
                                                         flexDirection: 'column',
-                                                        alignItems: 'center'
+                                                        alignItems: 'center',
+                                                        fontFamily:"Oswald"
                                                     }}>
                                                         <Text
                                                             css={{
@@ -687,6 +686,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -707,7 +707,8 @@ export default function HomeScreen() {
                                                                 '&:hover': {
                                                                     textDecoration: 'underline'
                                                                 },
-                                                                fontWeight: '$medium'
+                                                                fontWeight: '$medium',
+                                                                fontFamily:"Oswald"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -738,75 +739,17 @@ export default function HomeScreen() {
                             jc: 'center',
                         }}
                     >
-                        <Grid.Container
-                            css={{
-                                height: "30vh",
-                                width: "95%",
-                                jc: 'center',
-                                position: "relative"
-                            }}
-                        >
-                            <Grid.Container
-                                direction="column"
-                                css={{
-                                    height: "30vh",
-                                    width: "100%",
-                                }}
-                            >
-                                {posts.map(post => {
-                                    if (post.gridNumber == 1) {
-                                        if (gridFilledM[post.gridNumber - 1] == 0) {
-                                            gridFilledM[post.gridNumber - 1] = 1
-                                            return (
-                                                <Card isPressable
-                                                    css={{ height: "30vh", width: "100%", borderRadius: '0' }}
-                                                    onPress={() => {
-                                                        navigate(`/posts/${post._id}`);
-                                                    }}>
-                                                    <Card.Image
-                                                        width='100%'
-                                                        height='100%'
-                                                        src={post.homeImg}
-                                                        objectFit="cover"
-                                                    />
-                                                    <Card.Footer isBlurred
-                                                        css={{
-                                                            position: "absolute",
-                                                            bgBlur: "#00000044",
-                                                            bottom: 0,
-                                                            zIndex: 1,
-                                                            borderRadius: '0',
-                                                            textAlign: 'center',
-                                                            jc: 'center'
-                                                        }}>
-                                                        <Text css={{
-                                                            fontSize: '$sm'
-                                                        }}>
-                                                            {post.title}
-                                                        </Text>
-
-                                                    </Card.Footer>
-                                                </Card>
-                                            )
-                                        }
-                                    }
-                                })}
-                            </Grid.Container>
-
-                        </Grid.Container>
 
                         <Grid.Container
                             css={{
                                 height: "240vh",
-                                width: "95%",
+                                width: "100%",
                                 jc: 'center',
                                 position: "relative",
                             }}
                         >
 
                             {posts.map(post => {
-                                if (gridFilledM[post.gridNumber - 1] == 0) {
-                                    gridFilledM[post.gridNumber-1] = 1
                                     return (
                                         <Grid.Container
                                             direction="column"
@@ -818,7 +761,7 @@ export default function HomeScreen() {
                                             }}
                                         >
                                             <Card isPressable
-                                                css={{ height: "20vh", width: "100%", borderRadius: '0' }}
+                                                css={{ height: "30vh", width: "100%", borderRadius: '0' }}
                                                 onPress={() => {
                                                     navigate(`/posts/${post._id}`);
                                                 }}>
@@ -839,7 +782,8 @@ export default function HomeScreen() {
                                                         jc: 'center'
                                                     }}>
                                                     <Text css={{
-                                                        fontSize: '$sm'
+                                                        fontSize: '$sm',
+                                                        fontFamily:"Oswald"
                                                     }}>
                                                         {post.title}
                                                     </Text>
@@ -848,7 +792,7 @@ export default function HomeScreen() {
                                             </Card>
                                         </Grid.Container>
                                     )
-                                }
+                                
                             })}
 
                         </Grid.Container>

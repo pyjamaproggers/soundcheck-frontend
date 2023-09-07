@@ -4,6 +4,8 @@ import './news.css';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "@fontsource/oswald"; // Defaults to weight 400
+import "@fontsource/oswald/400.css"; // Specify weight
 
 export default function News() {
     const [fetching, setFetching] = useState(true);
@@ -12,7 +14,7 @@ export default function News() {
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
     const [searched, setSearched] = useState('')
-
+    const [filteredPosts, setFilteredPosts] = useState([]); 
 
     function getDayWithSuffix(day) {
         if (day >= 11 && day <= 13) {
@@ -59,7 +61,6 @@ export default function News() {
     const fetchPosts = async () => {
         try {
             const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
-            console.log(response.data);
             setPosts(response.data);
             await segregatePosts(); // Call segregatePosts after setting the posts state
             setFetching(false);
@@ -77,6 +78,17 @@ export default function News() {
     useEffect(() => {
         segregatePosts();
     }, [posts]);
+
+    useEffect(() => {
+        if (searched.trim() === '') {
+            setFilteredPosts(publishedPosts);
+        } else {
+            const filtered = publishedPosts.filter((post) =>
+                post.title.toLowerCase().includes(searched.toLowerCase())
+            );
+            setFilteredPosts(filtered);
+        }
+    }, [searched, publishedPosts]);
 
     return (
         <div className="home">
@@ -100,6 +112,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '24px 0px 0px 0px',
+                                fontFamily:"Oswald"
                             }}
                         >
                             Latest Trends
@@ -116,6 +129,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '6px 0px 0px 0px',
+                                fontFamily:"Oswald"
                             }}
                         >
                             News & Updates of the Desi Hip-Hop world brought right to you.
@@ -147,12 +161,14 @@ export default function News() {
                                 }}
                                 onClick={() => {
                                     setDateLatest(!dateLatest);
+                                    filteredPosts = filteredPosts.reverse()
                                 }}
                             >
                                 <Text
                                     css={{
                                         fontWeight: '$semibold',
                                         padding: '0px 4px 0px 8px',
+                                        fontFamily:"Oswald"
                                     }}
                                 >
                                     Date
@@ -164,9 +180,9 @@ export default function News() {
                         {fetching && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
                     </Col>
 
-                    {publishedPosts && !fetching && (
+                    {filteredPosts && !fetching && (
                         <>
-                            {publishedPosts.map((post, index) => (
+                            {filteredPosts.map((post, index) => (
                                 <Grid
                                     css={{
                                         m: '24px',
@@ -216,6 +232,7 @@ export default function News() {
                                                     borderStyle: 'solid',
                                                     borderWidth: '0px 0px 1px 0px',
                                                     borderColor: '#8b0214',
+                                                    fontFamily:"Oswald"
                                                 }}
                                             >
                                                 {post.title.toUpperCase()}
@@ -227,6 +244,7 @@ export default function News() {
                                                     fontSize: '$lg',
                                                     padding: '6px 24px',
                                                     minWidth: '75px',
+                                                    fontFamily:"Oswald"
                                                 }}
                                             >
                                                 {JSON.parse(post.desc).blocks[0].text}
@@ -241,6 +259,7 @@ export default function News() {
                                                     borderWidth: '1px 0px 0px 0px',
                                                     borderColor: '#8b0214',
                                                     width: 'max-content',
+                                                    fontFamily:"Oswald"
                                                 }}
                                             >
                                                 {convertDate(post.date.slice(0, 10))}
@@ -274,6 +293,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '24px 0px 0px 0px',
+                                fontFamily:"Oswald"
                             }}
                         >
                             Latest Trends
@@ -290,6 +310,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '6px 16px 0px 16px',
+                                fontFamily:"Oswald"
                             }}
                         >
                             News & Updates of the Desi Hip-Hop world brought right to you.
@@ -321,12 +342,14 @@ export default function News() {
                                 }}
                                 onClick={() => {
                                     setDateLatest(!dateLatest);
+                                    filteredPosts = filteredPosts.reverse()
                                 }}
                             >
                                 <Text
                                     css={{
                                         fontWeight: '$semibold',
                                         padding: '0px 4px 0px 8px',
+                                        fontFamily:"Oswald"
                                     }}
                                 >
                                     Date
@@ -338,9 +361,9 @@ export default function News() {
                         {fetching && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
                     </Col>
 
-                    {publishedPosts && !fetching && (
+                    {filteredPosts && !fetching && (
                         <>
-                            {publishedPosts.map((post, index) => (
+                            {filteredPosts.map((post, index) => (
                                 <Grid
                                     css={{
                                         m: '24px',
@@ -379,6 +402,7 @@ export default function News() {
                                                 borderStyle: 'solid',
                                                 borderWidth: '0px 0px 1px 0px',
                                                 borderColor: '#8b0214',
+                                                fontFamily:"Oswald"
                                             }}
                                         >
                                             {post.title.toUpperCase()}
@@ -389,7 +413,7 @@ export default function News() {
                                                 fontWeight: '$normal',
                                                 fontSize: '$lg',
                                                 padding: '6px 24px',
-                                                minWidth: '75px',
+                                                minWidth: '75px',fontFamily:"Oswald"
                                             }}
                                         >
                                             {JSON.parse(post.desc).blocks[0].text}
@@ -404,6 +428,7 @@ export default function News() {
                                                 borderWidth: '1px 0px 0px 0px',
                                                 borderColor: '#8b0214',
                                                 width: 'max-content',
+                                                fontFamily:"Oswald"
                                             }}
                                         >
                                             {convertDate(post.date.slice(0, 10))}
