@@ -165,10 +165,11 @@ export default function Post() {
 
         const renderedContent = (
             <Grid.Container css={{
-                jc: 'center'
+                jc: 'center',
+                fontFamily:"Oswald"
             }}>
                 <div dangerouslySetInnerHTML={{ __html: htmlContent }}
-                    className="post-content"
+                    className="post-content" 
                 />
             </Grid.Container>
         );
