@@ -163,14 +163,14 @@ export default function Post() {
         extractAppleMusicEmbed()
         extractSpotifyEmbeds()
 
+        const wrappedContent = `<div class="post-content">${htmlContent}</div>`;
+
         const renderedContent = (
             <Grid.Container css={{
                 jc: 'center',
                 fontFamily:"Oswald"
             }}>
-                <div dangerouslySetInnerHTML={{ __html: htmlContent }}
-                    className="post-content" 
-                    style={{ fontFamily: "Oswald" }}
+                <div dangerouslySetInnerHTML={{ __html: wrappedContent }}
                 />
             </Grid.Container>
         );

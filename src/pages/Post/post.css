@@ -39,7 +39,6 @@ iframe{
     width: 100% !important;
 }
 
-.post-content
-{
-    font-family: "Oswald";
+.post-content p {
+    font-family: Oswald;
 }
