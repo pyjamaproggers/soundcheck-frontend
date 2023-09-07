@@ -191,6 +191,7 @@ export default function News() {
                                         '&:hover': {
                                             cursor: 'pointer',
                                         },
+                                        borderRadius: '12px'
                                     }}
                                     key={index}
                                     onClick={() => {
@@ -206,8 +207,8 @@ export default function News() {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
-                                                borderTopLeftRadius: '5px',
-                                                borderBottomLeftRadius: '5px'
+                                                borderTopLeftRadius: '12px',
+                                                borderBottomLeftRadius: '12px'
                                             }}
                                         />
                                         <Col
@@ -218,8 +219,6 @@ export default function News() {
                                                 jc: 'space-evenly',
                                                 padding: '6px 0px',
                                                 height: '180px',
-                                                borderTopRightRadius: '5px',
-                                                borderBottomRightRadius: '5px'
                                             }}
                                         >
                                             <Text
