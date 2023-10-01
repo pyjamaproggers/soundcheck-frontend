@@ -52,13 +52,12 @@ export default function Footer() {
                             textAlign: 'center',
                             alignItems: 'center'
                         }}>
-                        <FaSpotify onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
-                        <FaInstagram onClick={() => { window.location = "https://www.instagram.com/fanup_inc/?hl=en" }} className="icon" size={'20px'} />
-                        <FaTwitter onClick={() => { window.location = "https://twitter.com/fanup_inc?s=20" }} className="icon" size={'20px'} />
-                        <SiApplemusic onClick={() => { window.location = "https://www.facebook.com/FanUpInc/" }} className="icon" size={'20px'} />
+                        <FaSpotify onClick={() => { window.location = "https://open.spotify.com/user/31ahbs772sa3yvxr4lxmogsab64i?si=7cdfb2397a3940bd&nd=1" }} className="icon" size={'20px'} />
+                        <FaInstagram onClick={() => { window.location = "https://www.instagram.com/soundcheckindia_/" }} className="icon" size={'20px'} />
+                        <FaTwitter onClick={() => { window.location = "https://twitter.com/SoundCheckIndia" }} className="icon" size={'20px'} />
+                        <SiApplemusic onClick={() => { window.location = "https://music.apple.com/profile/SoundCheckIndia" }} className="icon" size={'20px'} />
                     </Row>
                 </Grid>
-
                 <Grid
                     css={{
                         padding: '12px',
