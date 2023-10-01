@@ -274,7 +274,7 @@ export default function Post() {
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Oswald" }}>
-                                MORE BY SoundCheck
+                            MORE BY SOUNDCHECK INDIA
                             </Text>
 
                             {publishedPosts.map((post, index) => {
@@ -320,7 +320,7 @@ export default function Post() {
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '85vw', jc: 'center',}}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Oswald"}}>
-                                MORE BY SoundCheck
+                            MORE BY SOUNDCHECK INDIA
                             </Text>
 
                             {publishedPosts.map((post, index) => {
