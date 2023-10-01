@@ -186,12 +186,13 @@ export default function News() {
                                 <Grid
                                     css={{
                                         m: '24px',
-                                        maxW: '1050px',
+                                        maxW: '90vw',
                                         backgroundColor: 'black',
                                         '&:hover': {
                                             cursor: 'pointer',
                                         },
-                                        borderRadius: '12px'
+                                        borderRadius: '12px',
+                                        mb: '12px'
                                     }}
                                     key={index}
                                     onClick={() => {
@@ -364,20 +365,21 @@ export default function News() {
                         <>
                             {filteredPosts.map((post, index) => (
                                 <Grid
-                                    css={{
-                                        m: '24px',
-                                        width: '100%',
-                                        backgroundColor: 'black',
-                                        '&:hover': {
-                                            cursor: 'pointer',
-                                        },
-                                        paddingBottom: '12px',
-                                    }}
-                                    key={index}
-                                    onClick={() => {
-                                        navigate(`/posts/${post._id}`);
-                                    }}
-                                >
+                                css={{
+                                    m: '24px',
+                                    width: '100%',
+                                    backgroundColor: 'black',
+                                    '&:hover': {
+                                        cursor: 'pointer',
+                                    },
+                                    paddingBottom: '12px',
+                                    borderRadius: '12px', // Added borderRadius
+                                }}
+                                key={index}
+                                onClick={() => {
+                                    navigate(`/posts/${post._id}`);
+                                }}
+                            >
                                     <Col css={{
                                         borderRadius: '5px'
                                     }}>
