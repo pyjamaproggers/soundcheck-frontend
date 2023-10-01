@@ -373,7 +373,7 @@ export default function News() {
                                         cursor: 'pointer',
                                     },
                                     paddingBottom: '12px',
-                                    borderRadius: '24px', // Added borderRadius
+                                    borderRadius: '35px', // Added borderRadius
                                     jc:"center"
                                 }}
                                 key={index}
