@@ -1,7 +1,7 @@
 import { Grid, Image, Row, Link, Col, Text, Input, Button } from "@nextui-org/react";
 import './footer.css';
 import React from "react";
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo.jpeg';
 import "@fontsource/oswald"; // Defaults to weight 400
 import "@fontsource/oswald/400.css"; // Specify weight
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
@@ -14,7 +14,7 @@ export default function Footer() {
                 css={{
                     jc: 'center',
                     textAlign: 'center',
-                    alignItems: 'top',
+                    alignItems: 'center',
                     marginTop: '24px',
                 }}
             >
@@ -95,6 +95,7 @@ export default function Footer() {
 
                 <Grid 
                 css={{
+                    padding: '12px',
                     '@smMin': {
                         borderWidth: '0px 0px 0px 1px',
                         borderColor: '#8b0214',

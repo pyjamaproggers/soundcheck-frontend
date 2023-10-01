@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Image, Text, Row, Container, Col } from "@nextui-org/react";
-import TempLogo from "../../assets/TempLogo.jpeg";
+import Logo from "../../assets/logo.jpeg";
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
 import { SiApple, SiApplemusic } from 'react-icons/si'
 import './post.css';
@@ -231,7 +231,7 @@ export default function Post() {
                                         borderRadius: '0px',
                                         objectFit: 'cover'
                                     }}
-                                    src={TempLogo}
+                                    src={Logo}
                                 />
                             </Grid>
                         </Grid.Container>

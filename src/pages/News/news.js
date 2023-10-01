@@ -186,11 +186,12 @@ export default function News() {
                                 <Grid
                                     css={{
                                         m: '24px',
-                                        maxW: '900px',
+                                        maxW: '1050px',
                                         backgroundColor: 'black',
                                         '&:hover': {
                                             cursor: 'pointer',
                                         },
+                                        borderRadius: '12px'
                                     }}
                                     key={index}
                                     onClick={() => {
@@ -206,6 +207,8 @@ export default function News() {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
+                                                borderTopLeftRadius: '12px',
+                                                borderBottomLeftRadius: '12px'
                                             }}
                                         />
                                         <Col
@@ -375,7 +378,9 @@ export default function News() {
                                         navigate(`/posts/${post._id}`);
                                     }}
                                 >
-                                    <Col>
+                                    <Col css={{
+                                        borderRadius: '5px'
+                                    }}>
                                         <Image
                                             src={`${post.homeImg}`}
                                             width={'100%'}
