@@ -13,27 +13,27 @@ export default function Playlists() {
     const playlists = [
         {
             platform: 'Spotify',
-            link: 'https://open.spotify.com/playlist/2BSzF6sRfEKksO30Iv1Hoq?si=c93a139bcbea46f7',
+            link: 'https://open.spotify.com/playlist/3BwYxKT5CvAuiAvtyPm1oU?si=4333efcb049b460b',
         },
         {
             platform: 'Spotify',
-            link: 'https://open.spotify.com/playlist/37i9dQZF1DX2RahGIyQXcJ?si=48ad789c15384dee',
+            link: 'https://open.spotify.com/playlist/5QKAo990YB8RdYs72wO5e7?si=325f43cde2a3462c',
         },
         {
             platform: 'Spotify',
-            link: 'https://open.spotify.com/playlist/37i9dQZF1DX1ct2TQrAvRf?si=2d1551b1e08148a1',
-        },
-        {
-            platform: 'Spotify',
-            link: 'https://open.spotify.com/playlist/43FJRpUKaBOSWJsbZzOiNo?si=d0b0449b2c814392',
+            link: 'https://open.spotify.com/playlist/5jN9cTXLrnHxXzYxdMGxgN?si=8e93c2f8a6594381',
         },
         {
             platform: 'AppleMusic',
-            link: 'https://embed.music.apple.com/in/playlist/2010s-indian-hip-hop-essentials/pl.99742817f93b402395e63e963fb33cd2',
+            link: 'https://embed.music.apple.com/in/playlist/hidden-gems/pl.u-6mo4aPvC8rxxMYR',
         },
         {
             platform: 'AppleMusic',
-            link: 'https://embed.music.apple.com/in/playlist/top-25-mumbai/pl.db537759ae3341eaa600bc5482209f7c',
+            link: 'https://embed.music.apple.com/in/playlist/rap-royalty/pl.u-BNA6Yl3Fe4LLB06',
+        },
+        {
+            platform: 'AppleMusic',
+            link: 'https://embed.music.apple.com/in/playlist/voices-of-dhh/pl.u-LdbqelvI2J88Lra',
         },
 
     ]
