@@ -117,9 +117,9 @@ export default function Playlists() {
                     {fetching &&
                         <Loading css={{padding: '30vh 0px'}} color={'white'} size="xl"/>
                     }
-
+                    
                     {spotifyLinks && !fetching &&
-                    <>
+                    <Col>
                         {spotifyLinks.map((playlist, index) => (
                             <Grid css={{
                                 
@@ -140,12 +140,12 @@ export default function Playlists() {
                                 />
                             </Grid>
                         ))}
-                    </>
+                    </Col>
                     }
 
 
                     {appleMusicLinks && !fetching &&
-                    <>
+                    <Col>
                         {appleMusicLinks.map((playlist, index) => (
                             <Grid css={{
                                 
@@ -168,7 +168,7 @@ export default function Playlists() {
                                 src={playlist.link}></iframe>
                             </Grid>
                         ))}
-                    </>
+                    </Col>
                     }
 
 
