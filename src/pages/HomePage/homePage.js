@@ -112,10 +112,10 @@ export default function HomeScreen() {
                                                             <Text
                                                                 css={{
                                                                     '@xsMax': {
-                                                                        fontSize: '$xs',
+                                                                        fontSize: '$md',
                                                                     },
                                                                     '@xsMin': {
-                                                                        fontSize: '$xs'
+                                                                        fontSize: '$md'
                                                                     },
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
@@ -190,10 +190,10 @@ export default function HomeScreen() {
                                                             <Text
                                                                 css={{
                                                                     '@xsMax': {
-                                                                        fontSize: '$xs',
+                                                                        fontSize: '$md',
                                                                     },
                                                                     '@xsMin': {
-                                                                        fontSize: '$xs'
+                                                                        fontSize: '$md'
                                                                     },
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
@@ -280,10 +280,10 @@ export default function HomeScreen() {
                                                             <Text
                                                                 css={{
                                                                     '@xsMax': {
-                                                                        fontSize: '$xs',
+                                                                        fontSize: '$md',
                                                                     },
                                                                     '@xsMin': {
-                                                                        fontSize: '$xs'
+                                                                        fontSize: '$md'
                                                                     },
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
@@ -368,10 +368,10 @@ export default function HomeScreen() {
                                                             <Text
                                                                 css={{
                                                                     '@xsMax': {
-                                                                        fontSize: '$xs',
+                                                                        fontSize: '$md',
                                                                     },
                                                                     '@xsMin': {
-                                                                        fontSize: '$xs'
+                                                                        fontSize: '$md'
                                                                     },
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
@@ -446,10 +446,10 @@ export default function HomeScreen() {
                                                             <Text
                                                                 css={{
                                                                     '@xsMax': {
-                                                                        fontSize: '$xs',
+                                                                        fontSize: '$md',
                                                                     },
                                                                     '@xsMin': {
-                                                                        fontSize: '$xs'
+                                                                        fontSize: '$md'
                                                                     },
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
@@ -533,10 +533,10 @@ export default function HomeScreen() {
                                                         <Text
                                                             css={{
                                                                 '@xsMax': {
-                                                                    fontSize: '$xs',
+                                                                    fontSize: '$md',
                                                                 },
                                                                 '@xsMin': {
-                                                                    fontSize: '$xs'
+                                                                    fontSize: '$md'
                                                                 },
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
@@ -605,10 +605,10 @@ export default function HomeScreen() {
                                                         <Text
                                                             css={{
                                                                 '@xsMax': {
-                                                                    fontSize: '$xs',
+                                                                    fontSize: '$md',
                                                                 },
                                                                 '@xsMin': {
-                                                                    fontSize: '$xs'
+                                                                    fontSize: '$md'
                                                                 },
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
@@ -678,10 +678,10 @@ export default function HomeScreen() {
                                                         <Text
                                                             css={{
                                                                 '@xsMax': {
-                                                                    fontSize: '$xs',
+                                                                    fontSize: '$md',
                                                                 },
                                                                 '@xsMin': {
-                                                                    fontSize: '$xs'
+                                                                    fontSize: '$md'
                                                                 },
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
@@ -782,7 +782,7 @@ export default function HomeScreen() {
                                                         jc: 'center'
                                                     }}>
                                                     <Text css={{
-                                                        fontSize: '$sm',
+                                                        fontSize: '$md',
                                                         fontFamily:"Oswald"
                                                     }}>
                                                         {post.title}
