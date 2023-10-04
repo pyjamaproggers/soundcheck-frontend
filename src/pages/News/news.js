@@ -122,7 +122,7 @@ export default function News() {
                                 fontWeight: '$semibold',
                                 '@xsMax': {
                                     fontSize: '$sm',
-                                    paddingBottom: '24px',
+                                    paddingBottom: '12px',
                                 },
                                 '@xsMin': {
                                     fontSize: '$lg',
@@ -136,7 +136,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '36px 0 0px 0',
+                                margin: '24px 0 0px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
@@ -303,7 +303,7 @@ export default function News() {
                                 fontWeight: '$semibold',
                                 '@xsMax': {
                                     fontSize: '$sm',
-                                    paddingBottom: '6px',
+                                    paddingBottom: '0px',
                                 },
                                 '@xsMin': {
                                     fontSize: '$lg',
@@ -317,7 +317,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '36px 0 0px 0',
+                                margin: '24px 0 0px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
