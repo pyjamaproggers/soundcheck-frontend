@@ -227,7 +227,7 @@ export default function Post() {
                                 <Image
                                     css={{
                                         jc:"center",
-                                        width: '80%',
+                                        width: '300px',
                                         borderRadius: '0px',
                                         objectFit: 'cover'
                                     }}
