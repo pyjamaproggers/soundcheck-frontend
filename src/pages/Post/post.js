@@ -226,8 +226,8 @@ export default function Post() {
                             <Grid>
                                 <Image
                                     css={{
-                                        width: '150px',
-                                        height: '80%',
+                                        width: '80%',
+                                        height: '90%',
                                         borderRadius: '0px',
                                         objectFit: 'cover'
                                     }}
