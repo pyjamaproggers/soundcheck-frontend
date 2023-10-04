@@ -136,7 +136,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '24px 0 0px 0',
+                                margin: '16px 0 0px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
@@ -317,7 +317,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '24px 0 0px 0',
+                                margin: '16px 0 0px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
