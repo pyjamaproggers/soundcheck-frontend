@@ -226,6 +226,7 @@ export default function Post() {
                             <Grid>
                                 <Image
                                     css={{
+                                        jc:"center",
                                         width: '80%',
                                         height: '90%',
                                         borderRadius: '0px',
