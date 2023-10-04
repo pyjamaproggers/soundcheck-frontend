@@ -219,7 +219,7 @@ export default function Post() {
                         }}
                         direction="column"
                     >
-                        <Text css={{ fontWeight: '$semibold', fontSize: '$xl' , fontFamily:"Oswald"}}>
+                        <Text css={{ fontWeight: '$semibold', fontSize: '$2xl' , fontFamily:"Oswald"}}>
                             {month} {current.getDate()}, {current.getFullYear()}
                         </Text>
                         <Grid.Container css={{ alignItems: 'center', jc: 'center', p: '8px 0px 16px 0px' }}>
@@ -227,7 +227,7 @@ export default function Post() {
                                 <Image
                                     css={{
                                         width: '150px',
-                                        height: '70px',
+                                        height: '80%',
                                         borderRadius: '0px',
                                         objectFit: 'cover'
                                     }}
@@ -237,16 +237,16 @@ export default function Post() {
                         </Grid.Container>
                         <Grid.Container css={{ justifyContent: 'center' }}>
                             <Grid>
-                                <FaSpotify className="icon" size={'24px'} />
+                                <FaSpotify className="icon" size={'30px'} />
                             </Grid>
                             <Grid>
-                                <FaInstagram className="icon" size={'24px'} />
+                                <FaInstagram className="icon" size={'30px'} />
                             </Grid>
                             <Grid>
-                                <FaTwitter className="icon" size={'24px'} />
+                                <FaTwitter className="icon" size={'30px'} />
                             </Grid>
                             <Grid>
-                                <SiApplemusic className="icon" size={'24px'} />
+                                <SiApplemusic className="icon" size={'30px'} />
                             </Grid>
                         </Grid.Container>
                     </Grid.Container>
