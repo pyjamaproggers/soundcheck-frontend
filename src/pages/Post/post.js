@@ -12,6 +12,9 @@ import { convertFromRaw, EditorState, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import "@fontsource/oswald"; // Defaults to weight 400
 import "@fontsource/oswald/400.css"; // Specify weight
+import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+import 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap';
+
 
 export default function Post() {
     const location = useLocation();
@@ -168,7 +171,7 @@ export default function Post() {
         const renderedContent = (
             <Grid.Container css={{
                 jc: 'center',
-                fontFamily:"Arial, Helvetica, sans-serif"
+                fontFamily: 'Roboto'
             }}>
                 <div dangerouslySetInnerHTML={{ __html: wrappedContent }}
                 />

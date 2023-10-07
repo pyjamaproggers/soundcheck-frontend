@@ -6,6 +6,9 @@
     white-space: pre-wrap; /* let the text wrap preserving spaces */
 } 
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 @media screen and (max-width: 870px) {
     .post-desktop {
         display: none;
@@ -17,6 +20,14 @@
         display: none;
     }
 }
+
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .font-open-sans {
+    font-family: 'Open Sans', sans-serif;
+  }
 
 /* @media screen and (min-width: 650px) {
     .mobile {
