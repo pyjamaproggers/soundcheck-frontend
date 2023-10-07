@@ -10,8 +10,6 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { convertFromRaw, EditorState, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import "@fontsource/oswald"; // Defaults to weight 400
-import "@fontsource/oswald/400.css"; // Specify weight
 import '@fontsource/roboto';
 
 
