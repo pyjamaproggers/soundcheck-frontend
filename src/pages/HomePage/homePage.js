@@ -94,7 +94,7 @@ export default function HomeScreen() {
                                                     <Image
                                                         css={{ height: "25vh", width: "100%", }}
                                                         src={post.homeImg}
-                                                        objectFit="cover"
+                                                        objectFit="fill"
                                                         className="image"
                                                         onClick={() => {
                                                             navigate(`/posts/${post._id}`);
@@ -172,7 +172,7 @@ export default function HomeScreen() {
                                                     <Image
                                                         css={{ height: "25vh", width: "100%", }}
                                                         src={post.homeImg}
-                                                        objectFit="cover"
+                                                        objectFit="fill"
                                                         className="image"
                                                         onClick={() => {
                                                             navigate(`/posts/${post._id}`);
@@ -262,7 +262,7 @@ export default function HomeScreen() {
                                                     <Image
                                                         css={{ height: "50vh", width: "100%", }}
                                                         src={post.homeImg}
-                                                        objectFit="cover"
+                                                        objectFit="fill"
                                                         className="image"
                                                         onClick={() => {
                                                             navigate(`/posts/${post._id}`);
@@ -350,7 +350,7 @@ export default function HomeScreen() {
                                                     <Image
                                                         css={{ height: "25vh", width: "100%", }}
                                                         src={post.homeImg}
-                                                        objectFit="cover"
+                                                        objectFit="fill"
                                                         className="image"
                                                         onClick={() => {
                                                             navigate(`/posts/${post._id}`);
@@ -428,7 +428,7 @@ export default function HomeScreen() {
                                                     <Image
                                                         css={{ height: "25vh", width: "100%", }}
                                                         src={post.homeImg}
-                                                        objectFit="cover"
+                                                        objectFit="fill"
                                                         className="image"
                                                         onClick={() => {
                                                             navigate(`/posts/${post._id}`);
@@ -518,7 +518,7 @@ export default function HomeScreen() {
                                                     onClick={() => {
                                                         navigate(`/posts/${post._id}`);
                                                     }}
-                                                    objectFit="cover"
+                                                    objectFit="fill"
                                                     className="image"
                                                 />
                                                 <div className="card">
@@ -590,7 +590,7 @@ export default function HomeScreen() {
                                                     onClick={() => {
                                                         navigate(`/posts/${post._id}`);
                                                     }}
-                                                    objectFit="cover"
+                                                    objectFit="fill"
                                                     className="image"
                                                 />
                                                 <div className="card">
@@ -662,7 +662,7 @@ export default function HomeScreen() {
                                                     onClick={() => {
                                                         navigate(`/posts/${post._id}`);
                                                     }}
-                                                    objectFit="cover"
+                                                    objectFit="fill"
                                                     className="image"
                                                 />
                                                 <div className="card">
@@ -767,7 +767,7 @@ export default function HomeScreen() {
                                                     width='100%'
                                                     height='100%'
                                                     src={post.homeImg}
-                                                    objectFit="cover"
+                                                    objectFit="fill"
                                                 />
                                                 <Card.Footer isBlurred
                                                     css={{
