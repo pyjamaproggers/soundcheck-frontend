@@ -29,7 +29,7 @@ function Header() {
                 <Navbar.Toggle color="inherit" showIn="xs" />
                 <Navbar.Brand hideIn="xs">
                     <Image css={{
-                        width: '152px',
+                        width: '200px',
                         height: '76px',
                         borderRadius: '5px',
                         left: 0,
