@@ -4,8 +4,7 @@ import './news.css';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "@fontsource/oswald"; // Defaults to weight 400
-import "@fontsource/oswald/400.css"; // Specify weight
+import '@fontsource/roboto';
 
 export default function News() {
     const [fetching, setFetching] = useState(true);
@@ -112,7 +111,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '24px 0px 0px 0px',
-                                fontFamily:"Oswald"
+                                fontFamily:"Roboto"
                             }}
                         >
                             Latest Trends
@@ -129,7 +128,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '6px 0px 0px 0px',
-                                fontFamily:"Oswald"
+                                fontFamily:"Roboto"
                             }}
                         >
                             News & Updates of the Desi Hip-Hop world brought right to you.
@@ -168,7 +167,7 @@ export default function News() {
                                     css={{
                                         fontWeight: '$semibold',
                                         padding: '0px 4px 0px 8px',
-                                        fontFamily:"Oswald"
+                                        fontFamily:"Roboto"
                                     }}
                                 >
                                     Date
@@ -232,7 +231,7 @@ export default function News() {
                                                     borderStyle: 'solid',
                                                     borderWidth: '0px 0px 1px 0px',
                                                     borderColor: '#8b0214',
-                                                    fontFamily:"Oswald"
+                                                    fontFamily:"Roboto"
                                                 }}
                                             >
                                                 {post.title.toUpperCase()}
@@ -244,7 +243,7 @@ export default function News() {
                                                     fontSize: '$lg',
                                                     padding: '6px 24px',
                                                     minWidth: '75px',
-                                                    fontFamily:"Oswald"
+                                                    fontFamily:"Roboto"
                                                 }}
                                             >
                                                 {JSON.parse(post.desc).blocks[0].text}
@@ -259,7 +258,7 @@ export default function News() {
                                                     borderWidth: '1px 0px 0px 0px',
                                                     borderColor: '#8b0214',
                                                     width: 'max-content',
-                                                    fontFamily:"Oswald"
+                                                    fontFamily:"Roboto"
                                                 }}
                                             >
                                                 {convertDate(post.date.slice(0, 10))}
@@ -293,7 +292,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '24px 0px 0px 0px',
-                                fontFamily:"Oswald"
+                                fontFamily:"Roboto"
                             }}
                         >
                             Latest Trends
@@ -310,7 +309,7 @@ export default function News() {
                                 },
                                 textAlign: 'center',
                                 margin: '6px 16px 0px 16px',
-                                fontFamily:"Oswald"
+                                fontFamily:"Roboto"
                             }}
                         >
                             News & Updates of the Desi Hip-Hop world brought right to you.
@@ -349,7 +348,7 @@ export default function News() {
                                     css={{
                                         fontWeight: '$semibold',
                                         padding: '0px 4px 0px 8px',
-                                        fontFamily:"Oswald"
+                                        fontFamily:"Roboto"
                                     }}
                                 >
                                     Date
@@ -406,7 +405,7 @@ export default function News() {
                                                 borderStyle: 'solid',
                                                 borderWidth: '0px 0px 1px 0px',
                                                 borderColor: '#8b0214',
-                                                fontFamily:"Oswald"
+                                                fontFamily:"Roboto"
                                             }}
                                         >
                                             {post.title.toUpperCase()}
@@ -417,7 +416,7 @@ export default function News() {
                                                 fontWeight: '$normal',
                                                 fontSize: '$lg',
                                                 padding: '6px 24px',
-                                                minWidth: '75px',fontFamily:"Oswald"
+                                                minWidth: '75px',fontFamily:"Roboto"
                                             }}
                                         >
                                             {JSON.parse(post.desc).blocks[0].text}
@@ -432,7 +431,7 @@ export default function News() {
                                                 borderWidth: '1px 0px 0px 0px',
                                                 borderColor: '#8b0214',
                                                 width: 'max-content',
-                                                fontFamily:"Oswald"
+                                                fontFamily:"Roboto"
                                             }}
                                         >
                                             {convertDate(post.date.slice(0, 10))}

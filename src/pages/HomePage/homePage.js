@@ -1,8 +1,8 @@
 import { Grid, Image, Text, Container, Col, Card, Row, Button, Input, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './homePage.css'
-import "@fontsource/oswald"; // Defaults to weight 400
-import "@fontsource/oswald/400.css"; // Specify weight
+import "@fontsource/Roboto"; // Defaults to weight 400
+import "@fontsource/Roboto/400.css"; // Specify weight
 import { BsArrowRight } from 'react-icons/bs';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -120,7 +120,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -144,7 +144,7 @@ export default function HomeScreen() {
                                                                         textDecoration: 'underline'
                                                                     },
                                                                     fontWeight: '$medium',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -198,7 +198,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -222,7 +222,7 @@ export default function HomeScreen() {
                                                                         textDecoration: 'underline'
                                                                     },
                                                                     fontWeight: '$medium',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -288,7 +288,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -312,7 +312,7 @@ export default function HomeScreen() {
                                                                         textDecoration: 'underline'
                                                                     },
                                                                     fontWeight: '$medium',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -376,7 +376,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
-                                                                    fontFamily:"Oswald",
+                                                                    fontFamily:"Roboto",
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -400,7 +400,7 @@ export default function HomeScreen() {
                                                                         textDecoration: 'underline'
                                                                     },
                                                                     fontWeight: '$medium',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -454,7 +454,7 @@ export default function HomeScreen() {
                                                                     padding: '1.5% 2.5% 1% 2.5%',
                                                                     fontWeight: '$semibold',
                                                                     backgroundColor: '$gray400',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}>
                                                                 {post.title}
                                                             </Text>
@@ -478,7 +478,7 @@ export default function HomeScreen() {
                                                                         textDecoration: 'underline'
                                                                     },
                                                                     fontWeight: '$medium',
-                                                                    fontFamily:"Oswald"
+                                                                    fontFamily:"Roboto"
                                                                 }}
                                                                 >
                                                                     READ MORE
@@ -541,7 +541,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
-                                                                fontFamily:"Oswald"
+                                                                fontFamily:"Roboto"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -563,7 +563,7 @@ export default function HomeScreen() {
                                                                     textDecoration: 'underline'
                                                                 },
                                                                 fontWeight: '$medium',
-                                                                fontFamily:"Oswald"
+                                                                fontFamily:"Roboto"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -613,7 +613,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
-                                                                fontFamily:"Oswald",
+                                                                fontFamily:"Roboto",
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -635,7 +635,7 @@ export default function HomeScreen() {
                                                                     textDecoration: 'underline'
                                                                 },
                                                                 fontWeight: '$medium',
-                                                                fontFamily:"Oswald"
+                                                                fontFamily:"Roboto"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -673,7 +673,7 @@ export default function HomeScreen() {
                                                         display: 'flex',
                                                         flexDirection: 'column',
                                                         alignItems: 'center',
-                                                        fontFamily:"Oswald"
+                                                        fontFamily:"Roboto"
                                                     }}>
                                                         <Text
                                                             css={{
@@ -686,7 +686,7 @@ export default function HomeScreen() {
                                                                 padding: '1.5% 2.5% 1% 2.5%',
                                                                 fontWeight: '$semibold',
                                                                 backgroundColor: '$gray400',
-                                                                fontFamily:"Oswald"
+                                                                fontFamily:"Roboto"
                                                             }}>
                                                             {post.title}
                                                         </Text>
@@ -708,7 +708,7 @@ export default function HomeScreen() {
                                                                     textDecoration: 'underline'
                                                                 },
                                                                 fontWeight: '$medium',
-                                                                fontFamily:"Oswald"
+                                                                fontFamily:"Roboto"
                                                             }}>
                                                                 READ MORE
                                                             </Text>
@@ -783,7 +783,7 @@ export default function HomeScreen() {
                                                     }}>
                                                     <Text css={{
                                                         fontSize: '$md',
-                                                        fontFamily:"Oswald"
+                                                        fontFamily:"Roboto"
                                                     }}>
                                                         {post.title}
                                                     </Text>

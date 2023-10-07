@@ -4,8 +4,7 @@ import { Navbar, Link, Image, Text, Grid, } from "@nextui-org/react";
 import { FaYoutube, FaInstagram, FaTwitter, FaDiscord, FaSpotify, } from 'react-icons/fa';
 import { SiApplemusic } from 'react-icons/si'
 import Logo from '../../assets/logo.jpeg'
-import "@fontsource/oswald"; // Defaults to weight 400
-import "@fontsource/oswald/400.css"; // Specify weight
+import '@fontsource/roboto';
 
 function Header() {
 
@@ -48,7 +47,7 @@ function Header() {
 
                 <Navbar.Content hideIn="xs" variant="highlight" >
                     {items.map((item, index) => (
-                        <Navbar.Link key={index} isActive={item.href === active.substring(0, item.href.length + 1)} href={item.href} css={{fontFamily:"Oswald"}}>
+                        <Navbar.Link key={index} isActive={item.href === active.substring(0, item.href.length + 1)} href={item.href} css={{fontFamily:"Roboto"}}>
                             {item.name}
                         </Navbar.Link>
                     ))}
@@ -96,7 +95,7 @@ function Header() {
                             <Link href={item.href}
                                 css={{
                                     minWidth: "100%",
-                                    fontFamily:"Oswald"
+                                    fontFamily:"Roboto"
                                 }}
                             >
                                 {item.name}
