@@ -221,7 +221,7 @@ export default function Post() {
                         }}
                         direction="column"
                     >
-                        <Text css={{ fontWeight: '$semibold', fontSize: '$2xl' , fontFamily:"Oswald"}}>
+                        <Text css={{ fontWeight: '$semibold', fontSize: '$2xl' , fontFamily:"Roboto"}}>
                             {month} {current.getDate()}, {current.getFullYear()}
                         </Text>
                         <Grid.Container css={{ alignItems: 'center', jc: 'center', p: '8px 0px 16px 0px' }}>
@@ -275,7 +275,7 @@ export default function Post() {
 
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
-                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Oswald" }}>
+                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Roboto" }}>
                             MORE BY SOUNDCHECK INDIA
                             </Text>
 
@@ -294,7 +294,7 @@ export default function Post() {
                                                 margin: '8px',
                                             }}>
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
-                                                <Text className="multiline-ellipsis" css={{ fontFamily:"Oswald", fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' }}>
+                                                <Text className="multiline-ellipsis" css={{ fontFamily:"Roboto", fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' }}>
                                                     {post.title}
                                                 </Text>
                                             </Row>
@@ -321,7 +321,7 @@ export default function Post() {
 
                     {publishedPosts && publishedPosts.length > 4 &&
                         <Grid.Container css={{ width: '85vw', jc: 'center',}}>
-                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Oswald"}}>
+                            <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Roboto"}}>
                             MORE BY SOUNDCHECK INDIA
                             </Text>
 
@@ -340,7 +340,7 @@ export default function Post() {
                                                 alignItems: 'center'
                                             }} >
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
-                                                <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' , fontFamily:"Oswald"}}>
+                                                <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' , fontFamily:"Roboto"}}>
                                                     {post.title}
                                                 </Text>
                                             </Row>
