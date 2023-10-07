@@ -1,8 +1,6 @@
 import { Grid, Image, Text, Container, Col, Card, Row, Button, Input, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './homePage.css'
-import "@fontsource/Roboto"; // Defaults to weight 400
-import "@fontsource/Roboto/400.css"; // Specify weight
 import { BsArrowRight } from 'react-icons/bs';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
