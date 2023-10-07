@@ -177,7 +177,7 @@ export default function Post() {
 
         return (
             <Grid.Container>
-                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' , fontFamily:"Roboto"}}>
+                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' , fontFamily:"Roboto", marginBottom:"24px"}}>
                     {post.title}
                 </Text>
                 <Image
