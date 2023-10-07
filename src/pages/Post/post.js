@@ -12,8 +12,7 @@ import { convertFromRaw, EditorState, ContentState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
 import "@fontsource/oswald"; // Defaults to weight 400
 import "@fontsource/oswald/400.css"; // Specify weight
-import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
-import 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap';
+import '@fontsource/roboto';
 
 
 export default function Post() {
@@ -180,7 +179,7 @@ export default function Post() {
 
         return (
             <Grid.Container>
-                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' , fontFamily:"Oswald"}}>
+                <Text css={{ fontWeight: '$semibold', fontSize: '$3xl', height: 'max-content' , fontFamily:"Roboto"}}>
                     {post.title}
                 </Text>
                 <Image
