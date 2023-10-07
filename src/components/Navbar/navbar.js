@@ -57,7 +57,7 @@ function Header() {
 
                 <Navbar.Content showIn={'xs'}>
                     <Image css={{
-                        width: '152px',
+                        width: '200px',
                         height: '66px'
                     }} src={Logo} />
                 </Navbar.Content>
