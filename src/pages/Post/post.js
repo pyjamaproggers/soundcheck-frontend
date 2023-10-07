@@ -168,7 +168,7 @@ export default function Post() {
         const renderedContent = (
             <Grid.Container css={{
                 jc: 'center',
-                fontFamily:"Oswald"
+                fontFamily:"Arial, Helvetica, sans-serif"
             }}>
                 <div dangerouslySetInnerHTML={{ __html: wrappedContent }}
                 />
