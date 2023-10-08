@@ -326,7 +326,7 @@ export default function Post() {
                     alignItems: 'center'
                 }}>
 
-                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                    {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
 
                     {!fetching1 && !fetching2 && <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
                         {renderPostContent()}
