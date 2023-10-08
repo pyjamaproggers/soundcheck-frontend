@@ -103,11 +103,13 @@ export default function Post() {
     
 
     useEffect(() => {
+        setFetching(true);
         fetchPost();
         setDate();
     }, []);
 
     useEffect(() => {
+        setFetching(true);
         fetchPost();
         setDate();
     }, [id]);
