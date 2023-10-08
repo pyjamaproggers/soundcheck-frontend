@@ -92,12 +92,15 @@ export default function Post() {
         try {
             const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
             setPost(response.data);
-            setFetching1(false);
+            setTimeout(() => {
+                setFetching1(false);
+            }, 5000); // Wait for 1 second (1000 milliseconds)
         } catch (error) {
             setFetching1(false);
             console.log(error);
         }
     };
+    
 
     useEffect(() => {
         fetchPost();
