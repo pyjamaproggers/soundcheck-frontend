@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Image, Text, Row, Container, Col } from "@nextui-org/react";
+import { Grid, Image, Text, Row, Container, Col, Loading } from "@nextui-org/react";
 import Logo from "../../assets/logo.jpeg";
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
 import { SiApple, SiApplemusic } from 'react-icons/si'
@@ -22,6 +22,8 @@ export default function Post() {
     const id = location.pathname.split("/")[2];
     const [publishedPosts, setPublishedPosts] = useState();
     const [dateLatest, setDateLatest] = useState(true);
+    const [fetching1, setFetching1] = useState(true);
+    const [fetching2, setFetching2] = useState(true);
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
 
@@ -36,7 +38,9 @@ export default function Post() {
             const response = await axios.get('https://soundcheck-backend.onrender.com/api/posts');
             setPosts(response.data);
             await segregatePosts(); // Call segregatePosts after setting the posts state
+            setFetching2(false);
         } catch (error) {
+            setFetching2(false);
             console.log(error);
         }
     };
@@ -88,7 +92,9 @@ export default function Post() {
         try {
             const response = await axios.get(`https://soundcheck-backend.onrender.com/api/posts/${id}`);
             setPost(response.data);
+            setFetching1(false);
         } catch (error) {
+            setFetching1(false);
             console.log(error);
         }
     };
@@ -251,7 +257,9 @@ export default function Post() {
                         </Grid.Container>
                     </Grid.Container>
 
-                    <Scroll direction="vertical" height="100vh">
+                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+
+                    {!fetching1 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
                             width: '50vw',
                             height: 'max-content',
@@ -269,9 +277,9 @@ export default function Post() {
                                 {renderPostContent()}
                             </Col>
                         </Grid.Container>
-                    </Scroll>
+                    </Scroll>}
 
-                    {publishedPosts && publishedPosts.length > 4 &&
+                    {publishedPosts && publishedPosts.length > 4 && !fetching2 &&
                         <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Roboto" }}>
                             MORE BY SOUNDCHECK INDIA
@@ -313,11 +321,13 @@ export default function Post() {
                     alignItems: 'center'
                 }}>
 
-                    <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
-                        {renderPostContent()}
-                    </Grid.Container>
+                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
 
-                    {publishedPosts && publishedPosts.length > 4 &&
+                    {!fetching1 && <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
+                        {renderPostContent()}
+                    </Grid.Container>}
+
+                    {publishedPosts && publishedPosts.length > 4 && !fetching2 &&
                         <Grid.Container css={{ width: '85vw', jc: 'center',}}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Roboto"}}>
                             MORE BY SOUNDCHECK INDIA
