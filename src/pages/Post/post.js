@@ -260,7 +260,7 @@ export default function Post() {
                         </Grid.Container>
                     </Grid.Container>
 
-                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" /> && console.log("im here")}
+                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
 
                     {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
