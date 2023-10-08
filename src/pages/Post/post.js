@@ -220,7 +220,7 @@ export default function Post() {
                         marginBottom: '64px'
                     }}
                 >
-                    <Grid.Container
+                    {!fetching1 && <Grid.Container
                         css={{
                             margin: '16px 16px 16px 16px',
                             width: '22vw',
@@ -262,28 +262,10 @@ export default function Post() {
                                 <SiApplemusic className="icon" size={'30px'} />
                             </Grid>
                         </Grid.Container>
-                    </Grid.Container>
-                      {
-                        <Grid.Container css={{
-                            width: '50vw',
-                            height: 'max-content',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                            <Col css={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-                                {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
-                            </Col>
-                        </Grid.Container>
-                      }                  
-                    
+                    </Grid.Container>}
 
+                    {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                                
                     {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
                             width: '50vw',
