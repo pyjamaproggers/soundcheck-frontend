@@ -94,7 +94,7 @@ export default function Post() {
             setPost(response.data);
             setTimeout(() => {
                 setFetching1(false);
-            }, 5000); // Wait for 1 second (1000 milliseconds)
+            }, 5000); 
         } catch (error) {
             setFetching1(false);
             console.log(error);
@@ -260,7 +260,7 @@ export default function Post() {
                         </Grid.Container>
                     </Grid.Container>
 
-                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                    {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" /> && console.log("im here")}
 
                     {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
