@@ -264,7 +264,7 @@ export default function Post() {
                         </Grid.Container>
                     </Grid.Container>}
 
-                    {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                    {fetching1 && <Loading css={{ padding: '30vh 0px', justifyContent:"center", alignContent:"center" }} color={'white'} size="xl" />}
                                 
                     {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
@@ -328,7 +328,7 @@ export default function Post() {
                     alignItems: 'center'
                 }}>
 
-                    {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                    {fetching1 && <Loading css={{ padding: '30vh 0px', justifyContent:"center", alignContent:"center" }} color={'white'} size="xl" />}
 
                     {!fetching1 && !fetching2 && <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
                         {renderPostContent()}
