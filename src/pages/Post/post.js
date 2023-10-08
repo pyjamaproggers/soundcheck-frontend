@@ -94,7 +94,7 @@ export default function Post() {
             setPost(response.data);
             setTimeout(() => {
                 setFetching1(false);
-            }, 5000); 
+            },1500); 
         } catch (error) {
             setFetching1(false);
             console.log(error);
