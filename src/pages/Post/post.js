@@ -259,7 +259,7 @@ export default function Post() {
 
                     {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
 
-                    {!fetching1 && <Scroll direction="vertical" height="100vh">
+                    {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
                             width: '50vw',
                             height: 'max-content',
@@ -279,7 +279,7 @@ export default function Post() {
                         </Grid.Container>
                     </Scroll>}
 
-                    {publishedPosts && publishedPosts.length > 4 && !fetching2 &&
+                    {publishedPosts && publishedPosts.length > 4 && !fetching1 && !fetching2 &&
                         <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Roboto" }}>
                             MORE BY SOUNDCHECK INDIA
@@ -323,11 +323,11 @@ export default function Post() {
 
                     {fetching1 || fetching2 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
 
-                    {!fetching1 && <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
+                    {!fetching1 && !fetching2 && <Grid.Container css={{ width: '100vw', jc: 'center', padding: '5%' }}>
                         {renderPostContent()}
                     </Grid.Container>}
 
-                    {publishedPosts && publishedPosts.length > 4 && !fetching2 &&
+                    {publishedPosts && publishedPosts.length > 4 && !fetching1 && !fetching2 &&
                         <Grid.Container css={{ width: '85vw', jc: 'center',}}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px' , fontFamily:"Roboto"}}>
                             MORE BY SOUNDCHECK INDIA
