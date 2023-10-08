@@ -261,8 +261,26 @@ export default function Post() {
                             </Grid>
                         </Grid.Container>
                     </Grid.Container>
-
-                    {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                      {
+                        <Grid.Container css={{
+                            width: '50vw',
+                            height: 'max-content',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <Col css={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                {fetching1 && <Loading css={{ padding: '30vh 0px' }} color={'white'} size="xl" />}
+                            </Col>
+                        </Grid.Container>
+                      }                  
+                    
 
                     {!fetching1 && !fetching2 && <Scroll direction="vertical" height="100vh">
                         <Grid.Container css={{
