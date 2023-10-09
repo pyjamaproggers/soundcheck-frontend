@@ -26,6 +26,10 @@
     cursor: pointer;
 }
 
+.ig-icon:hover{
+    cursor: pointer;
+}
+
 .d-icon{
     background-color: #7289da;
     margin: 0px 8px;

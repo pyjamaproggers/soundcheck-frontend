@@ -67,24 +67,24 @@ function Header() {
                 </Navbar.Content>
 
                 <Navbar.Content hideIn={'xs'}>
-                    <Navbar.Item target="_blank" href="https://open.spotify.com/user/31ahbs772sa3yvxr4lxmogsab64i?si=7cdfb2397a3940bd&nd=1">
-                        <FaSpotify
-                            // className="d-icon" 
-                            size={'20px'} onClick={() => { window.location = "https://open.spotify.com/user/31ahbs772sa3yvxr4lxmogsab64i?si=7cdfb2397a3940bd&nd=1" }} />
-                    </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://www.instagram.com/soundcheckindia_/">
                         <FaInstagram onClick={() => { window.location = "https://www.instagram.com/soundcheckindia_/" }}
-                            // className="ig-icon" 
+                            className="ig-icon" 
                             size={'20px'} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://twitter.com/SoundCheckIndia">
                         <FaTwitter onClick={() => { window.location = "https://twitter.com/SoundCheckIndia" }}
-                            // className="t-icon" 
+                            className="t-icon" 
                             size={'20px'} />
+                    </Navbar.Item>
+                    <Navbar.Item target="_blank" href="https://open.spotify.com/user/31ahbs772sa3yvxr4lxmogsab64i?si=7cdfb2397a3940bd&nd=1">
+                        <FaSpotify
+                            className="d-icon" 
+                            size={'20px'} onClick={() => { window.location = "https://open.spotify.com/user/31ahbs772sa3yvxr4lxmogsab64i?si=7cdfb2397a3940bd&nd=1" }} />
                     </Navbar.Item>
                     <Navbar.Item target="_blank" href="https://music.apple.com/profile/SoundCheckIndia">
                         <SiApplemusic onClick={() => { window.location = "https://music.apple.com/profile/SoundCheckIndia" }}
-                            // className="yt-icon"  
+                            className="yt-icon"  
                             size={'20px'} />
                     </Navbar.Item>
                 </Navbar.Content>
