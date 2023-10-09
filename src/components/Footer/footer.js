@@ -15,6 +15,9 @@ export default function Footer() {
                     textAlign: 'center',
                     alignItems: 'center',
                     marginTop: '24px',
+                    borderWidth:"1px 0px 0px 0px",
+                    borderColor: '#8b0214',
+                    borderStyle: 'solid',
                 }}
             >
                 <Grid
