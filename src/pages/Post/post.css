@@ -50,3 +50,10 @@ iframe{
 .post-content p {
     font-family: Roboto;
 }
+
+.post-desktop{
+    background: linear-gradient(#8b0214,#000000);
+}
+.tablet{
+    background: linear-gradient(#8b0214,#000000);
+}
