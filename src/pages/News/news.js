@@ -185,7 +185,7 @@ export default function News() {
                                 <Grid
                                     css={{
                                         m: '24px',
-                                        maxW: '90vw',
+                                        maxW: '95vw',
                                         backgroundColor: 'black',
                                         '&:hover': {
                                             cursor: 'pointer',
