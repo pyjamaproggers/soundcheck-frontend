@@ -135,7 +135,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '16px 0 12px 0',
+                                margin: '16px 0 6px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
@@ -184,7 +184,7 @@ export default function News() {
                             {filteredPosts.map((post, index) => (
                                 <Grid
                                     css={{
-                                        m: '24px 24px 12px 24px',
+                                        m: '12px 24px 0px 24px',
                                         maxW: '95vw',
                                         backgroundColor: 'black',
                                         '&:hover': {
