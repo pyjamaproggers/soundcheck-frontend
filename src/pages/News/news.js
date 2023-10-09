@@ -191,7 +191,7 @@ export default function News() {
                                             cursor: 'pointer',
                                         },
                                         borderRadius: '12px',
-                                        mb: '12px'
+                                        mb: '6px'
                                     }}
                                     key={index}
                                     onClick={() => {
