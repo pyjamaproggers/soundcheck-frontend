@@ -1,5 +1,7 @@
 .home{
-    background: linear-gradient(#8b0214,#000000);
+    /* background: linear-gradient(#8b0214,#000000); */
+    background-image: url('/src/assets/background.jpg');
+    background-size: cover; /* Adjust as needed */
 }
 
 @media screen and (max-width: 650px) {
