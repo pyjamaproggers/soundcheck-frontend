@@ -367,7 +367,7 @@ export default function Post() {
                                                 borderStyle: 'solid',
                                                 borderWidth: '2px',
                                                 borderColor: 'rgb(20,20,20)',
-                                                margin: '8px',
+                                                margin: '8px 8px 2px 8px',
                                                 alignItems: 'center'
                                             }} >
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
