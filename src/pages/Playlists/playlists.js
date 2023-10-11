@@ -124,11 +124,11 @@ export default function Playlists() {
                                 
                                 '@xsMax': {
                                     width: 300,
-                                    m: '48px 24px'
+                                    m: '24px 24px 6px 24px'
                                 },
                                 '@xsMin': {
                                     width: 300,
-                                    m: '24px',
+                                    m: '24px 24px 6px 24px',
                                 }
                             }} key={index}>
                                 <SpotifyPlayer
@@ -150,11 +150,11 @@ export default function Playlists() {
                                 
                                 '@xsMax': {
                                     width: 300,
-                                    m: '48px 24px'
+                                    m: '24px 24px 6px 24px'
                                 },
                                 '@xsMin': {
                                     width: 300,
-                                    m: '24px',
+                                    m: '24px 24px 6px 24px',
                                 }
                             }} key={index}>
                                 <iframe 
