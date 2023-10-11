@@ -101,7 +101,6 @@ export default function Playlists() {
                             fontWeight: '$semibold',
                             '@xsMax': {
                                 fontSize: '$sm',
-                                paddingBottom: '24px'
                             },
                             '@xsMin': {
                                 fontSize: '$lg',
