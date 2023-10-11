@@ -780,7 +780,7 @@ export default function HomeScreen() {
                                                         jc: 'center'
                                                     }}>
                                                     <Text css={{
-                                                        fontSize:'$sm',
+                                                        fontSize:'$xs',
                                                         fontFamily:"Roboto"
                                                     }}>
                                                         {post.title}
