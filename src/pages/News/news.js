@@ -365,7 +365,7 @@ export default function News() {
                             {filteredPosts.map((post, index) => (
                                 <Grid
                                 css={{
-                                    m: '24px',
+                                    m: '24px 24px 12px 24px',
                                     width: '100%',
                                     backgroundColor: 'black',
                                     '&:hover': {
