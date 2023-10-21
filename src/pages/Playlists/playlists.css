@@ -3,5 +3,6 @@ iframe{
 }
 
 .home{
-    background: linear-gradient(#8b0214,#000000);
+    background-image: url("/src/assets/noisebackground.jpg");
+    background-size: contain;
 }
