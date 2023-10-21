@@ -262,6 +262,79 @@ export default function Post() {
                                 <SiApplemusic className="icon" size={'30px'} />
                             </Grid>
                         </Grid.Container>
+                        <Grid 
+                css={{
+                    padding: '12px',
+                    '@smMin': {
+                        borderWidth: '0px 0px 0px 1px',
+                        borderColor: '#8b0214',
+                        borderStyle: 'solid'
+                    }
+                }}>
+                    <Col
+                        css={{
+                            width: 'max-content',
+                            textAlign: 'center',
+                            minWidth: '250px',
+                            padding: '0px 10px'
+                        }}>
+                        <Text css={{
+                            '@smMin': {
+                                fontSize: '$2xl',
+                                padding: '16px 16px 0px 16px'
+                            },
+                            '@smMax': {
+                                fontSize: '$xl',
+                                padding: '16px 16px 0px 16px'
+                            },
+                            fontWeight: '$semibold', fontFamily:"Roboto"
+                        }}>
+                            Subscribe
+                        </Text>
+                        <Text css={{
+                            '@smMin': {
+                                fontSize: '$md',
+                            },
+                            '@smMax': {
+                                fontSize: '$md',
+                            },
+                            pb: '16px',
+                            fontWeight: '$medium',
+                            color: '$gray600', fontFamily:"Roboto"
+                        }}>
+                            To get email updates from SoundCheck™ India.
+                        </Text>
+                        <div className="subscribe-desktop">
+                            <Row css={{
+                                width: '100%',
+                                jc: 'center'
+                            }}>
+                                <Input placeholder="Your email address" />
+                                <Button auto flat color='error' css={{
+                                    backgroundColor: '#8b0214',
+                                }}>
+                                    <Text css={{
+                                        fontWeight: 600, fontFamily:"Roboto"
+                                    }}>
+                                        Subscribe
+                                    </Text>
+                                </Button>
+                            </Row>
+                        </div>
+                        <div className="subscribe-mobile">
+                            <Input placeholder="Your email address" />
+                            <Button auto flat color='error' css={{
+                                backgroundColor: '#8b0214'
+                            }}>
+                                <Text css={{
+                                    fontWeight: 600, fontFamily:"Roboto"
+                                }}>
+                                    Subscribe
+                                </Text>
+                            </Button>
+                        </div>
+                    </Col>
+                </Grid>
                     </Grid.Container>}
                      {fetching1 &&
                         <Grid.Container css={{
