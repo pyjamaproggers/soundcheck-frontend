@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Image, Text, Row, Container, Col, Loading } from "@nextui-org/react";
+import { Grid, Image, Text, Row, Container, Col, Loading , Input, Button} from "@nextui-org/react";
 import Logo from "../../assets/logo.jpeg";
 import { FaYoutube, FaFacebookF, FaInstagram, FaTwitter, FaSpotify, } from 'react-icons/fa';
 import { SiApple, SiApplemusic } from 'react-icons/si'
