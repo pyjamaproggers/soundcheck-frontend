@@ -62,7 +62,6 @@ export default function HomeScreen() {
                             height: "100vh",
                             width: "95%",
                             jc: 'center',
-                            marginBottom: '120px'
                         }}
                     >
                         {/* First Row - small, big, small */}
