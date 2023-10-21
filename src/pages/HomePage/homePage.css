@@ -34,7 +34,7 @@
 
 .home{
     background-image: url("/src/assets/noisebackground.jpg");
-    background-size: fill;
+    background-size: cover;
 }
 
 .container{
