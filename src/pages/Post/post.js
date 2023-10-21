@@ -227,7 +227,8 @@ export default function Post() {
                             padding: '8px',
                             height: 'max-content',
                             float: 'left',
-                            backgroundColor: 'rgb(20,20,20)'
+                            backgroundColor: 'rgb(20,20,20)',
+                            borderRadius:"12px"
                         }}
                         direction="column"
                     >
