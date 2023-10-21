@@ -271,13 +271,6 @@ export default function Post() {
                             borderStyle: 'solid'
                         }
                     }}>
-                        <Col
-                            css={{
-                                width: 'max-content',
-                                textAlign: 'center',
-                                minWidth: '100%',
-                                padding: '0px 10px'
-                            }}>
                             <Text css={{
                                 '@smMin': {
                                     fontSize: '$2xl',
@@ -332,8 +325,7 @@ export default function Post() {
                                         Subscribe
                                     </Text>
                                 </Button>
-                        </div>
-                    </Col>
+                        </div> 
                 </Grid>
                     </Grid.Container>}
                      {fetching1 &&
