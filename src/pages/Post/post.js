@@ -217,7 +217,6 @@ export default function Post() {
                         jc: 'space-between',
                         width: '100vw',
                         height: 'max-content',
-                        marginBottom: '64px'
                     }}
                 >
                     {!fetching1 && <Grid.Container
