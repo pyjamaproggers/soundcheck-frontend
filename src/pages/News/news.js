@@ -127,7 +127,7 @@ export default function News() {
                                     fontSize: '$lg',
                                 },
                                 textAlign: 'center',
-                                margin: '6px 0px 0px 0px',
+                                margin: '0px 0px 0px 0px',
                                 fontFamily:"Roboto"
                             }}
                         >
@@ -135,7 +135,7 @@ export default function News() {
                         </Text>
                         <Row
                             css={{
-                                margin: '16px 0 6px 0',
+                                margin: '10px 0 6px 0',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}
