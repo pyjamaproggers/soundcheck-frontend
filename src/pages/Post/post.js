@@ -275,7 +275,7 @@ export default function Post() {
                             css={{
                                 width: 'max-content',
                                 textAlign: 'center',
-                                minWidth: '250px',
+                                minWidth: '100%',
                                 padding: '0px 10px'
                             }}>
                             <Text css={{
