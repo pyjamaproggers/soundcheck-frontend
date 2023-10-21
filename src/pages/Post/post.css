@@ -53,10 +53,10 @@ iframe{
 
 .post-desktop{
     background-image: url("/src/assets/noisebackground.jpg");
-    background-size: contain;
+    background-size: fill;
     
 }
 .tablet{
     background-image: url("/src/assets/noisebackground.jpg");
-    background-size: contain;
+    background-size: fill;
 }
