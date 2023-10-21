@@ -1,3 +1,7 @@
 iframe{
     border-radius: 15px;
 }
+
+.home{
+    background: linear-gradient(#8b0214,#000000);
+}

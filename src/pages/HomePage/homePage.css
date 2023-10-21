@@ -33,8 +33,7 @@
 
 
 .home{
-    background-image: url('/src/assets/background.jpg');
-    background-size: cover; /* Adjust as needed */
+    background: linear-gradient(#8b0214,#000000);
 }
 
 .container{
