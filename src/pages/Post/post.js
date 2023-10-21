@@ -302,7 +302,7 @@ export default function Post() {
                     </Scroll>}
 
                     {publishedPosts && publishedPosts.length > 4 && !fetching1 && !fetching2 &&
-                        <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100px', float: "right", marginRight: "20px" }}>
+                        <Grid.Container css={{ width: '22vw', jc: 'center', maxHeight: '100%', float: "right", marginRight: "20px" }}>
                             <Text css={{ fontWeight: '$semibold', fontSize: '$lg', margin: '8px 0px', fontFamily:"Roboto" }}>
                             MORE BY SOUNDCHECK INDIA
                             </Text>
