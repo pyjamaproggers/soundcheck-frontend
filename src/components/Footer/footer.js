@@ -14,7 +14,7 @@ export default function Footer() {
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    marginTop: '24px',
+                    marginTop: '0px',
                     borderWidth:"1px 0px 0px 0px",
                     borderColor: '#8b0214',
                     borderStyle: 'solid',
