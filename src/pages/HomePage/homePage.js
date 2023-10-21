@@ -731,7 +731,7 @@ export default function HomeScreen() {
                 {posts &&
                     <Grid.Container
                         css={{
-                            height: "270vh",
+                            height: "240vh",
                             width: "95%",
                             jc: 'center',
                         }}
