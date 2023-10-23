@@ -435,7 +435,8 @@ export default function Post() {
                                                 borderColor: 'rgb(20,20,20)',
                                                 margin: '8px',
                                                 alignItems: 'center',
-                                                borderRadius:"25px"
+                                                borderRadius:"25px",
+                                                backgroundColor:"Black"
                                             }} >
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
                                                 <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' , fontFamily:"Roboto"}}>
