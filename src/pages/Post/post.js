@@ -425,7 +425,7 @@ export default function Post() {
                             {publishedPosts.map((post, index) => {
                                 if (index <= 7) {
                                     return (
-                                        <Grid css={{ width: '100%', cursor: 'pointer' }} onClick={() => {
+                                        <Grid css={{ width: '100%', cursor: 'pointer', backgroundColor: 'rgb(20,20,20)', }} onClick={() => {
                                             navigate(`/posts/${post._id}`);
                                         }}>
                                             <Row css={{
@@ -436,7 +436,7 @@ export default function Post() {
                                                 margin: '8px',
                                                 alignItems: 'center',
                                                 borderRadius:"25px",
-                                                backgroundColor:"Black"
+                                                backgroundColor: 'rgb(20,20,20)',
                                             }} >
                                                 <Image src={post.homeImg} css={{ height: '91px', width: '200px', objectFit: 'cover' }} />
                                                 <Text className="multiline-ellipsis" css={{ fontWeight: '$semibold', fontSize: '$md', height: '100%', paddingLeft: '4px', marginLeft: "5px", width: '100%' , fontFamily:"Roboto"}}>
