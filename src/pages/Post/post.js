@@ -426,7 +426,7 @@ export default function Post() {
                             {publishedPosts.map((post, index) => {
                                 if (index <= 7) {
                                     return (
-                                        <Grid css={{ width: '100%', cursor: 'pointer', backgroundColor: 'rgb(20,20,20)', }} onClick={() => {
+                                        <Grid css={{ width: '100%', cursor: 'pointer' }} onClick={() => {
                                             navigate(`/posts/${post._id}`);
                                         }}>
                                             <Row css={{
